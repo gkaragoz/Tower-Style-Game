@@ -988,6 +988,7 @@ GameObject:
   m_Component:
   - component: {fileID: 631908798}
   - component: {fileID: 631908799}
+  - component: {fileID: 631908800}
   m_Layer: 5
   m_Name: VelocityBar
   m_TagString: Untagged
@@ -1028,6 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08a641f0af52db4ba1d5c6a53373075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputManager: {fileID: 612628714}
   _slots:
   - {fileID: 532181011}
   - {fileID: 1587613154}
@@ -1039,12 +1041,26 @@ MonoBehaviour:
   - {fileID: 1049673218}
   - {fileID: 1127434095}
   _parentTransform: {fileID: 1852240006}
+  _parentCanvasGroup: {fileID: 631908800}
   _cursorTransform: {fileID: 1656677702}
   _cursorSpeed: 3
   _slotPerDistance: 0
   _containerWidth: 0
   _cursorStartPosition: {x: 0, y: 0}
   _cursorEndPosition: {x: 0, y: 0}
+  _selectedIndex: 0
+--- !u!225 &631908800
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631908797}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &653260035
 GameObject:
   m_ObjectHideFlags: 0
