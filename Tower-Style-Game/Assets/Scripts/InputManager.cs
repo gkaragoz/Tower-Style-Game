@@ -5,9 +5,11 @@ namespace GK {
 
 	public class InputManager : MonoBehaviour {
 
+
 		public Action<Vector2> OnInputBegin;
 		public Action<Vector2, Vector2> OnInputDragging;
 		public Action<Vector2, Vector2> OnInputEnd;
+
 
 		private Vector2 _startPosition = Vector2.zero;
 		private Vector2 _endPosition = Vector2.zero;
@@ -35,7 +37,7 @@ namespace GK {
 				_currentPosition = Camera.main.ScreenToWorldPoint(mousePos);
 				_direction = _startPosition - _currentPosition;
 
-				OnInputDragging?.Invoke(_currentPosition, _direction.normalized);
+				OnInputDragging?.Invoke(_currentPosition,_direction.normalized);
 			}
 
 			if (Input.GetMouseButtonUp(0)) {
@@ -43,7 +45,7 @@ namespace GK {
 				_endPosition = Camera.main.ScreenToWorldPoint(mousePos);
 
 				_direction = _startPosition -_currentPosition;
-				OnInputEnd?.Invoke(_endPosition, _direction.normalized);
+				OnInputEnd?.Invoke(_endPosition, InputDirectionModifier.InputDirectionVector(_direction).normalized);
 
 				ResetInputs();
 			}
@@ -58,7 +60,9 @@ namespace GK {
 
 		private void OnDrawGizmos() {
 			Gizmos.color = Color.white;
-			Gizmos.DrawLine(_startPosition, _currentPosition);
+			Gizmos.DrawLine(_startPosition, InputDirectionModifier.UserDirectionVector(_direction)+_startPosition);
+			
+
 		}
 	}
 
