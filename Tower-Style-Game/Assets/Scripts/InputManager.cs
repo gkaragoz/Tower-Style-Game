@@ -5,10 +5,21 @@ namespace GK {
 
 	public class InputManager : MonoBehaviour {
 
+		#region Singleton
+
+		public static InputManager instance;
+		private void Awake() {
+			if (instance == null)
+				instance = this;
+			else if (instance != this)
+				Destroy(gameObject);
+		}
+
+		#endregion
 
 		public Action<Vector2> OnInputBegin;
 		public Action<Vector2, Vector2> OnInputDragging;
-		public Action<Vector2, Vector2> OnInputEnd;
+		public Action<Vector2, Vector2, float> OnInputEnd;
 
 
 		private Vector2 _startPosition = Vector2.zero;
@@ -23,11 +34,20 @@ namespace GK {
 			}
 		}
 
+		private InputBarManager _inputBarManager = null;
+
+		private void Start() {
+			_inputBarManager = GetComponent<InputBarManager>();
+		}
+
 		private void Update() {
 			if (Input.GetMouseButtonDown(0)) {
 				Vector2 mousePos = Input.mousePosition;
 				_startPosition = Camera.main.ScreenToWorldPoint(mousePos);
+
 				_currentPosition = _startPosition;
+
+				_inputBarManager.Play();
 
 				OnInputBegin?.Invoke(_startPosition);
 			}
@@ -35,6 +55,7 @@ namespace GK {
 			if (Input.GetMouseButton(0)) {
 				Vector2 mousePos = Input.mousePosition;
 				_currentPosition = Camera.main.ScreenToWorldPoint(mousePos);
+
 				_direction = _startPosition - _currentPosition;
 
 				OnInputDragging?.Invoke(_currentPosition,_direction.normalized);
@@ -45,7 +66,13 @@ namespace GK {
 				_endPosition = Camera.main.ScreenToWorldPoint(mousePos);
 
 				_direction = _startPosition -_currentPosition;
-				OnInputEnd?.Invoke(_endPosition, InputDirectionModifier.InputDirectionVector(_direction).normalized);
+
+				_inputBarManager.Stop();
+
+				OnInputEnd?.Invoke(
+					_endPosition, 
+					InputDirectionModifier.InputDirectionVector(_direction).normalized, 
+					_inputBarManager.GetSelectedPowerValue());
 
 				ResetInputs();
 			}
@@ -61,8 +88,6 @@ namespace GK {
 		private void OnDrawGizmos() {
 			Gizmos.color = Color.white;
 			Gizmos.DrawLine(_startPosition, InputDirectionModifier.UserDirectionVector(_direction)+_startPosition);
-			
-
 		}
 	}
 
