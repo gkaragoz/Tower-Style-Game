@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.65080994, g: 0.666729, b: 0.7075472, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.05
@@ -1248,6 +1248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3182279b4452d92478ae7cdbf12cf770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 1687258584}
 --- !u!114 &856935887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2248,9 +2249,10 @@ GameObject:
   - component: {fileID: 1687258584}
   - component: {fileID: 1687258582}
   - component: {fileID: 1687258586}
+  - component: {fileID: 1687258583}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2263,6 +2265,34 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   m_Enabled: 1
+--- !u!114 &1687258583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687258581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3090a9cab642d648aa69fdd1116712e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 612628711}
+  dampTime: 0.3
+  followType: 2
+  cameraCenterX: 0.5
+  cameraCenterY: 0.2
+  boundType: 0
+  leftBound: 0
+  rightBound: 0
+  upperBound: 0
+  lowerBound: 0
+  deadZoneType: -1
+  hardDeadZone: 0
+  leftDeadBound: 1
+  rightDeadBound: 1
+  upperDeadBound: 1
+  lowerDeadBound: 1
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0
@@ -2343,7 +2373,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 1
+  m_RenderPostProcessing: 0
   m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 1
@@ -2902,7 +2932,7 @@ Light:
   m_InnerSpotAngle: 21.802082
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1

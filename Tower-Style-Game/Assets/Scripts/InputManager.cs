@@ -17,10 +17,12 @@ namespace GK {
 
 		#endregion
 
+		[SerializeField]
+		private Camera _camera = null;
+
 		public Action<Vector2> OnInputBegin;
 		public Action<Vector2, Vector2> OnInputDragging;
 		public Action<Vector2, Vector2, float> OnInputEnd;
-
 
 		private Vector2 _startPosition = Vector2.zero;
 		private Vector2 _endPosition = Vector2.zero;
@@ -43,7 +45,7 @@ namespace GK {
 		private void Update() {
 			if (Input.GetMouseButtonDown(0)) {
 				Vector2 mousePos = Input.mousePosition;
-				_startPosition = Camera.main.ScreenToWorldPoint(mousePos);
+				_startPosition = _camera.ScreenToWorldPoint(mousePos);
 
 				_currentPosition = _startPosition;
 
@@ -54,7 +56,7 @@ namespace GK {
 
 			if (Input.GetMouseButton(0)) {
 				Vector2 mousePos = Input.mousePosition;
-				_currentPosition = Camera.main.ScreenToWorldPoint(mousePos);
+				_currentPosition = _camera.ScreenToWorldPoint(mousePos);
 
 				_direction = _startPosition - _currentPosition;
 
@@ -63,7 +65,7 @@ namespace GK {
 
 			if (Input.GetMouseButtonUp(0)) {
 				Vector2 mousePos = Input.mousePosition;
-				_endPosition = Camera.main.ScreenToWorldPoint(mousePos);
+				_endPosition = _camera.ScreenToWorldPoint(mousePos);
 
 				_direction = _startPosition -_currentPosition;
 
