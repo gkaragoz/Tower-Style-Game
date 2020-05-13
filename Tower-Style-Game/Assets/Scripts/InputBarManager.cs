@@ -54,7 +54,7 @@ namespace GK {
 		public void Play() {
 			_inputSelectorTransform.anchoredPosition = _inputSelectorStartPosition;
 
-			LeanTween.moveLocalX(_inputSelectorTransform.gameObject, _inputSelectorEndPosition.x, _cursorSpeedByTime).setLoopPingPong();
+			LeanTween.moveLocalX(_inputSelectorTransform.gameObject, _inputSelectorEndPosition.x - 0.2f, _cursorSpeedByTime).setLoopPingPong();
 		}
 
 		public void Stop() {
