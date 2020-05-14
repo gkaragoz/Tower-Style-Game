@@ -24,6 +24,9 @@ namespace GK {
 		public Action<Vector2, Vector2> OnInputDragging;
 		public Action<Vector2, Vector2, float> OnInputEnd;
 
+		[SerializeField]
+		private float _clampedInputMagnitude = 2.5f;
+
 		private Vector2 _startPosition = Vector2.zero;
 		private Vector2 _endPosition = Vector2.zero;
 		private Vector2 _currentPosition = Vector2.zero;
@@ -66,7 +69,7 @@ namespace GK {
 				OnInputEnd?.Invoke(
 					_endPosition, 
 					InputDirectionModifier.UserDirectionVector(_direction).normalized,
-					_direction.magnitude);
+					Mathf.Clamp(_direction.magnitude, 0f, _clampedInputMagnitude));
 
 				ResetInputs();
 			}
