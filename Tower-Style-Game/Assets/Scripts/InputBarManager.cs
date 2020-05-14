@@ -12,7 +12,7 @@ namespace GK {
 		[SerializeField]
 		private RectTransform _inputSelectorTransform = null;
 		[SerializeField]
-		private float _cursorSpeedByTime = 1f;
+		private float _inputSelectorSpeedByTime = 1f;
 
 		[Header("Debug")]
 		[SerializeField]
@@ -54,7 +54,7 @@ namespace GK {
 		public void Play() {
 			_inputSelectorTransform.anchoredPosition = _inputSelectorStartPosition;
 
-			LeanTween.moveLocalX(_inputSelectorTransform.gameObject, _inputSelectorEndPosition.x - 0.2f, _cursorSpeedByTime).setLoopPingPong();
+			LeanTween.moveLocalX(_inputSelectorTransform.gameObject, _inputSelectorEndPosition.x - 0.2f, _inputSelectorSpeedByTime).setLoopPingPong();
 		}
 
 		public void Stop() {
