@@ -59,9 +59,9 @@ namespace GK {
 			if (Input.GetMouseButton(0)) {
 				Vector2 mousePos = Input.mousePosition;
 				_currentPosition = _camera.ScreenToWorldPoint(mousePos);
-				_lineRendererVectors[1] = _currentPosition;
 
 				_direction = _startPosition - _currentPosition;
+				_lineRendererVectors[1] = InputDirectionModifier.InputDirectionVector(_direction) + _startPosition;
 
 				OnInputDragging?.Invoke(_currentPosition,_direction.normalized);
 			}
@@ -74,7 +74,7 @@ namespace GK {
 
 				OnInputEnd?.Invoke(
 					_endPosition, 
-					InputDirectionModifier.InputDirectionVector(_direction).normalized,
+					InputDirectionModifier.UserDirectionVector(_direction).normalized,
 					_direction.magnitude);
 
 				ResetInputs();
@@ -93,10 +93,6 @@ namespace GK {
 			_lineRendererVectors[1] = Vector3.zero;
 		}
 
-		private void OnDrawGizmos() {
-			Gizmos.color = Color.white;
-			Gizmos.DrawLine(_startPosition, InputDirectionModifier.UserDirectionVector(_direction)+_startPosition);
-		}
 	}
 
 }

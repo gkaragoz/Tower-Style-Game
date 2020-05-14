@@ -26,11 +26,11 @@ namespace GK {
         }
 
         public static Vector2 UserDirectionVector(Vector2 direction) {
-            return -1 * CalculateVector(direction);
+            return CalculateVector(direction);
         }
 
         public static Vector2 InputDirectionVector(Vector2 direction) {
-            return CalculateVector(direction);
+            return -1 * CalculateVector(direction);
         }
 
         private static Vector2 CalculateVector(Vector2 direction) {
