@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace GK {
@@ -37,21 +36,12 @@ namespace GK {
 			}
 		}
 
-		private LineRenderer _lineRenderer = null;
-		private Vector3[] _lineRendererVectors = new Vector3[2];
-
-		private void Start() {
-			_lineRenderer = GetComponentInChildren<LineRenderer>();
-		}
-
 		private void Update() {
 			if (Input.GetMouseButtonDown(0)) {
 				Vector2 mousePos = Input.mousePosition;
 				_startPosition = _camera.ScreenToWorldPoint(mousePos);
 
 				_currentPosition = _startPosition;
-				_lineRendererVectors[0] = _startPosition;
-				_lineRendererVectors[1] = _currentPosition;
 
 				OnInputBegin?.Invoke(_startPosition);
 			}
@@ -63,7 +53,6 @@ namespace GK {
 				_direction = _startPosition - _currentPosition;
 
 				Vector2 clampedVector = _direction.normalized * Mathf.Clamp(_direction.magnitude, 0f, 2.5f);
-				_lineRendererVectors[1] = InputDirectionModifier.InputDirectionVector(clampedVector) + _startPosition;
 
 				OnInputDragging?.Invoke(_currentPosition,_direction.normalized);
 			}
@@ -81,8 +70,6 @@ namespace GK {
 
 				ResetInputs();
 			}
-
-			_lineRenderer.SetPositions(_lineRendererVectors);
 		}
 
 		private void ResetInputs() {
@@ -90,9 +77,6 @@ namespace GK {
 			_endPosition = Vector2.zero;
 			_currentPosition = Vector2.zero;
 			_direction = Vector2.zero;
-
-			_lineRendererVectors[0] = Vector3.zero;
-			_lineRendererVectors[1] = Vector3.zero;
 		}
 
 	}
