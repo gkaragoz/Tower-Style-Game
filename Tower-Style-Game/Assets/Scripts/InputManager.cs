@@ -61,7 +61,9 @@ namespace GK {
 				_currentPosition = _camera.ScreenToWorldPoint(mousePos);
 
 				_direction = _startPosition - _currentPosition;
-				_lineRendererVectors[1] = InputDirectionModifier.InputDirectionVector(_direction) + _startPosition;
+
+				Vector2 clampedVector = _direction.normalized * Mathf.Clamp(_direction.magnitude, 0f, 2.5f);
+				_lineRendererVectors[1] = InputDirectionModifier.InputDirectionVector(clampedVector) + _startPosition;
 
 				OnInputDragging?.Invoke(_currentPosition,_direction.normalized);
 			}
