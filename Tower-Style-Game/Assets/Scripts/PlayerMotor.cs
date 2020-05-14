@@ -7,6 +7,8 @@ namespace GK {
 		[SerializeField]
 		private float _baseJumpForce = 1f;
 		[SerializeField]
+		private float _clampedInputForce = 1f;
+		[SerializeField]
 		private ForceMode2D _forceMode2D = ForceMode2D.Impulse;
 
 		private Rigidbody2D _rb2D = null;
@@ -28,7 +30,7 @@ namespace GK {
 		}
 
 		private void OnInputEnd(Vector2 endPosition, Vector2 direction, float selectedInputPower) {
-			_rb2D.AddForce(direction * _baseJumpForce * selectedInputPower, _forceMode2D);
+			_rb2D.AddForce(direction * _baseJumpForce * Mathf.Clamp(selectedInputPower, 0f, _clampedInputForce), _forceMode2D);
 		}
 
 	}

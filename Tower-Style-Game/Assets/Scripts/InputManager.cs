@@ -37,12 +37,10 @@ namespace GK {
 			}
 		}
 
-		private InputBarManager _inputBarManager = null;
 		private LineRenderer _lineRenderer = null;
 		private Vector3[] _lineRendererVectors = new Vector3[2];
 
 		private void Start() {
-			_inputBarManager = GetComponent<InputBarManager>();
 			_lineRenderer = GetComponentInChildren<LineRenderer>();
 		}
 
@@ -54,8 +52,6 @@ namespace GK {
 				_currentPosition = _startPosition;
 				_lineRendererVectors[0] = _startPosition;
 				_lineRendererVectors[1] = _currentPosition;
-
-				_inputBarManager.Play();
 
 				OnInputBegin?.Invoke(_startPosition);
 			}
@@ -76,12 +72,10 @@ namespace GK {
 
 				_direction = _startPosition -_currentPosition;
 
-				_inputBarManager.Stop();
-
 				OnInputEnd?.Invoke(
 					_endPosition, 
-					InputDirectionModifier.InputDirectionVector(_direction).normalized, 
-					_inputBarManager.GetSelectedPowerValue());
+					InputDirectionModifier.InputDirectionVector(_direction).normalized,
+					_direction.magnitude);
 
 				ResetInputs();
 			}
