@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GK {
 
@@ -13,21 +14,9 @@ namespace GK {
 
 		private void Start() {
 			_rb2D = GetComponent<Rigidbody2D>();
-
-			InputManager.instance.OnInputBegin += OnInputBegin;
-			InputManager.instance.OnInputDragging += OnInputDragging;
-			InputManager.instance.OnInputEnd += OnInputEnd;
 		}
 
-		private void OnInputBegin(Vector2 startPosition) {
-			//throw new NotImplementedException();
-		}
-
-		private void OnInputDragging(Vector2 draggingPosition, Vector2 direction) {
-			//throw new NotImplementedException();
-		}
-
-		private void OnInputEnd(Vector2 endPosition, Vector2 direction, float selectedInputPower) {
+		public void Jump(Vector2 direction, float selectedInputPower) {
 			_rb2D.AddForce(direction * _baseJumpForce * selectedInputPower, _forceMode2D);
 		}
 
