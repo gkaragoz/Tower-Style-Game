@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 17674532}
   - component: {fileID: 17674531}
   - component: {fileID: 17674530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 25530737}
   - component: {fileID: 25530736}
   - component: {fileID: 25530735}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,6 +373,36 @@ Transform:
   m_Father: {fileID: 494040372}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &37541334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 37541335}
+  m_Layer: 0
+  m_Name: Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &37541335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37541334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5076, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 612628711}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43722590
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +416,7 @@ GameObject:
   - component: {fileID: 43722593}
   - component: {fileID: 43722592}
   - component: {fileID: 43722591}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +542,7 @@ GameObject:
   - component: {fileID: 56652512}
   - component: {fileID: 56652511}
   - component: {fileID: 56652510}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -637,7 +667,7 @@ GameObject:
   - component: {fileID: 117671757}
   - component: {fileID: 117671756}
   - component: {fileID: 117671755}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Base-Platfrom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -744,7 +774,7 @@ GameObject:
   - component: {fileID: 195343721}
   - component: {fileID: 195343720}
   - component: {fileID: 195343719}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -870,7 +900,7 @@ GameObject:
   - component: {fileID: 318919788}
   - component: {fileID: 318919787}
   - component: {fileID: 318919786}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -996,7 +1026,7 @@ GameObject:
   - component: {fileID: 354161396}
   - component: {fileID: 354161395}
   - component: {fileID: 354161394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1122,7 +1152,7 @@ GameObject:
   - component: {fileID: 401106002}
   - component: {fileID: 401106001}
   - component: {fileID: 401106000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1248,7 +1278,7 @@ GameObject:
   - component: {fileID: 410663513}
   - component: {fileID: 410663512}
   - component: {fileID: 410663511}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1374,7 +1404,7 @@ GameObject:
   - component: {fileID: 449766790}
   - component: {fileID: 449766789}
   - component: {fileID: 449766788}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1500,7 +1530,7 @@ GameObject:
   - component: {fileID: 461941491}
   - component: {fileID: 461941490}
   - component: {fileID: 461941489}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1702,7 +1732,7 @@ GameObject:
   - component: {fileID: 549908953}
   - component: {fileID: 549908952}
   - component: {fileID: 549908951}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1828,7 +1858,7 @@ GameObject:
   - component: {fileID: 562523164}
   - component: {fileID: 562523163}
   - component: {fileID: 562523162}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1954,7 +1984,7 @@ GameObject:
   - component: {fileID: 591483680}
   - component: {fileID: 591483679}
   - component: {fileID: 591483683}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2080,7 +2110,7 @@ GameObject:
   - component: {fileID: 597897003}
   - component: {fileID: 597897002}
   - component: {fileID: 597897001}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2208,6 +2238,7 @@ GameObject:
   - component: {fileID: 612628708}
   - component: {fileID: 612628714}
   - component: {fileID: 612628713}
+  - component: {fileID: 612628715}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2291,9 +2322,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612628707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.15, z: 0}
+  m_LocalPosition: {x: -0.05, y: -3.748, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_Children: []
+  m_Children:
+  - {fileID: 37541335}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2349,6 +2381,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c31cb081dce40d4091129a8fc5e6d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &612628715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612628707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f4d9bf4c7e0f7d49a0891ace9374d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundCheckThreshold: 0.1
+  _groundCheckPivotTransform: {fileID: 37541335}
+  _groundCheckRayDistance: 0.28
+  _groundCheckLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _isFalling: 0
+  _isGrounded: 0
 --- !u!1 &653260035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,7 +2462,7 @@ GameObject:
   - component: {fileID: 680366527}
   - component: {fileID: 680366526}
   - component: {fileID: 680366525}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2536,7 +2588,7 @@ GameObject:
   - component: {fileID: 718063918}
   - component: {fileID: 718063917}
   - component: {fileID: 718063916}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2662,7 +2714,7 @@ GameObject:
   - component: {fileID: 742138709}
   - component: {fileID: 742138708}
   - component: {fileID: 742138707}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2854,7 +2906,7 @@ GameObject:
   - component: {fileID: 833489408}
   - component: {fileID: 833489407}
   - component: {fileID: 833489406}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3045,7 +3097,7 @@ GameObject:
   - component: {fileID: 894133460}
   - component: {fileID: 894133459}
   - component: {fileID: 894133458}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3170,7 +3222,7 @@ GameObject:
   - component: {fileID: 908358063}
   - component: {fileID: 908358062}
   - component: {fileID: 908358061}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Base-Platfrom (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3277,7 +3329,7 @@ GameObject:
   - component: {fileID: 965247045}
   - component: {fileID: 965247044}
   - component: {fileID: 965247043}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3435,7 +3487,7 @@ GameObject:
   - component: {fileID: 1080537364}
   - component: {fileID: 1080537363}
   - component: {fileID: 1080537362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3561,7 +3613,7 @@ GameObject:
   - component: {fileID: 1127203055}
   - component: {fileID: 1127203054}
   - component: {fileID: 1127203053}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3687,7 +3739,7 @@ GameObject:
   - component: {fileID: 1136369514}
   - component: {fileID: 1136369513}
   - component: {fileID: 1136369512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3813,7 +3865,7 @@ GameObject:
   - component: {fileID: 1149841859}
   - component: {fileID: 1149841858}
   - component: {fileID: 1149841857}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3939,7 +3991,7 @@ GameObject:
   - component: {fileID: 1247713289}
   - component: {fileID: 1247713288}
   - component: {fileID: 1247713287}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4065,7 +4117,7 @@ GameObject:
   - component: {fileID: 1274873619}
   - component: {fileID: 1274873618}
   - component: {fileID: 1274873617}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4191,7 +4243,7 @@ GameObject:
   - component: {fileID: 1276996993}
   - component: {fileID: 1276996992}
   - component: {fileID: 1276996991}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4317,7 +4369,7 @@ GameObject:
   - component: {fileID: 1330715810}
   - component: {fileID: 1330715809}
   - component: {fileID: 1330715808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4443,7 +4495,7 @@ GameObject:
   - component: {fileID: 1331037756}
   - component: {fileID: 1331037755}
   - component: {fileID: 1331037754}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4569,7 +4621,7 @@ GameObject:
   - component: {fileID: 1449185981}
   - component: {fileID: 1449185980}
   - component: {fileID: 1449185979}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4695,7 +4747,7 @@ GameObject:
   - component: {fileID: 1514712592}
   - component: {fileID: 1514712591}
   - component: {fileID: 1514712590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4821,7 +4873,7 @@ GameObject:
   - component: {fileID: 1618318034}
   - component: {fileID: 1618318033}
   - component: {fileID: 1618318032}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4947,7 +4999,7 @@ GameObject:
   - component: {fileID: 1624072398}
   - component: {fileID: 1624072397}
   - component: {fileID: 1624072396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5073,7 +5125,7 @@ GameObject:
   - component: {fileID: 1645668497}
   - component: {fileID: 1645668496}
   - component: {fileID: 1645668495}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5343,7 +5395,7 @@ GameObject:
   - component: {fileID: 1739200884}
   - component: {fileID: 1739200883}
   - component: {fileID: 1739200882}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5469,7 +5521,7 @@ GameObject:
   - component: {fileID: 1756279570}
   - component: {fileID: 1756279569}
   - component: {fileID: 1756279568}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5595,7 +5647,7 @@ GameObject:
   - component: {fileID: 1796334842}
   - component: {fileID: 1796334841}
   - component: {fileID: 1796334840}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5721,7 +5773,7 @@ GameObject:
   - component: {fileID: 1814753425}
   - component: {fileID: 1814753424}
   - component: {fileID: 1814753423}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5847,7 +5899,7 @@ GameObject:
   - component: {fileID: 1825423561}
   - component: {fileID: 1825423560}
   - component: {fileID: 1825423559}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5972,7 +6024,7 @@ GameObject:
   - component: {fileID: 1905160205}
   - component: {fileID: 1905160204}
   - component: {fileID: 1905160203}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6079,7 +6131,7 @@ GameObject:
   - component: {fileID: 1930085144}
   - component: {fileID: 1930085143}
   - component: {fileID: 1930085142}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6205,7 +6257,7 @@ GameObject:
   - component: {fileID: 1943493136}
   - component: {fileID: 1943493135}
   - component: {fileID: 1943493134}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6330,7 +6382,7 @@ GameObject:
   - component: {fileID: 1961836256}
   - component: {fileID: 1961836255}
   - component: {fileID: 1961836254}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6437,7 +6489,7 @@ GameObject:
   - component: {fileID: 1993601493}
   - component: {fileID: 1993601492}
   - component: {fileID: 1993601491}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6563,7 +6615,7 @@ GameObject:
   - component: {fileID: 2029006869}
   - component: {fileID: 2029006868}
   - component: {fileID: 2029006867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6689,7 +6741,7 @@ GameObject:
   - component: {fileID: 2107973645}
   - component: {fileID: 2107973644}
   - component: {fileID: 2107973643}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6815,7 +6867,7 @@ GameObject:
   - component: {fileID: 2110463989}
   - component: {fileID: 2110463988}
   - component: {fileID: 2110463987}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Standard-Platform (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
