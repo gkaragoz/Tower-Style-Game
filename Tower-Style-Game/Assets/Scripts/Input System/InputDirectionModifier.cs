@@ -10,7 +10,7 @@ namespace GK {
         private static float _tanValue = .2f;
 
         private static bool IsInFirstArea(Vector2 direction) {
-            return direction.x > 0 && direction.y > 0;
+            return direction.x >= 0 && direction.y > 0;
         }
 
         private static bool IsInSecondArea(Vector2 direction) {
@@ -18,7 +18,7 @@ namespace GK {
         }
 
         private static bool IsInThirdArea(Vector2 direction) {
-            return direction.x < 0 && direction.y < 0;
+            return direction.x <= 0 && direction.y < 0;
         }
 
         private static bool IsInFourthArea(Vector2 direction) {
@@ -39,7 +39,7 @@ namespace GK {
 
             ///if the touch is dragging to positive side
             if (IsInFourthArea(direction) || IsInFirstArea(direction)) {
-                if (dividedValue > _tanValue) {
+                if (dividedValue >= _tanValue) {
                     modifiedVector = direction;
                 } else {
                     modifiedVector = new Vector2(direction.x, direction.y / dividedValue * _tanValue);
@@ -50,7 +50,7 @@ namespace GK {
             
             ///if the touch is dragging to negative side
             if (IsInThirdArea(direction) || IsInSecondArea(direction)) {
-                if (dividedValue < -_tanValue) {
+                if (dividedValue <= -_tanValue) {
                     modifiedVector = direction;
                 } else {
                     modifiedVector = new Vector2(direction.x, direction.y / dividedValue * -_tanValue);
