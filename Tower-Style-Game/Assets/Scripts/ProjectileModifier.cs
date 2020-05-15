@@ -8,6 +8,8 @@ namespace GK {
     public class ProjectileModifier : MonoBehaviour {
 
         [SerializeField]
+        private bool _clampInputActive = false;
+        [SerializeField]
         private Transform _playerPos = null;
         [SerializeField]
         private GameObject _singleBall = null;
@@ -52,10 +54,13 @@ namespace GK {
         }
 
         private void SetPositionProjectiles(Vector3 currentPos, Vector3 dragPos) {
-            /* Vector3 direction = currentPos - _startPos;
-             Vector3 distanceProjectile = direction / _balls.Length;*/ // for Infinity Projectiles
-
             Vector3 distanceProjectile = dragPos / _balls.Length;
+            if (_clampInputActive) {
+                distanceProjectile = dragPos / _balls.Length;
+            } else {
+                Vector3 direction = _startPos - currentPos;
+                distanceProjectile = direction / _balls.Length; // for Infinity Projectiles
+            }
 
             for (int i = 0; i < _balls.Length; i++) {
                 _balls[i].SetActive(true);

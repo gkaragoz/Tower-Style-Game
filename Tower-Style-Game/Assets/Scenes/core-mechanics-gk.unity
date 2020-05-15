@@ -3012,6 +3012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3777e24e88baeb542a2b4e1fd1c0e0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clampInputActive: 1
   _playerPos: {fileID: 612628711}
   _singleBall: {fileID: 2184109524176993408, guid: b1ec15c6cb21ffb4d9bd9bf97c0b1094,
     type: 3}
