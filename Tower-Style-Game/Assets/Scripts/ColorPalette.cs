@@ -17,7 +17,7 @@ namespace GK {
 		#endregion
 
 		[SerializeField]
-		private Color[] _colors;
+		private Color[] _colors = new Color[0];
 
 		public Color GetRandomColor() {
 			return _colors[Random.Range(0, _colors.Length)];
