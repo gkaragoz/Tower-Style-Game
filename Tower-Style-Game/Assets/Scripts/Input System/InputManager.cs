@@ -57,7 +57,7 @@ namespace GK {
 
 				Vector2 clampedVector = _direction.normalized * Mathf.Clamp(_direction.magnitude, 0f, 2.5f);
 
-				OnInputDragging?.Invoke(_currentPosition,_direction.normalized);
+				OnInputDragging?.Invoke(_currentPosition, InputDirectionModifier.UserDirectionVector(_direction).normalized);
 			}
 
 			if (Input.GetMouseButtonUp(0)) {
