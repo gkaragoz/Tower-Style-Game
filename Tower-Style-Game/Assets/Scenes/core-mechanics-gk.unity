@@ -3026,8 +3026,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clampInputActive: 1
-  _playerPos: {fileID: 612628711}
-  _singleBall: {fileID: 2184109524176993408, guid: b1ec15c6cb21ffb4d9bd9bf97c0b1094,
+  _targetTransform: {fileID: 612628711}
+  _drawPrefab: {fileID: 2184109524176993408, guid: b1ec15c6cb21ffb4d9bd9bf97c0b1094,
     type: 3}
   _projectileCount: 10
   _localScaleDivider: 1

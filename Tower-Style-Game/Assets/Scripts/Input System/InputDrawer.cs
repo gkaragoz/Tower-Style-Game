@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace GK {
 
-    public class ProjectileModifier : MonoBehaviour {
+    public class InputDrawer : MonoBehaviour {
 
         [SerializeField]
         private bool _clampInputActive = false;
         [SerializeField]
-        private Transform _playerPos = null;
+        private Transform _targetTransform = null;
         [SerializeField]
-        private GameObject _singleBall = null;
+        private GameObject _drawPrefab = null;
         [SerializeField]
         private int _projectileCount = 10;
         [SerializeField]
@@ -29,12 +26,12 @@ namespace GK {
             InputManager.instance.OnInputDragging += OnInputDragging;
             InputManager.instance.OnInputEnd += OnInputEnd;
 
-            _baseLocalScale = _singleBall.transform.localScale;
+            _baseLocalScale = _drawPrefab.transform.localScale;
             _balls = new GameObject[_projectileCount];
 
-            for (int i = 0; i < _projectileCount; i++) {
-                _balls[i] = Instantiate(_singleBall);
-                _balls[i].SetActive(false);
+            for (int ii = 0; ii < _projectileCount; ii++) {
+                _balls[ii] = Instantiate(_drawPrefab);
+                _balls[ii].SetActive(false);
             }
         }
 
@@ -47,9 +44,9 @@ namespace GK {
         }
 
         private void OnInputEnd(Vector2 startPos, Vector2 endPos, float arg3) {
-            for (int i = 0; i < _balls.Length; i++) {
-                _balls[i].SetActive(false);
-                _balls[i].transform.localScale = _baseLocalScale;
+            for (int ii = 0; ii < _balls.Length; ii++) {
+                _balls[ii].SetActive(false);
+                _balls[ii].transform.localScale = _baseLocalScale;
             }
         }
 
@@ -62,10 +59,10 @@ namespace GK {
                 distanceProjectile = direction / _balls.Length; // for Infinity Projectiles
             }
 
-            for (int i = 0; i < _balls.Length; i++) {
-                _balls[i].SetActive(true);
-                _balls[i].transform.position = _playerPos.position + distanceProjectile * i * _projectileLengthMultiplier;
-                _balls[i].transform.localScale = _baseLocalScale / (_localScaleDivider * i + 1);
+            for (int ii = 0; ii < _balls.Length; ii++) {
+                _balls[ii].SetActive(true);
+                _balls[ii].transform.position = _targetTransform.position + distanceProjectile * ii * _projectileLengthMultiplier;
+                _balls[ii].transform.localScale = _baseLocalScale / (_localScaleDivider * ii + 1);
             }
         }
     }
