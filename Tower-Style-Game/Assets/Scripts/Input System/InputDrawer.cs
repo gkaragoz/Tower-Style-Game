@@ -5,8 +5,6 @@ namespace GK {
     public class InputDrawer : MonoBehaviour {
 
         [SerializeField]
-        private bool _clampInputActive = false;
-        [SerializeField]
         private Transform _targetTransform = null;
         [SerializeField]
         private GameObject _drawPrefab = null;
@@ -52,12 +50,6 @@ namespace GK {
 
         private void SetPositionProjectiles(Vector3 currentPos, Vector3 dragPos) {
             Vector3 distanceProjectile = dragPos / _balls.Length;
-            if (_clampInputActive) {
-                distanceProjectile = dragPos / _balls.Length;
-            } else {
-                Vector3 direction = _startPos - currentPos;
-                distanceProjectile = direction / _balls.Length; // for Infinity Projectiles
-            }
 
             for (int ii = 0; ii < _balls.Length; ii++) {
                 _balls[ii].SetActive(true);

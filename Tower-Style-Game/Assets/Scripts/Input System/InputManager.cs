@@ -19,6 +19,8 @@ namespace GK {
 
 		[SerializeField]
 		private Camera _camera = null;
+		[SerializeField]
+		private bool _clampInputActive = false;
 
 		public Action<Vector2> OnInputBegin;
 		public Action<Vector2, Vector2> OnInputDragging;
@@ -39,6 +41,12 @@ namespace GK {
 			}
 		}
 
+		public float MappedInputMagnitede { 
+			get {
+				return 0;
+			}
+		}
+
 		private void Update() {
 			if (Input.GetMouseButtonDown(0)) {
 				Vector2 mousePos = Input.mousePosition;
@@ -55,9 +63,11 @@ namespace GK {
 
 				_direction = _startPosition - _currentPosition;
 
-				Vector2 clampedVector = _direction.normalized * Mathf.Clamp(_direction.magnitude, 0f, 2.5f);
+				if (_clampInputActive) {
+					_direction = _direction.normalized * Mathf.Clamp(_direction.magnitude, 0f, _clampedInputMagnitude);
+				}
 
-				OnInputDragging?.Invoke(_currentPosition, InputDirectionModifier.UserDirectionVector(_direction).normalized);
+				OnInputDragging?.Invoke(_currentPosition, InputDirectionModifier.UserDirectionVector(_direction));
 			}
 
 			if (Input.GetMouseButtonUp(0)) {
@@ -65,11 +75,16 @@ namespace GK {
 				_endPosition = _camera.ScreenToWorldPoint(mousePos);
 
 				_direction = _startPosition -_currentPosition;
+				float magnitude = _direction.magnitude;
+
+				if (_clampInputActive) {
+					magnitude = Mathf.Clamp(_direction.magnitude, 0f, _clampedInputMagnitude);
+				}
 
 				OnInputEnd?.Invoke(
 					_endPosition, 
 					InputDirectionModifier.UserDirectionVector(_direction).normalized,
-					Mathf.Clamp(_direction.magnitude, 0f, _clampedInputMagnitude));
+					magnitude);
 
 				ResetInputs();
 			}
