@@ -54,11 +54,6 @@ namespace GK {
                 }
             }
 
-            //hack the value of x because we don't want to make our magnitude 0 on peek y position.
-            //otherwise its bugging our isGrounded algorithm.
-            if (modifiedVector.x == 0) {
-                modifiedVector.x = 0.01f;
-            }
             return modifiedVector;
         }
     }

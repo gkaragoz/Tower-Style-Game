@@ -6,7 +6,6 @@ namespace GK {
 	public class PlayerMotor : MonoBehaviour {
 
 		public Action OnJumped;
-		public Action OnPeek;
 
 		[SerializeField]
 		private float _baseJumpForce = 1f;
@@ -14,25 +13,9 @@ namespace GK {
 		private ForceMode2D _forceMode2D = ForceMode2D.Impulse;
 
 		private Rigidbody2D _rb2D = null;
-		private PlayerGroundChecker _playerGroundChecker;
 
 		private void Start() {
 			_rb2D = GetComponent<Rigidbody2D>();
-			_playerGroundChecker = GetComponent<PlayerGroundChecker>();
-		}
-
-		private void FixedUpdate() {
-			if (IsPeeked()) {
-				OnPeek?.Invoke();
-			}
-		}
-
-		private bool IsPeeked() {
-			if (_rb2D.velocity.y == 0 && _playerGroundChecker.IsGrounded == false) {
-				return true;
-			} else {
-				return false;
-			}
 		}
 
 		public void Jump(Vector2 direction, float selectedInputPower) {

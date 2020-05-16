@@ -5,16 +5,11 @@ namespace GK {
 
 	public class PlayerGroundChecker : MonoBehaviour {
 
-		public enum Direction {
-			Right,
-			Left
-		}
-
 		public Action OnGrounded;
-		public Action<Direction> OnSliding;
+		public Action OnPeeked;
 
 		[SerializeField]
-		private float _groundCheckThreshold = 0.1f;
+		private float _groundCheckThreshold;
 		[SerializeField]
 		private Transform _groundCheckPivotTransform = null;
 		[SerializeField]
@@ -22,18 +17,16 @@ namespace GK {
 		[SerializeField]
 		private LayerMask _groundCheckLayerMask = 0;
 
-		[SerializeField]
-		private float _slideCheckThreshold = 0.1f;
-
 		[Header("Debug")]
 		[SerializeField]
 		[Utils.ReadOnly]
 		private bool _isGrounded;
 		[SerializeField]
 		[Utils.ReadOnly]
-		private bool _isSliding;
+		private bool _isPeeked = false;
 
 		private Rigidbody2D _rb2D;
+		private PlayerMotor _playerMotor;
 
 		public bool IsGrounded {
 			get {
@@ -43,48 +36,46 @@ namespace GK {
 			}
 		}
 
-		public bool IsSliding {
-			get {
-				return _isSliding;
-			} set {
-				_isSliding = value;
-			}
-		}
 
 		private void Awake() {
 			_rb2D = GetComponent<Rigidbody2D>();
+			_playerMotor = GetComponent<PlayerMotor>();
+
+			_playerMotor.OnJumped += OnJumped;
+		}
+
+		private void OnJumped() {
+			_isPeeked = false;
+			_isGrounded = false;
 		}
 
 		private void FixedUpdate() {
-			CheckIsSliding();
-
 			CheckIsGrounded();
 		}
 
-		private void CheckIsSliding() {
-			if (Mathf.Abs(_rb2D.velocity.x) >= _slideCheckThreshold) {
-				IsSliding = true;
-
-				if (_rb2D.velocity.x > 0) {
-					OnSliding?.Invoke(Direction.Right);
-				} else if(_rb2D.velocity.x < 0) {
-					OnSliding?.Invoke(Direction.Left);
-				}
-			} else {
-				IsSliding = false;
-			}
-		}
-
 		private void CheckIsGrounded() {
-			if (Mathf.Abs(_rb2D.velocity.y) <= _groundCheckThreshold && IsSliding == false) {
-				IsGrounded = true;
+			if (_rb2D.velocity.y < 0 && _isPeeked == false) {
+				_isPeeked = true;
 
-				OnGrounded?.Invoke();
-			} else {
-				IsGrounded = false;
+				OnPeeked?.Invoke();
+			}
+
+			if (_rb2D.velocity.y <= 0 && _isGrounded == false) {
+				if (DoubleCheckIsGroundedViaRaycast()) {
+					IsGrounded = true;
+					OnGrounded?.Invoke();
+				}
 			}
 		}
-		
+
+		private bool DoubleCheckIsGroundedViaRaycast() {
+			if (Physics2D.Raycast(_groundCheckPivotTransform.position, Vector2.down, _groundCheckRayDistance, _groundCheckLayerMask)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
 		private void OnDrawGizmos() {
 			if (_groundCheckPivotTransform == null) {
 				return;

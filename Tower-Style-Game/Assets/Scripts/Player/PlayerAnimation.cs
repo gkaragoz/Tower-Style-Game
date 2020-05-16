@@ -9,12 +9,12 @@ namespace GK {
 		private PlayerGroundChecker _playerGroundChecker;
 		private PlayerMotor _playerMotor;
 
-		private const string JUMP_BEGIN = "JumpBegin";
-		private const string JUMP_START = "JumpStart";
-		private const string JUMP_PEEK = "JumpPeek";
-		private const string JUMP_END = "JumpEnd";
-		private const string JUMP_WALL = "JumpWall";
-		private const string INPUT = "Input";
+		public const string JUMP_BEGIN = "JumpBegin";
+		public const string JUMP_START = "JumpStart";
+		public const string JUMP_PEEK = "JumpPeek";
+		public const string JUMP_END = "JumpEnd";
+		public const string JUMP_WALL = "JumpWall";
+		public const string INPUT = "Input";
 
 		private void Awake() {
 			_animator = GetComponentInChildren<Animator>();
@@ -24,15 +24,15 @@ namespace GK {
 
 		private void Start() {
 			_playerGroundChecker.OnGrounded += OnGrounded;
-			_playerGroundChecker.OnSliding += OnSliding;
+			_playerGroundChecker.OnPeeked += OnPeek;
 			_playerMotor.OnJumped += OnJumped;
-			_playerMotor.OnPeek += OnPeek;
 
 			InputManager.instance.OnInputBegin += OnInputBegin;
 			InputManager.instance.OnInputDragging += OnInputDragging;
 		}
 
 		private void OnInputBegin(Vector2 startPosition) {
+			Debug.Log("JUMP_BEGIN");
 			_animator.SetTrigger(JUMP_BEGIN);
 		}
 
@@ -41,21 +41,24 @@ namespace GK {
 		}
 
 		private void OnJumped() {
-			_animator.SetBool(JUMP_END, false);
+			Debug.Log("JUMP_START");
+			_animator.ResetTrigger(JUMP_BEGIN);
+			_animator.ResetTrigger(JUMP_END);
+			_animator.ResetTrigger(JUMP_PEEK);
+
 			_animator.SetTrigger(JUMP_START);
 		}
 
 		private void OnPeek() {
+			Debug.Log("JUMP_PEEK");
 			_animator.SetTrigger(JUMP_PEEK);
 		}
 
 		private void OnGrounded() {
-			_animator.SetBool(JUMP_END, true);
+			Debug.Log("JUMP_END");
+			_animator.SetTrigger(JUMP_END);
 		}
 
-		private void OnSliding(PlayerGroundChecker.Direction direction) {
-			
-		}
 	}
 
 }
