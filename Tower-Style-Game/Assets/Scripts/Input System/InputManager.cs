@@ -35,15 +35,17 @@ namespace GK {
 
 		private Vector2 _direction = Vector2.zero;
 
-		public Vector2 Direction {
+		private float _endMagnitude;
+
+		public float ClampedInputMagnitude {
 			get {
-				return _direction;
+				return _clampedInputMagnitude;
 			}
 		}
 
-		public float MappedInputMagnitede { 
+		public Vector2 Direction {
 			get {
-				return 0;
+				return _direction;
 			}
 		}
 
@@ -75,16 +77,16 @@ namespace GK {
 				_endPosition = _camera.ScreenToWorldPoint(mousePos);
 
 				_direction = _startPosition -_currentPosition;
-				float magnitude = _direction.magnitude;
+				_endMagnitude = _direction.magnitude;
 
 				if (_clampInputActive) {
-					magnitude = Mathf.Clamp(_direction.magnitude, 0f, _clampedInputMagnitude);
+					_endMagnitude = Mathf.Clamp(_direction.magnitude, 0f, _clampedInputMagnitude);
 				}
 
 				OnInputEnd?.Invoke(
 					_endPosition, 
 					InputDirectionModifier.UserDirectionVector(_direction).normalized,
-					magnitude);
+					_endMagnitude);
 
 				ResetInputs();
 			}

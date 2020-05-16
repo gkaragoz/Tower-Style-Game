@@ -37,18 +37,20 @@ namespace GK {
 		}
 
 		private void OnInputDragging(Vector2 draggingPosition, Vector2 direction) {
-			
+			_animator.SetFloat(INPUT, ExtensionMethods.Map(direction.magnitude, 0, InputManager.instance.ClampedInputMagnitude, 0, 1));
 		}
 
 		private void OnJumped() {
-
+			_animator.SetBool(JUMP_END, false);
+			_animator.SetTrigger(JUMP_START);
 		}
-		private void OnPeek() {
 
+		private void OnPeek() {
+			_animator.SetTrigger(JUMP_PEEK);
 		}
 
 		private void OnGrounded() {
-
+			_animator.SetBool(JUMP_END, true);
 		}
 
 		private void OnSliding(PlayerGroundChecker.Direction direction) {
