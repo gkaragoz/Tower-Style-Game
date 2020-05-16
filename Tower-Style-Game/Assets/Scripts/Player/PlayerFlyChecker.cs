@@ -29,7 +29,6 @@ namespace GK {
 			}
 			set {
 				_isFalling = value;
-				//Debug.Log("_isFalling Set as: " + _isFalling);
 			}
 		}
 
@@ -38,7 +37,7 @@ namespace GK {
 				return _isGrounded;
 			} set {
 				_isGrounded = value;
-				Debug.Log("_isGrounded Set as: " + _isGrounded);
+
 			}
 		}
 
