@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GK {
 
-	public class PlayerFlyChecker : MonoBehaviour {
+	public class PlayerGroundChecker : MonoBehaviour {
+
+		public Action OnGrounded;
 
 		[SerializeField]
 		private float _groundCheckThreshold = 0.1f;
@@ -13,31 +16,32 @@ namespace GK {
 		[SerializeField]
 		private LayerMask _groundCheckLayerMask = 0;
 
+		[SerializeField]
+		private float _slideCheckThreshold = 0.1f;
+
 		[Header("Debug")]
 		[SerializeField]
 		[Utils.ReadOnly]
-		private bool _isFalling;
+		private bool _isGrounded;
 		[SerializeField]
 		[Utils.ReadOnly]
-		private bool _isGrounded;
+		private bool _isSliding;
 
 		private Rigidbody2D _rb2D;
-
-		public bool IsFalling {
-			get {
-				return _isFalling;
-			}
-			set {
-				_isFalling = value;
-			}
-		}
 
 		public bool IsGrounded {
 			get {
 				return _isGrounded;
 			} set {
 				_isGrounded = value;
+			}
+		}
 
+		public bool IsSliding {
+			get {
+				return _isSliding;
+			} set {
+				_isSliding = value;
 			}
 		}
 
@@ -46,40 +50,29 @@ namespace GK {
 		}
 
 		private void FixedUpdate() {
-			CheckIsFalling();
+			CheckIsSliding();
+
 			CheckIsGrounded();
 		}
 
-		private void CheckIsFalling() {
-			if (_rb2D.velocity.y < 0) {
-				IsFalling = true;
+		private void CheckIsSliding() {
+			if (Mathf.Abs(_rb2D.velocity.x) >= _slideCheckThreshold) {
+				IsSliding = true;
 			} else {
-				IsFalling = false;
+				IsSliding = false;
 			}
 		}
 
 		private void CheckIsGrounded() {
-			// Threshold value because of latency of sit on ground changing.
-			if (_rb2D.velocity.magnitude <= _groundCheckThreshold) {
-				// Checking via raycast because on peek position of my velocity is 0 at single frame.
-				if (DoubleCheckIsGroundedViaRaycast()) {
-					IsGrounded = true;
-				} else {
-					IsGrounded = false;
-				}
+			if (Mathf.Abs(_rb2D.velocity.y) <= _groundCheckThreshold && IsSliding == false) {
+				IsGrounded = true;
+
+				OnGrounded?.Invoke();
 			} else {
 				IsGrounded = false;
 			}
 		}
 		
-		private bool DoubleCheckIsGroundedViaRaycast() {
-			if (Physics2D.Raycast(_groundCheckPivotTransform.position, Vector2.down, _groundCheckRayDistance, _groundCheckLayerMask)) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-
 		private void OnDrawGizmos() {
 			if (_groundCheckPivotTransform == null) {
 				return;

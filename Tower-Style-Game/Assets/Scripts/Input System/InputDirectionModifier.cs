@@ -44,21 +44,21 @@ namespace GK {
                 } else {
                     modifiedVector = new Vector2(direction.x, direction.y / dividedValue * _tanValue);
                 }
-
-                return modifiedVector;
             }
-            
             ///if the touch is dragging to negative side
-            if (IsInThirdArea(direction) || IsInSecondArea(direction)) {
+            else if (IsInThirdArea(direction) || IsInSecondArea(direction)) {
                 if (dividedValue <= -_tanValue) {
                     modifiedVector = direction;
                 } else {
                     modifiedVector = new Vector2(direction.x, direction.y / dividedValue * -_tanValue);
                 }
-
-                return modifiedVector;
             }
 
+            //hack the value of x because we don't want to make our magnitude 0 on peek y position.
+            //otherwise its bugging our isGrounded algorithm.
+            if (modifiedVector.x == 0) {
+                modifiedVector.x = 0.01f;
+            }
             return modifiedVector;
         }
     }
