@@ -7,6 +7,7 @@ namespace GK {
 
 		public Action OnGrounded;
 		public Action OnPeeked;
+		public Action OnIsFalling;
 
 		[SerializeField]
 		private float _groundCheckThreshold;
@@ -16,11 +17,16 @@ namespace GK {
 		private float _groundCheckRayDistance = 0.1f;
 		[SerializeField]
 		private LayerMask _groundCheckLayerMask = 0;
+		[SerializeField]
+		private LayerMask _platformCheckLayerMask = 0;
 
 		[Header("Debug")]
 		[SerializeField]
 		[Utils.ReadOnly]
 		private bool _isGrounded;
+		[SerializeField]
+		[Utils.ReadOnly]
+		private bool _isFalling;
 		[SerializeField]
 		[Utils.ReadOnly]
 		private bool _isPeeked = false;
@@ -36,6 +42,13 @@ namespace GK {
 			}
 		}
 
+		public bool IsFalling {
+			get {
+				return _isFalling;
+			} set {
+				_isFalling = value;
+			}
+		}
 
 		private void Awake() {
 			_rb2D = GetComponent<Rigidbody2D>();
@@ -45,12 +58,22 @@ namespace GK {
 		}
 
 		private void OnJumped() {
-			_isPeeked = false;
-			_isGrounded = false;
+			ResetValues();
 		}
 
 		private void FixedUpdate() {
+			CheckIsFalling();
 			CheckIsGrounded();
+		}
+
+		private void CheckIsFalling() {
+			if (_rb2D.velocity.y < 0 && _isFalling == false) {
+				IsFalling = true;
+
+				ResetValues();
+
+				OnIsFalling?.Invoke();
+			}
 		}
 
 		private void CheckIsGrounded() {
@@ -63,9 +86,21 @@ namespace GK {
 			if (_rb2D.velocity.y <= 0 && _isGrounded == false) {
 				if (DoubleCheckIsGroundedViaRaycast()) {
 					IsGrounded = true;
+
+					// TODO
+					// REFACTOR
+					RaycastHit2D hit = Physics2D.Raycast(_groundCheckPivotTransform.position, Vector2.down, _groundCheckRayDistance, _platformCheckLayerMask);
+					if (hit) {
+						hit.transform.gameObject.GetComponent<IPlatform>().DestroyPlatform(OnPlatformDestroyed);
+					}
+
 					OnGrounded?.Invoke();
 				}
 			}
+		}
+
+		private void OnPlatformDestroyed() {
+			IsFalling = false;
 		}
 
 		private bool DoubleCheckIsGroundedViaRaycast() {
@@ -88,6 +123,11 @@ namespace GK {
 			}
 
 			Gizmos.DrawLine(_groundCheckPivotTransform.position, _groundCheckPivotTransform.position + (Vector3.down * _groundCheckRayDistance));
+		}
+
+		public void ResetValues() {
+			_isPeeked = false;
+			_isGrounded = false;
 		}
 
 	}

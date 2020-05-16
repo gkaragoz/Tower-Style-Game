@@ -1,9 +1,21 @@
 ﻿using UnityEngine;
 
 namespace GK {
-	
+
 	[RequireComponent(typeof(PlayerMotor))]
 	public class PlayerController : MonoBehaviour {
+
+		#region Singleton
+
+		public static PlayerController instance;
+		private void Awake() {
+			if (instance == null)
+				instance = this;
+			else if (instance != this)
+				Destroy(gameObject);
+		}
+
+		#endregion
 
 		private PlayerMotor _playerMotor;
 

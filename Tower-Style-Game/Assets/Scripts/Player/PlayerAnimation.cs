@@ -14,6 +14,9 @@ namespace GK {
 		public const string JUMP_PEEK = "JumpPeek";
 		public const string JUMP_END = "JumpEnd";
 		public const string JUMP_WALL = "JumpWall";
+
+		public const string PLATFORM_FAIL = "PlatformFail";
+
 		public const string INPUT = "Input";
 
 		private void Awake() {
@@ -25,6 +28,8 @@ namespace GK {
 		private void Start() {
 			_playerGroundChecker.OnGrounded += OnGrounded;
 			_playerGroundChecker.OnPeeked += OnPeek;
+			_playerGroundChecker.OnIsFalling += OnFalling;
+
 			_playerMotor.OnJumped += OnJumped;
 
 			InputManager.instance.OnInputBegin += OnInputBegin;
@@ -32,7 +37,6 @@ namespace GK {
 		}
 
 		private void OnInputBegin(Vector2 startPosition) {
-			Debug.Log("JUMP_BEGIN");
 			_animator.SetTrigger(JUMP_BEGIN);
 		}
 
@@ -41,22 +45,29 @@ namespace GK {
 		}
 
 		private void OnJumped() {
-			Debug.Log("JUMP_START");
-			_animator.ResetTrigger(JUMP_BEGIN);
-			_animator.ResetTrigger(JUMP_END);
-			_animator.ResetTrigger(JUMP_PEEK);
-
+			ResetTriggers();
 			_animator.SetTrigger(JUMP_START);
 		}
 
+		private void OnFalling() {
+			ResetTriggers();
+
+			_animator.SetTrigger(PLATFORM_FAIL);
+		}
+
 		private void OnPeek() {
-			Debug.Log("JUMP_PEEK");
 			_animator.SetTrigger(JUMP_PEEK);
 		}
 
 		private void OnGrounded() {
-			Debug.Log("JUMP_END");
 			_animator.SetTrigger(JUMP_END);
+		}
+
+		private void ResetTriggers() {
+			_animator.ResetTrigger(JUMP_BEGIN);
+			_animator.ResetTrigger(JUMP_END);
+			_animator.ResetTrigger(JUMP_PEEK);
+			_animator.ResetTrigger(PLATFORM_FAIL);
 		}
 
 	}
