@@ -2236,6 +2236,7 @@ GameObject:
   - component: {fileID: 612628714}
   - component: {fileID: 612628713}
   - component: {fileID: 612628715}
+  - component: {fileID: 612628710}
   - component: {fileID: 612628709}
   m_Layer: 0
   m_Name: Player
@@ -2281,6 +2282,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.44, y: 0.06}
   m_Direction: 1
+--- !u!114 &612628710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612628707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a29a622c2b57e947b12333233c58422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &612628711
 Transform:
   m_ObjectHideFlags: 0
@@ -2340,9 +2353,10 @@ MonoBehaviour:
   _groundCheckRayDistance: 0.28
   _groundCheckLayerMask:
     serializedVersion: 2
-    m_Bits: 256
-  _isFalling: 0
+    m_Bits: 0
+  _slideCheckThreshold: 0.1
   _isGrounded: 0
+  _isSliding: 0
 --- !u!1 &653260035
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,6 +3020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 1687258584}
+  _clampInputActive: 0
   _clampedInputMagnitude: 2.5
 --- !u!114 &856935887
 MonoBehaviour:
@@ -3019,7 +3034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3777e24e88baeb542a2b4e1fd1c0e0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clampInputActive: 1
   _targetTransform: {fileID: 612628711}
   _drawPrefab: {fileID: 2184109524176993408, guid: b1ec15c6cb21ffb4d9bd9bf97c0b1094,
     type: 3}
