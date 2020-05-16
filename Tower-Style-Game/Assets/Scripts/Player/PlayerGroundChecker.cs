@@ -5,7 +5,13 @@ namespace GK {
 
 	public class PlayerGroundChecker : MonoBehaviour {
 
+		public enum Direction {
+			Right,
+			Left
+		}
+
 		public Action OnGrounded;
+		public Action<Direction> OnSliding;
 
 		[SerializeField]
 		private float _groundCheckThreshold = 0.1f;
@@ -58,6 +64,12 @@ namespace GK {
 		private void CheckIsSliding() {
 			if (Mathf.Abs(_rb2D.velocity.x) >= _slideCheckThreshold) {
 				IsSliding = true;
+
+				if (_rb2D.velocity.x > 0) {
+					OnSliding?.Invoke(Direction.Right);
+				} else if(_rb2D.velocity.x < 0) {
+					OnSliding?.Invoke(Direction.Left);
+				}
 			} else {
 				IsSliding = false;
 			}
