@@ -12,7 +12,9 @@ namespace GK {
 		[SerializeField]
 		private float _groundCheckThreshold;
 		[SerializeField]
-		private Transform _groundCheckPivotTransform = null;
+		private Transform _groundCheckPivotRightTransform = null;
+		[SerializeField]
+		private Transform _groundCheckPivotLeftTransform = null;
 		[SerializeField]
 		private float _groundCheckRayDistance = 0.1f;
 		[SerializeField]
@@ -89,9 +91,10 @@ namespace GK {
 
 					// TODO
 					// REFACTOR
-					RaycastHit2D hit = Physics2D.Raycast(_groundCheckPivotTransform.position, Vector2.down, _groundCheckRayDistance, _platformCheckLayerMask);
-					if (hit) {
-						hit.transform.gameObject.GetComponent<IPlatform>().DestroyPlatform(OnPlatformDestroyed);
+					RaycastHit2D lefthit = Physics2D.Raycast(_groundCheckPivotLeftTransform.position, Vector2.down, _groundCheckRayDistance, _platformCheckLayerMask);
+					RaycastHit2D rightHit = Physics2D.Raycast(_groundCheckPivotRightTransform.position, Vector2.down, _groundCheckRayDistance, _platformCheckLayerMask);
+					if (rightHit) {
+						rightHit.transform.gameObject.GetComponent<IPlatform>().DestroyPlatform(OnPlatformDestroyed);
 					}
 
 					OnGrounded?.Invoke();
@@ -104,7 +107,9 @@ namespace GK {
 		}
 
 		private bool DoubleCheckIsGroundedViaRaycast() {
-			if (Physics2D.Raycast(_groundCheckPivotTransform.position, Vector2.down, _groundCheckRayDistance, _groundCheckLayerMask)) {
+			if (Physics2D.Raycast(_groundCheckPivotLeftTransform.position, Vector2.down, _groundCheckRayDistance, _groundCheckLayerMask)) {
+				return true;
+			} else if(Physics2D.Raycast(_groundCheckPivotRightTransform.position, Vector2.down, _groundCheckRayDistance, _groundCheckLayerMask)) {
 				return true;
 			} else {
 				return false;
@@ -112,9 +117,13 @@ namespace GK {
 		}
 
 		private void OnDrawGizmos() {
-			if (_groundCheckPivotTransform == null) {
+			if (_groundCheckPivotLeftTransform == null) {
 				return;
 			}
+			if (_groundCheckPivotRightTransform == null) {
+				return;
+			}
+
 
 			if (IsGrounded) {
 				Gizmos.color = Color.yellow;
@@ -122,7 +131,9 @@ namespace GK {
 				Gizmos.color = Color.red;
 			}
 
-			Gizmos.DrawLine(_groundCheckPivotTransform.position, _groundCheckPivotTransform.position + (Vector3.down * _groundCheckRayDistance));
+			Gizmos.DrawLine(_groundCheckPivotLeftTransform.position, _groundCheckPivotLeftTransform.position + (Vector3.down * _groundCheckRayDistance));
+			Gizmos.DrawLine(_groundCheckPivotRightTransform.position, _groundCheckPivotRightTransform.position + (Vector3.down * _groundCheckRayDistance));
+
 		}
 
 		public void ResetValues() {
