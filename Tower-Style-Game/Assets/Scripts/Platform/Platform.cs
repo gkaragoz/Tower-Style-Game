@@ -4,26 +4,69 @@ using UnityEngine;
 
 namespace GK {
 
-	public class Platform : MonoBehaviour, IPlatform {
+    public class Platform : MonoBehaviour, IPlatform {
+        [SerializeField]
+        private Transform lifeBar;
+        private PlayerMotor _playerMotor;
 
-		[SerializeField]
-		private float _destroyTime = 3f;
+        [SerializeField]
+        private float _destroyTime = 3f;
 
-		public IEnumerator IDestroy(Action onDestroyed) {
-			while (true) {
-				yield return new WaitForSeconds(_destroyTime);
+        private float normalizedTime = 0;
+        private Coroutine destroyCoroutine;
 
-				onDestroyed();
-				this.gameObject.SetActive(false);
 
-				break;
-			}
-		}
 
-		public void DestroyPlatform(Action onDestroyed) {
-			StartCoroutine(IDestroy(onDestroyed));
-		}
+        private void Start() {
+            _playerMotor = FindObjectOfType<PlayerMotor>();
 
-	}
+            _playerMotor.OnJumped += OnJumped;
+        }
+
+        private void OnJumped() {
+            StopTimer();
+        }
+
+        private void StopTimer() {
+            if (destroyCoroutine!=null) {
+
+            StopCoroutine(destroyCoroutine);
+            }
+
+        }
+
+        public IEnumerator IDestroy(Action onDestroyed) {
+            while (true) {
+                yield return new WaitForSeconds(_destroyTime);
+
+                onDestroyed();
+                this.gameObject.SetActive(false);
+
+                break;
+            }
+        }
+
+        public void DestroyPlatform(Action onDestroyed) {
+            StartTimer();            
+        }
+
+        private void StartTimer() {
+           destroyCoroutine= StartCoroutine(Countdown());
+        }
+
+
+
+        private IEnumerator Countdown() {
+
+            while (normalizedTime <= 1f) {
+                normalizedTime += Time.deltaTime / _destroyTime;
+                lifeBar.localScale = new Vector3(lifeBar.localScale.x,1- normalizedTime, lifeBar.localScale.z);
+                yield return null;
+            }
+            Debug.Log("Bitti");
+            StopCoroutine(destroyCoroutine);
+            this.gameObject.SetActive(false);
+        }
+    }
 
 }
