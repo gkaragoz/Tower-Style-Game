@@ -95,6 +95,8 @@ namespace GK {
 					RaycastHit2D rightHit = Physics2D.Raycast(_groundCheckPivotRightTransform.position, Vector2.down, _groundCheckRayDistance, _platformCheckLayerMask);
 					if (rightHit) {
 						rightHit.transform.gameObject.GetComponent<IPlatform>().DestroyPlatform(OnPlatformDestroyed);
+					}else if (lefthit) {
+						lefthit.transform.gameObject.GetComponent<IPlatform>().DestroyPlatform(OnPlatformDestroyed);
 					}
 
 					OnGrounded?.Invoke();

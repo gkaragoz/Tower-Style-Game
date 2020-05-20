@@ -47,16 +47,16 @@ namespace GK {
         }
 
         public void DestroyPlatform(Action onDestroyed) {
-            StartTimer();            
+            StartTimer(onDestroyed);            
         }
 
-        private void StartTimer() {
-           destroyCoroutine= StartCoroutine(Countdown());
+        private void StartTimer(Action onDestroyed) {
+           destroyCoroutine= StartCoroutine(Countdown(onDestroyed));
         }
 
 
 
-        private IEnumerator Countdown() {
+        private IEnumerator Countdown(Action onDestroyed) {
 
             while (normalizedTime <= 1f) {
                 normalizedTime += Time.deltaTime / _destroyTime;
@@ -66,6 +66,7 @@ namespace GK {
             Debug.Log("Bitti");
             StopCoroutine(destroyCoroutine);
             this.gameObject.SetActive(false);
+            onDestroyed();
         }
     }
 
