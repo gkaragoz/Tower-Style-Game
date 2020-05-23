@@ -1384,7 +1384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612628707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.77, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.03, y: 0.5, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 37541335}
@@ -1407,6 +1407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662d5bb9693bcfc46b4ee8a069b8da0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rotationSpeed: 0.2
   _baseJumpForce: 7.5
   _forceMode2D: 1
 --- !u!114 &612628714
@@ -1683,7 +1684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &799266643
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5098,7 +5099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 612628711}
-  _deathZoneDistance: 10
+  _deathZoneDistance: 10000
   _playerMaxPoint: 10
   _lavaYPosition: 0
   _cameraController: {fileID: 1687258583}

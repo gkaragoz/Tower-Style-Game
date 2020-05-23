@@ -14,6 +14,7 @@ namespace GK {
 		public const string JUMP_PEEK = "JumpPeek";
 		public const string JUMP_END = "JumpEnd";
 		public const string JUMP_WALL = "JumpWall";
+		public const string INPUT_CANCEL = "InputCancel";
 
 		public const string PLATFORM_FAIL = "PlatformFail";
 
@@ -36,8 +37,10 @@ namespace GK {
 
 			_playerMotor.OnJumped += OnJumped;
 
-			InputManager.instance.OnInputBegin += OnInputBegin;
-			InputManager.instance.OnInputDragging += OnInputDragging;
+
+
+	
+
 		}
 
 		private void OnHitWall(bool isLeft) {
@@ -48,11 +51,15 @@ namespace GK {
 			}
 		}
 
-		private void OnInputBegin(Vector2 startPosition) {
+		public void OnInputCancel() {
+			_animator.SetTrigger(INPUT_CANCEL);
+		}
+
+		public void OnInputBegin(Vector2 startPosition) {
 			_animator.SetTrigger(JUMP_BEGIN);
 		}
 
-		private void OnInputDragging(Vector2 draggingPosition, Vector2 direction) {
+		public void OnInputDragging(Vector2 draggingPosition, Vector2 direction) {
 			//_animator.SetFloat(INPUT, ExtensionMethods.Map(direction.magnitude, 0, InputManager.instance.ClampedInputMagnitude, 0, 1));
 		}
 
