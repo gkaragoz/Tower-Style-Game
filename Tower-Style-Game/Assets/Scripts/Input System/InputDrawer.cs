@@ -7,7 +7,7 @@ namespace GK {
         [SerializeField]
         private Transform _targetTransform = null;
         [SerializeField]
-        private Vector2 _drawOffset;
+        private Vector2 _drawOffset=Vector2.zero;
         [SerializeField]
         private GameObject _drawPrefab = null;
         [SerializeField]

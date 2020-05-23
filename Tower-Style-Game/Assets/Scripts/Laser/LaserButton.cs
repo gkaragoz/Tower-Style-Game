@@ -7,7 +7,7 @@ namespace GY{
 public class LaserButton : MonoBehaviour
  {
         [SerializeField]
-        private LaserHolder _laserHolder;
+        private LaserHolder _laserHolder=null;
 
         public void CloseLaser() {
             _laserHolder.CloseLaser();

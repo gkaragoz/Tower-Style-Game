@@ -6,7 +6,7 @@ namespace GK {
 
     public class Platform : MonoBehaviour, IPlatform {
         [SerializeField]
-        private Transform lifeBar;
+        private Transform lifeBar=null;
         private PlayerMotor _playerMotor;
 
         [SerializeField]
