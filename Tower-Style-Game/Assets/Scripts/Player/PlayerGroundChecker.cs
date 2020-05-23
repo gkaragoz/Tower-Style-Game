@@ -8,6 +8,7 @@ namespace GK {
 		public Action OnGrounded;
 		public Action OnPeeked;
 		public Action OnIsFalling;
+		public Action<bool> OnHitWall;
 
 		[SerializeField]
 		private float _groundCheckThreshold;
@@ -21,11 +22,16 @@ namespace GK {
 		private LayerMask _groundCheckLayerMask = 0;
 		[SerializeField]
 		private LayerMask _platformCheckLayerMask = 0;
+		[SerializeField]
+		private LayerMask _wallCheckLayerMask = 0;
 
 		[Header("Debug")]
 		[SerializeField]
 		[Utils.ReadOnly]
 		private bool _isGrounded;
+		[SerializeField]
+		[Utils.ReadOnly]
+		private bool _isHitWall;
 		[SerializeField]
 		[Utils.ReadOnly]
 		private bool _isFalling;
@@ -39,16 +45,20 @@ namespace GK {
 		public bool IsGrounded {
 			get {
 				return _isGrounded;
-			} set {
-				_isGrounded = value;
+			} 
+		}
+
+
+		public bool IsPeeked {
+			get {
+				return _isPeeked;
 			}
+			
 		}
 
 		public bool IsFalling {
 			get {
 				return _isFalling;
-			} set {
-				_isFalling = value;
 			}
 		}
 
@@ -66,14 +76,39 @@ namespace GK {
 		private void FixedUpdate() {
 			CheckIsFalling();
 			CheckIsGrounded();
+			CheckWalls();
 		}
+
+
+		private void CheckWalls() {
+			if (_rb2D.velocity.y >= 0 && _isGrounded == false&& _isHitWall==false) {
+				// TODO
+				// REFACTOR
+				bool isLeft=false;
+				RaycastHit2D wallLefthit = Physics2D.Raycast(_groundCheckPivotLeftTransform.position, Vector2.left, _groundCheckRayDistance/2, _wallCheckLayerMask);
+				RaycastHit2D wallRightHit = Physics2D.Raycast(_groundCheckPivotRightTransform.position, Vector2.right, _groundCheckRayDistance/2, _wallCheckLayerMask);
+				if (wallRightHit) {
+					
+					isLeft = false;
+					_isHitWall = true;
+					OnHitWall?.Invoke(isLeft);
+
+				} else if (wallLefthit) {
+					isLeft = true;
+					_isHitWall = true;
+					OnHitWall?.Invoke(isLeft);
+				}
+
+			
+				
+			}
+		}
+
 
 		private void CheckIsFalling() {
 			if (_rb2D.velocity.y < 0 && _isFalling == false) {
-				IsFalling = true;
-
+				_isFalling = true;
 				ResetValues();
-
 				OnIsFalling?.Invoke();
 			}
 		}
@@ -81,14 +116,14 @@ namespace GK {
 		private void CheckIsGrounded() {
 			if (_rb2D.velocity.y < 0 && _isPeeked == false) {
 				_isPeeked = true;
-
+				_isHitWall = false;
 				OnPeeked?.Invoke();
+
 			}
 
 			if (_rb2D.velocity.y <= 0 && _isGrounded == false) {
 				if (DoubleCheckIsGroundedViaRaycast()) {
-					IsGrounded = true;
-
+					_isGrounded = true;
 					// TODO
 					// REFACTOR
 					RaycastHit2D lefthit = Physics2D.Raycast(_groundCheckPivotLeftTransform.position, Vector2.down, _groundCheckRayDistance, _platformCheckLayerMask);
@@ -105,7 +140,7 @@ namespace GK {
 		}
 
 		private void OnPlatformDestroyed() {
-			IsFalling = false;
+			_isFalling = false;
 		}
 
 		private bool DoubleCheckIsGroundedViaRaycast() {

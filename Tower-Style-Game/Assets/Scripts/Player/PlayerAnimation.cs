@@ -17,7 +17,7 @@ namespace GK {
 
 		public const string PLATFORM_FAIL = "PlatformFail";
 
-		public const string INPUT = "Input";
+	//	public const string INPUT = "Input";
 
 		private void Awake() {
 			_animator = GetComponentInChildren<Animator>();
@@ -25,10 +25,14 @@ namespace GK {
 			_playerMotor = GetComponent<PlayerMotor>();
 		}
 
+
+		private void Update() {
+			_animator.SetBool("isFalling",_playerGroundChecker.IsFalling);
+		}
 		private void Start() {
 			_playerGroundChecker.OnGrounded += OnGrounded;
 			_playerGroundChecker.OnPeeked += OnPeek;
-			_playerGroundChecker.OnIsFalling += OnFalling;
+			_playerGroundChecker.OnHitWall += OnHitWall;
 
 			_playerMotor.OnJumped += OnJumped;
 
@@ -36,12 +40,20 @@ namespace GK {
 			InputManager.instance.OnInputDragging += OnInputDragging;
 		}
 
+		private void OnHitWall(bool isLeft) {
+			if (isLeft) {			
+				_animator.SetTrigger(JUMP_WALL);
+			} else {
+
+			}
+		}
+
 		private void OnInputBegin(Vector2 startPosition) {
 			_animator.SetTrigger(JUMP_BEGIN);
 		}
 
 		private void OnInputDragging(Vector2 draggingPosition, Vector2 direction) {
-			_animator.SetFloat(INPUT, ExtensionMethods.Map(direction.magnitude, 0, InputManager.instance.ClampedInputMagnitude, 0, 1));
+			//_animator.SetFloat(INPUT, ExtensionMethods.Map(direction.magnitude, 0, InputManager.instance.ClampedInputMagnitude, 0, 1));
 		}
 
 		private void OnJumped() {
@@ -49,14 +61,10 @@ namespace GK {
 			_animator.SetTrigger(JUMP_START);
 		}
 
-		private void OnFalling() {
-			ResetTriggers();
-
-			_animator.SetTrigger(PLATFORM_FAIL);
-		}
-
+	
 		private void OnPeek() {
 			_animator.SetTrigger(JUMP_PEEK);
+			Debug.Log("Peeked İn anim");
 		}
 
 		private void OnGrounded() {
