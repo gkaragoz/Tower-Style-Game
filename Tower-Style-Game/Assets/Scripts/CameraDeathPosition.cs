@@ -1,23 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using GK;
 namespace GY{
 
 public class CameraDeathPosition : MonoBehaviour
  {
         [SerializeField]
-        private Transform _player;
+        private Transform _player=null;
         [SerializeField]
-        private float _deathZoneDistance;
-        [SerializeField]
-        [Utils.ReadOnly]
-        private float _playerMaxPoint; 
+        private float _deathZoneDistance=0;
         [SerializeField]
         [Utils.ReadOnly]
-        private float _lavaYPosition;
+        private float _playerMaxPoint=0; 
         [SerializeField]
-        private CameraController _cameraController;
+        [Utils.ReadOnly]
+        private float _lavaYPosition=0;
+        [SerializeField]
+        private CameraController _cameraController=null;
 
         private void Start() {
             _lavaYPosition = -10f;

@@ -33,18 +33,15 @@ namespace GK {
 
 		private void OnInputDragging(Vector2 draggingPosition, Vector2 direction) {
 			_playerAnimation.OnInputDragging(draggingPosition, direction);
-
 		}
 
 		private void OnInputEnd(Vector2 endPosition, Vector2 direction, float selectedInputPower) {
-			Debug.Log("End Position : "+ endPosition + " Direction : "+direction+" selectedInputPower : "+ selectedInputPower);
 			if (selectedInputPower<=0.1f) {
 				_playerAnimation.OnInputCancel();
 				return;
 			}
 			_playerMotor.Jump(direction, selectedInputPower);
 		}
-
 	}
 
 }

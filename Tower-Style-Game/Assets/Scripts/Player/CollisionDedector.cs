@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace GY{
 
@@ -9,7 +7,7 @@ public class CollisionDedector : MonoBehaviour
         //Just for today
         int _goldCount=0;
         [SerializeField]
-        private SceneBasicUIManager sceneUIManager;
+        private SceneBasicUIManager sceneUIManager=null;
 
         private void OnTriggerEnter2D(Collider2D collision) {
             if (collision.gameObject.tag == "Gold") {
