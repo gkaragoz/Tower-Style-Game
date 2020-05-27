@@ -13,6 +13,10 @@ public class CollisionDedector : MonoBehaviour
             if (collision.gameObject.tag == "Gold") {
                 CollectGold(collision.gameObject);
             }
+
+            if (collision.gameObject.tag == "LaserButton") {
+                collision.gameObject.GetComponent<LaserButton>().CloseLaser();
+            }
         }
 
         public void CollectGold(GameObject gold) {
