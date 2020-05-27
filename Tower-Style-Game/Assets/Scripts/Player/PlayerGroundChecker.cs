@@ -50,7 +50,7 @@ namespace GK {
         }
         public bool IsFalling {
             get {
-                return _isFalling;
+                return !_isPeeked;
             }
         }
         private void Awake() {

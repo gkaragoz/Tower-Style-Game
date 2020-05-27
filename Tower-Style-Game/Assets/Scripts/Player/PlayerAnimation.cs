@@ -34,7 +34,7 @@ namespace GK {
             if (isLeft) {
                 _animator.SetTrigger(JUMP_WALL);
             } else {
-
+                _animator.SetTrigger(JUMP_WALL);
             }
         }
         public void OnInputCancel() {
