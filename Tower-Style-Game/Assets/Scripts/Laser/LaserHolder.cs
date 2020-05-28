@@ -12,8 +12,10 @@ public class LaserHolder : MonoBehaviour
         private Coroutine _closeLaser;
 
         public void CloseLaser() {
+            if (transform.gameObject.activeSelf) {
+             _closeLaser = StartCoroutine(CloseLaserStart());
 
-            _closeLaser = StartCoroutine(CloseLaserStart());
+            }
         }
 
 

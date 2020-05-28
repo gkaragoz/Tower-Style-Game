@@ -115,6 +115,7 @@ namespace GK {
                         lefthit.transform.gameObject.GetComponent<IPlatform>().DestroyPlatform(OnPlatformDestroyed);
                     }
                     OnGrounded?.Invoke();
+                    InputManager.instance.JumpTimes++;
                 }
             }
         }
