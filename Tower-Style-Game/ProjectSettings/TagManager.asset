@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Gold
   - LaserButton
+  - Armor
+  - DoubleJump
+  - Platform
+  - Obstacle
   layers:
   - Default
   - TransparentFX

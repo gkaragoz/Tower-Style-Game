@@ -5,6 +5,11 @@ namespace GY{
 public class CameraDeathPosition : MonoBehaviour
  {
         [SerializeField]
+        [Utils.ReadOnly]
+        private bool _isGameOver;
+        [SerializeField]
+        private GameObject _collector = null;
+        [SerializeField]
         private Transform _player=null;
         [SerializeField]
         private float _deathZoneDistance=0;
@@ -29,10 +34,17 @@ public class CameraDeathPosition : MonoBehaviour
             if(_player.position.y>_playerMaxPoint) {
                 _playerMaxPoint = _player.position.y;
                _lavaYPosition= _playerMaxPoint - _deathZoneDistance;
-            } else if(_player.position.y< _lavaYPosition) {
-                _cameraController.target = null;
+                _collector.transform.position = Vector3.up * _lavaYPosition;
+            } else if(_player.position.y< _lavaYPosition&&!_isGameOver) {
+             
+            GameOver();
             }
-            
+        }
+
+        public void GameOver() {
+            _cameraController.target = null;
+            Debug.Log("Oyun Bitti");
+            _isGameOver = true;
         }
     }
 }

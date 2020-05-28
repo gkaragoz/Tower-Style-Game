@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using GK;
+using System;
 
-namespace GK {
+namespace GY {
 
 	[RequireComponent(typeof(PlayerMotor))]
 	public class PlayerController : MonoBehaviour {
@@ -19,12 +21,21 @@ namespace GK {
 
 		private PlayerMotor _playerMotor;
 		private PlayerAnimation _playerAnimation;
+		private CollisionDedector _colDedector;
+
+
 		private void Start() {
 			_playerMotor = GetComponent<PlayerMotor>();
 			_playerAnimation = GetComponent<PlayerAnimation>();
+			_colDedector = GetComponentInChildren<CollisionDedector>();
 			InputManager.instance.OnInputBegin += OnInputBegin;
 			InputManager.instance.OnInputDragging += OnInputDragging;
 			InputManager.instance.OnInputEnd += OnInputEnd;
+			_colDedector.OnGameOver += OnGameOver;
+		}
+
+		private void OnGameOver() {
+			_playerAnimation.OnGameOver();
 		}
 
 		private void OnInputBegin(Vector2 startPosition) {

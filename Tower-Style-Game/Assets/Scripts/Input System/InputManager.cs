@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-
+using GY;
 namespace GK {
 
 	public class InputManager : MonoBehaviour {
@@ -17,12 +17,21 @@ namespace GK {
 
 		#endregion
 
+
+		///TO DO Delete UI MANAGER
+		///
+		[SerializeField]
+		private SceneBasicUIManager sceneManager;
+
 		[SerializeField]
 		[Utils.ReadOnly]
 		private int _jumpTimes;
 
 		[SerializeField]
 		private bool _doubleJump;
+		[SerializeField]
+
+		private bool _hasArmor;
 
 
 		[SerializeField]
@@ -51,6 +60,11 @@ namespace GK {
 			}
 		}
 
+
+		public bool HasArmor {
+			get { return _hasArmor; }
+			set { _hasArmor = value; }
+		}
 		public int JumpTimes {
 			get { return _jumpTimes; }
 			set { _jumpTimes = value; }
@@ -111,11 +125,15 @@ namespace GK {
 
 					ResetInputs();
 
-					if (!DoubleJump) {
-					  JumpTimes--;
+					if (JumpTimes==1) {
+						DoubleJump = false;
+						JumpTimes--;
+						sceneManager.UpdateJump(DoubleJump);
+
 
 					} else {
-						DoubleJump = false;
+						DoubleJump = true;
+						JumpTimes--;
 					}
 				}
 			}

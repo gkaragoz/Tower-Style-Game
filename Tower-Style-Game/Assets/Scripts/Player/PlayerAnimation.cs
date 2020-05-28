@@ -57,6 +57,10 @@ namespace GK {
             _animator.SetTrigger(JUMP_END);
         }
 
+        public void OnGameOver() {
+            _animator.SetTrigger("GameOver");
+        }
+
         private void ResetTriggers() {
             _animator.ResetTrigger(JUMP_BEGIN);
             _animator.ResetTrigger(JUMP_END);

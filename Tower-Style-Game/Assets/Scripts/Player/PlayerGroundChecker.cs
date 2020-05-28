@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-
+using GY;
 namespace GK {
     public class PlayerGroundChecker : MonoBehaviour {
         public Action OnGrounded;
@@ -8,6 +8,8 @@ namespace GK {
         public Action OnIsFalling;
         public Action<bool> OnHitWall;
 
+        [SerializeField]
+        private CollisionDedector _colDedector;
         [SerializeField]
         private float _groundCheckThreshold;
         [SerializeField]
@@ -56,8 +58,19 @@ namespace GK {
         private void Awake() {
             _rb2D = GetComponent<Rigidbody2D>();
             _playerMotor = GetComponent<PlayerMotor>();
+            _colDedector = GetComponentInChildren<CollisionDedector>();
             _playerMotor.OnJumped += OnJumped;
+            _colDedector.OnGameOver += OnGameOver;
         }
+
+        private void OnGameOver() {
+            transform.GetComponent<CapsuleCollider2D>().enabled = false;
+            transform.GetComponentInChildren<BoxCollider2D>().enabled = false;
+            _rb2D.velocity = Vector2.zero;
+            _rb2D.AddForce(Vector3.up*10,ForceMode2D.Impulse);
+            this.enabled = false;
+        }
+
         private void OnJumped() {
             ResetValues();
         }
@@ -150,5 +163,7 @@ namespace GK {
             _isPeeked = false;
             _isGrounded = false;
         }
+
+       
     }
 }
