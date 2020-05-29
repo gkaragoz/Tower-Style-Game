@@ -82,14 +82,14 @@ namespace GK {
                 if (_clampInputActive) {
                     _endMagnitude = Mathf.Clamp(_direction.magnitude, 0f, _clampedInputMagnitude);
                 }
-                if (_endMagnitude > .5) {
+                
                     OnInputEnd?.Invoke(
                     _endPosition,
                     InputDirectionModifier.UserDirectionVector(_direction).normalized,
                     _endMagnitude);
 
                     ResetInputs();
-                }
+                
               _isMouseButtonDown = false;
             }
         }
