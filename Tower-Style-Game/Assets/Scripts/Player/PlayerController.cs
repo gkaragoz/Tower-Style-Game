@@ -22,16 +22,21 @@ namespace GY {
 		private PlayerMotor _playerMotor;
 		private PlayerAnimation _playerAnimation;
 		private CollisionDedector _colDedector;
-
+		private PlayerGroundChecker _playerGroundChecker;
 
 		private void Start() {
 			_playerMotor = GetComponent<PlayerMotor>();
 			_playerAnimation = GetComponent<PlayerAnimation>();
 			_colDedector = GetComponentInChildren<CollisionDedector>();
+			_playerGroundChecker = GetComponent<PlayerGroundChecker>();
 			InputManager.instance.OnInputBegin += OnInputBegin;
 			InputManager.instance.OnInputDragging += OnInputDragging;
 			InputManager.instance.OnInputEnd += OnInputEnd;
 			_colDedector.OnGameOver += OnGameOver;
+		}
+
+		private void Update() {
+			InputManager.instance.enabled=_playerGroundChecker.IsGrounded;
 		}
 
 		private void OnGameOver() {
@@ -53,6 +58,9 @@ namespace GY {
 			}
 			_playerMotor.Jump(direction, selectedInputPower);
 		}
+
+
+		
 	}
 
 }
