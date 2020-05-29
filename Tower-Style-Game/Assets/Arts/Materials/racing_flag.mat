@@ -7,23 +7,23 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LineRenderer
+  m_Name: racing_flag
   m_Shader: {fileID: 4800000, guid: 650dd9526735d5b46b79224bc6e94025, type: 3}
-  m_ShaderKeywords: _ALPHATEST_ON
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2500
+  m_CustomRenderQueue: 2050
   stringTagMap:
-    RenderType: TransparentCutout
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 093d4183a418635489a3f07dfd7f91dd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Texture: {fileID: 2800000, guid: aea0619153280414eb2840922159c0a0, type: 3}
+        m_Scale: {x: 4.9, y: 0.85}
+        m_Offset: {x: 1.03, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -33,9 +33,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Texture: {fileID: 2800000, guid: aea0619153280414eb2840922159c0a0, type: 3}
+        m_Scale: {x: 4.9, y: 0.85}
+        m_Offset: {x: 1.03, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -48,16 +48,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _nTex:
+        m_Texture: {fileID: 2800000, guid: a13cfef7749c8d749aadd296aca912bf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _posTex:
+        m_Texture: {fileID: 2800000, guid: 5f1adde09e462824aba77a067da12f8f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AlphaClip: 1
+    - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
-    - _Cutoff: 1
+    - _Cutoff: 0.5
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
-    - _Glossiness: 0
+    - _Glossiness: 0.5
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
@@ -71,12 +79,17 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _boundingMax: 1.5325944
+    - _boundingMin: -2.1191664
+    - _numOfFrames: 50
+    - _pack_normal: 0
+    - _speed: 0.34
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.9176471, b: 0.25882354, a: 1}
-    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
---- !u!114 &9185148076985461479
+--- !u!114 &969016945399438159
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
