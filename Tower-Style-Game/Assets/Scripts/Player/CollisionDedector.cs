@@ -18,26 +18,22 @@ public class CollisionDedector : MonoBehaviour
             if (collision.gameObject.tag == "Gold") {
                 CollectGold(collision.gameObject);
             }
-
             if (collision.gameObject.tag == "LaserButton") {
                 collision.gameObject.GetComponent<LaserButton>().CloseLaser();
             }
-
             if (collision.gameObject.tag=="DoubleJump") {
                 collision.gameObject.SetActive(false);
-                InputManager.instance.JumpTimes =1;
+                PlayerController.instance.HasDoubleJump = true;
                 sceneUIManager.UpdateJump(true);
             }
             if (collision.gameObject.tag == "Armor") {
                 collision.gameObject.SetActive(false);
-                InputManager.instance.HasArmor = true;
+                PlayerController.instance.HasArmor = true;
                 sceneUIManager.UpdateArmor();
-
             }
-
             if (collision.gameObject.tag == "Obstacle") {
-                if (InputManager.instance.HasArmor) {
-                    InputManager.instance.HasArmor = false;
+                if (PlayerController.instance.HasArmor) {
+                    PlayerController.instance.HasArmor = false;
                     sceneUIManager.UpdateArmor();
                 } else {
                     Debug.Log("GameOVer");

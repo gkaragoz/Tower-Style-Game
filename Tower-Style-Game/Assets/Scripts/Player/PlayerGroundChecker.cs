@@ -100,7 +100,6 @@ namespace GK {
             }
         }
 
-
         private void CheckIsFalling() {
             if (_rb2D.velocity.y < 0 && _isFalling == false) {
                 _isFalling = true;
@@ -128,7 +127,6 @@ namespace GK {
                         lefthit.transform.gameObject.GetComponent<IPlatform>().DestroyPlatform(OnPlatformDestroyed);
                     }
                     OnGrounded?.Invoke();
-                    InputManager.instance.JumpTimes++;
                 }
             }
         }

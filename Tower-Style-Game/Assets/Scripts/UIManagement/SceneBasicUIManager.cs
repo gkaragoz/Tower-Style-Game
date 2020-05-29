@@ -27,7 +27,7 @@ namespace GY {
         }
 
         public void UpdateArmor() {
-            _armorText.text = "Has Armor : " + InputManager.instance.HasArmor;
+            _armorText.text = "Has Armor : " + PlayerController.instance.HasArmor;
         }
     }
 }
