@@ -24,7 +24,7 @@ namespace GK {
 				}
 
 				// Pop size of button
-				LeanTween.size(_targetTween, _targetTween.sizeDelta * _scaleAmount, _scaleSpeed).setEaseInOutCirc().setRepeat(2).setLoopPingPong();
+				LeanTween.size(_targetTween, _targetTween.sizeDelta * _scaleAmount, _scaleSpeed).setEaseInOutCirc().setRepeat(2).setLoopPingPong().setIgnoreTimeScale(true);
 			});
 		}
 

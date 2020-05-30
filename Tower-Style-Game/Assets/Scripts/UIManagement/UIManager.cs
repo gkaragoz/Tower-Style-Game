@@ -24,11 +24,12 @@ namespace GY {
         public GameObject pnlMainMenu;
         public GameObject pnlLevelPath;
         public GameObject pnlInsideGamePlay;
-        public GameObject pnlPause;
-        public GameObject pnlFail;
-        public GameObject pnlWin;
-        public GameObject pnlSure;
-        public GameObject pnlMarket;
+        public GameObject pnlGamePlay;
+        public PanelInTween pnlPause;
+        public PanelInTween pnlFail;
+        public PanelInTween pnlWin;
+        public PanelInTween pnlSure;
+        public PanelInTween pnlMarket;
         public GameObject imgArmor;
         public GameObject imgDoubleJump;
         public GameObject gameSceneUIBlocker;
@@ -66,19 +67,20 @@ namespace GY {
             grpGold.SetActive(false);
         }
         public void OpenGamePlayPanel() {
+            pnlGamePlay.SetActive(true);
             pnlInsideGamePlay.SetActive(true);
             pnlLevelPath.SetActive(true);
         }
         public void OpenPausePanel() {
             pnlInsideGamePlay.SetActive(false);
-            pnlPause.SetActive(true);
+            pnlPause.Open();
             grpGold.SetActive(true);
             Time.timeScale = 0;
             gameSceneUIBlocker.SetActive(true);
         }
         public void ClosePausePanel() {
             pnlInsideGamePlay.SetActive(true);
-            pnlPause.SetActive(false);
+            pnlPause.Close();
             grpGold.SetActive(false);
             Time.timeScale = 1;
             gameSceneUIBlocker.SetActive(false);
@@ -86,27 +88,28 @@ namespace GY {
         public void OpenFailPanel() {
             pnlInsideGamePlay.SetActive(false);
             grpGold.SetActive(true);
-            pnlFail.SetActive(true);
+            pnlFail.Open();
             gameSceneUIBlocker.SetActive(true);
 
         }
         public void OpenSuccesPanel() {
+            pnlGamePlay.SetActive(false);
             pnlInsideGamePlay.SetActive(false);
             grpGold.SetActive(true);
-            pnlWin.SetActive(true);
+            pnlWin.Open();
             gameSceneUIBlocker.SetActive(true);
 
         }
         public void OpenMarketPanel() {
             grpGold.SetActive(true);
             pnlMainMenu.SetActive(false);
-            pnlMarket.SetActive(true);
+            pnlMarket.Open();
             gameSceneUIBlocker.SetActive(true);
         }
         public void CloseMarketPanel() {
             grpGold.SetActive(true);
             pnlMainMenu.SetActive(true);
-            pnlMarket.SetActive(false);
+            pnlMarket.Close();
             gameSceneUIBlocker.SetActive(false);
         }
         public void WatchAds() {
@@ -116,7 +119,7 @@ namespace GY {
             Debug.Log("Sıralamayı Göster");
         }
         public void ShowSurePanel() {
-            pnlSure.SetActive(true);
+            pnlSure.Open();
         }
         public void RestartLevel() {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
