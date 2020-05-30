@@ -3205,7 +3205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 0.2
-  _baseJumpForce: 6.3
+  _baseJumpForce: 6.5
   _forceMode2D: 1
 --- !u!114 &612628714
 MonoBehaviour:
@@ -3234,7 +3234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f4d9bf4c7e0f7d49a0891ace9374d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colDedector: {fileID: 0}
   _groundCheckThreshold: 0.1
   _groundCheckPivotRightTransform: {fileID: 37541335}
   _groundCheckPivotLeftTransform: {fileID: 708417570}
@@ -7180,7 +7179,7 @@ GameObject:
   - component: {fileID: 1687258587}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7210,7 +7209,7 @@ MonoBehaviour:
   followType: 2
   cameraCenterX: 0.5
   cameraCenterY: 0.2
-  boundType: 0
+  boundType: 2
   leftBound: 0
   rightBound: 0
   upperBound: 0
@@ -7219,7 +7218,7 @@ MonoBehaviour:
   hardDeadZone: 0
   leftDeadBound: 1
   rightDeadBound: 1
-  upperDeadBound: 5
+  upperDeadBound: 0
   lowerDeadBound: 1
 --- !u!20 &1687258584
 Camera:
@@ -7244,10 +7243,10 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
+  near clip plane: 4
+  far clip plane: 100
+  field of view: 30
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -7272,7 +7271,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1058094929}
@@ -8472,6 +8471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 612628714}
   _uiManager: {fileID: 492048263}
+  _cameraDeathPos: {fileID: 1687258587}
 --- !u!61 &1938795875
 BoxCollider2D:
   m_ObjectHideFlags: 0

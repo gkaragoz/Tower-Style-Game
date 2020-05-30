@@ -51,7 +51,7 @@ namespace GY {
             firstTouchPos = obj;
         }
         private void OnDragging(Vector2 arg1, Vector2 arg2) {
-            if (Vector3.Distance(arg1,firstTouchPos)>1&&!isGameStarted) {
+            if (Vector3.Distance(arg1,firstTouchPos)>.5&&!isGameStarted) {
                 OpenGamePlayPanel();
                 CloseMainMenu();
                 isGameStarted = true;

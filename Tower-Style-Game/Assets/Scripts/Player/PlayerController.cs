@@ -82,8 +82,8 @@ namespace GY {
         }
 
         private void OnInputEnd(Vector2 endPosition, Vector2 direction, float selectedInputPower) {
-            Debug.Log (selectedInputPower);
-            if (selectedInputPower <= 1f) {
+
+            if (selectedInputPower <= .5f) {
                 _playerAnimation.OnInputCancel();
                 return;
             }

@@ -28,6 +28,8 @@ namespace GK {
         private bool _clampInputActive = false;        
         [SerializeField]
         private float _clampedInputMagnitude = 2.5f;
+        [SerializeField]
+        private float _inputMultiplyer=4;
 
         private Vector2 _startPosition = Vector2.zero;
         private Vector2 _endPosition = Vector2.zero;
@@ -53,21 +55,21 @@ namespace GK {
             if (Input.GetMouseButtonDown(0)) {
                 bool noUI = EventSystem.current.IsPointerOverGameObject();
                 if (!noUI) {
-                    Vector2 mousePos = Input.mousePosition;
-                    _startPosition = _camera.ScreenToWorldPoint(mousePos);
+                    Vector3 mousePos = Input.mousePosition;
+                    _startPosition = _camera.ScreenToViewportPoint(mousePos);
 
                     _currentPosition = _startPosition;
 
                     _isMouseButtonDown = true;
 
-                    OnInputBegin?.Invoke(_startPosition);
+                    OnInputBegin?.Invoke(_startPosition* _inputMultiplyer);
                 }
             
             }
             if (Input.GetMouseButton(0) && _isMouseButtonDown) {
                 Vector2 mousePos = Input.mousePosition;
-                _currentPosition = _camera.ScreenToWorldPoint(mousePos);
-                _direction = _startPosition - _currentPosition;
+                _currentPosition = _camera.ScreenToViewportPoint(mousePos);
+                _direction = (_startPosition - _currentPosition)* _inputMultiplyer;
 
                 if (_clampInputActive) {
                     _direction = _direction.normalized * Mathf.Clamp(_direction.magnitude, 0f, _clampedInputMagnitude);
@@ -77,9 +79,9 @@ namespace GK {
             }
             if (Input.GetMouseButtonUp(0) && _isMouseButtonDown) {
                 Vector2 mousePos = Input.mousePosition;
-                _endPosition = _camera.ScreenToWorldPoint(mousePos);
+                _endPosition = _camera.ScreenToViewportPoint(mousePos);
 
-                _direction = _startPosition - _currentPosition;
+                _direction = (_startPosition - _currentPosition)* _inputMultiplyer;
                 _endMagnitude = _direction.magnitude;
 
                 if (_clampInputActive) {

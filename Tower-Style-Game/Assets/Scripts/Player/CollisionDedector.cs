@@ -11,6 +11,8 @@ public class CollisionDedector : MonoBehaviour
         private PlayerController _playerController;
         [SerializeField]
         private UIManager _uiManager;
+        [SerializeField]
+        private CameraDeathPosition _cameraDeathPos;
 
         private void OnTriggerEnter2D(Collider2D collision) {
             if (collision.gameObject.tag == "Gold") {
@@ -40,7 +42,7 @@ public class CollisionDedector : MonoBehaviour
                     _uiManager.CloseArmor();
                 } else {
                     Debug.Log("GameOVer");
-                    Camera.main.GetComponent<CameraDeathPosition>().GameOver();
+                    _cameraDeathPos.GameOver();
                     OnGameOver?.Invoke();
                     _uiManager.OpenFailPanel();
                 }

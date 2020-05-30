@@ -9,8 +9,6 @@ namespace GK {
         public Action<bool> OnHitWall;
 
         [SerializeField]
-        private CollisionDedector _colDedector;
-        [SerializeField]
         private float _groundCheckThreshold;
         [SerializeField]
         private Transform _groundCheckPivotRightTransform = null;
@@ -24,6 +22,9 @@ namespace GK {
         private LayerMask _platformCheckLayerMask = 0;
         [SerializeField]
         private LayerMask _wallCheckLayerMask = 0;
+        private CollisionDedector _colDedector;
+
+
         [Header("Debug")]
         [SerializeField]
         [Utils.ReadOnly]
