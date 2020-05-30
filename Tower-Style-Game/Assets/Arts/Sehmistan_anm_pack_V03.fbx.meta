@@ -30,7 +30,12 @@ ModelImporter:
   - first:
       74: -3100369314251171874
     second: Idle
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn1
+    second: {fileID: 2100000, guid: 03c268c08a1994c4a8b2185765af2f1c, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
