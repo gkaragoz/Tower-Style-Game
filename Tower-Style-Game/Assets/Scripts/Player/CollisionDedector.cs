@@ -32,8 +32,6 @@ public class CollisionDedector : MonoBehaviour
                 _uiManager.ShowArmor();
             }
             if (collision.gameObject.tag == "EndGameArea") {
-                collision.gameObject.SetActive(false);
-                _playerController.HasArmor = true;
                 _uiManager.OpenSuccesPanel();
             }
             if (collision.gameObject.tag == "Obstacle") {

@@ -31,8 +31,6 @@ public class CameraDeathPosition : MonoBehaviour
             _lavaYPosition = -10f;
             _playerMaxPoint = 0;
             _endGameHeight = GameObject.FindGameObjectWithTag("EndGameArea").transform.position.y;
-
-
         }
 
         public float LavaYPosition() {
