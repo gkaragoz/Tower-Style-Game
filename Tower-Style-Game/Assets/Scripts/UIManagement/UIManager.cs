@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using GK;
-using System;
 
 namespace GY {
 
@@ -37,6 +34,9 @@ namespace GY {
         public TextMeshProUGUI txtFailGold;
         public TextMeshProUGUI txtWinGold;
         public TextMeshProUGUI txtGlobalGold;
+
+        public ParticleSystem VFXEndStar01;
+        public ParticleSystem VFXEndStar02;
 
         [SerializeField]
         private InputManager _inputManager;
@@ -90,7 +90,6 @@ namespace GY {
             grpGold.SetActive(true);
             pnlFail.Open();
             gameSceneUIBlocker.SetActive(true);
-
         }
         public void OpenSuccesPanel() {
             pnlGamePlay.SetActive(false);
@@ -99,7 +98,15 @@ namespace GY {
             pnlWin.Open();
             gameSceneUIBlocker.SetActive(true);
 
+            var seq = LeanTween.sequence();
+            seq.append(LeanTween.delayedCall(0f, () => {
+                VFXEndStar01.Play();
+            }));
+            seq.append(LeanTween.delayedCall(2f, () => {
+                VFXEndStar02.Play();
+            }));
         }
+
         public void OpenMarketPanel() {
             grpGold.SetActive(true);
             pnlMainMenu.SetActive(false);

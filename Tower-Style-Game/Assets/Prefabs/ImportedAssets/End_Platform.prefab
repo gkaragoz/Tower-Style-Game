@@ -234,15 +234,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4249359944124282, guid: fbdb0b280789440678aa36806de97767, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4249359944124282, guid: fbdb0b280789440678aa36806de97767, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -37.93
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4249359944124282, guid: fbdb0b280789440678aa36806de97767, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4249359944124282, guid: fbdb0b280789440678aa36806de97767, type: 3}
       propertyPath: m_LocalRotation.x
@@ -281,6 +281,11 @@ PrefabInstance:
       propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198221453913853704, guid: fbdb0b280789440678aa36806de97767,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbdb0b280789440678aa36806de97767, type: 3}
 --- !u!4 &1775244014746738475 stripped
@@ -310,11 +315,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4423955923121002, guid: d350ad29b27c64ecbad769fd1feff30a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.22
+      value: 13.22
       objectReference: {fileID: 0}
     - target: {fileID: 4423955923121002, guid: d350ad29b27c64ecbad769fd1feff30a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.61
+      value: 9.31
       objectReference: {fileID: 0}
     - target: {fileID: 4423955923121002, guid: d350ad29b27c64ecbad769fd1feff30a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -351,6 +356,11 @@ PrefabInstance:
     - target: {fileID: 198216200989262582, guid: d350ad29b27c64ecbad769fd1feff30a,
         type: 3}
       propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198216200989262582, guid: d350ad29b27c64ecbad769fd1feff30a,
+        type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

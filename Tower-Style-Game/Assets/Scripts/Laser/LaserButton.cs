@@ -9,6 +9,8 @@ namespace GY {
         private LaserHolder _laserHolder = null;
         [SerializeField]
         private LaserInteractTween _laserInteractTween = null;
+        [SerializeField]
+        private ParticleSystem _VFX = null;
 
         [Utils.ReadOnly]
         [SerializeField]
@@ -20,6 +22,7 @@ namespace GY {
             }
 
             _hasInteracted = true;
+            _VFX.Play();
             _laserInteractTween.Interact();
             _laserHolder.CloseLaser();
         }
