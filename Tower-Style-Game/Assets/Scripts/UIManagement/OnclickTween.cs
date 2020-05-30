@@ -11,7 +11,7 @@ namespace GK {
 		[SerializeField]
 		private float _scaleAmount = 1.1f;
 		[SerializeField]
-		private float _scaleSpeed = 0.5f;
+		private float _scaleSpeed = 0.1f;
 
 		private Button _button;
 
