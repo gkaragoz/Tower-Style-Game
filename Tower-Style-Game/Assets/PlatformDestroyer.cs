@@ -41,7 +41,9 @@ namespace GK {
 
 			seq.append(LeanTween.scaleX(this.gameObject, 1.1f, _scaleYShrinkSpeed * 0.2f).setEaseOutQuad());
 
-			seq.append(LeanTween.scale(this.gameObject, Vector3.zero, _completeShrinkSpeed).setEaseOutQuad());
+			seq.append(LeanTween.scale(this.gameObject, Vector3.zero, _completeShrinkSpeed).setEaseOutQuad().setOnComplete(() => {
+				this.gameObject.SetActive(false);
+			}));
 		}
 
 		private void Update() {
