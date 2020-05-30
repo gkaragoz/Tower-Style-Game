@@ -9796,10 +9796,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 173089964026238836, guid: f23fe036fa07f894e9598a07e12e5970,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 92e81886018065e4984e4dd1808b09b6, type: 2}
+    - target: {fileID: 173089964026238836, guid: f23fe036fa07f894e9598a07e12e5970,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5141970153396963993, guid: f23fe036fa07f894e9598a07e12e5970,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.81
+      value: -2.56
       objectReference: {fileID: 0}
     - target: {fileID: 5141970153396963993, guid: f23fe036fa07f894e9598a07e12e5970,
         type: 3}

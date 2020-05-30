@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 173089964026238836}
   - component: {fileID: 2075203463}
   - component: {fileID: 2075203464}
+  - component: {fileID: 2403756520226158906}
   m_Layer: 0
   m_Name: Armor
   m_TagString: Armor
@@ -93,8 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19910acf08174c6469f0432811b3e6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSpeedInSeconds: 2
-  _setRandomDelay: 1
+  _rotationSpeedInSeconds: 3
 --- !u!61 &2075203464
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -121,3 +121,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6098874, y: 2.3378005}
   m_EdgeRadius: 0
+--- !u!114 &2403756520226158906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5282186132236552420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6427bfe3915f8414785ca3b04e11c5f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scaleAmount: 0.8
+  _scaleSpeed: 1
