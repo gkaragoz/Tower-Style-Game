@@ -75,7 +75,6 @@ namespace GY {
             grpGold.SetActive(true);
             Time.timeScale = 0;
             gameSceneUIBlocker.SetActive(true);
-
         }
         public void ClosePausePanel() {
             pnlInsideGamePlay.SetActive(true);
@@ -83,7 +82,6 @@ namespace GY {
             grpGold.SetActive(false);
             Time.timeScale = 1;
             gameSceneUIBlocker.SetActive(false);
-
         }
         public void OpenFailPanel() {
             pnlInsideGamePlay.SetActive(false);
@@ -121,7 +119,7 @@ namespace GY {
             pnlSure.SetActive(true);
         }
         public void RestartLevel() {
-            SceneManager.LoadScene("core-mechanics-gk");//SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Time.timeScale = 1;
         }
         public void OpenNextScene() {
@@ -157,10 +155,16 @@ namespace GY {
         }
 
         public void UpdateIndicator(float percentage) {
-           // Rect rect = new Rect(fill.rect.x,fill.rect.y,percentage*600,fill.rect.height);
-           // Debug.Log(rect);
+
+            if (percentage<=1) {
             fill.sizeDelta = new Vector2(percentage * 600, fill.sizeDelta.y);
+
             indicator.anchoredPosition = new Vector3((percentage * 589)-(24), indicator.anchoredPosition.y);
+            } else {
+                fill.sizeDelta = new Vector2( 600, fill.sizeDelta.y);
+
+                indicator.anchoredPosition = new Vector3( 589 - (24), indicator.anchoredPosition.y);
+            }
         }
 
 

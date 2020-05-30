@@ -206,8 +206,7 @@ GameObject:
   - component: {fileID: 2836954445177254018}
   - component: {fileID: 855850134593669054}
   - component: {fileID: 855850134593669053}
-  - component: {fileID: 1971784908007020135}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Standart_platform_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,20 +319,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &1971784908007020135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5729156545893375491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee15ca51ae0088418f47f8d2728fba6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeBar: {fileID: 2788025356872004827}
-  _destroyTime: 99999
 --- !u!1 &6563270784355265324
 GameObject:
   m_ObjectHideFlags: 0
