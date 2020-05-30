@@ -18,7 +18,7 @@ namespace GY {
         public RectTransform indicator;
 
         public GameObject grpGold;
-        public GameObject pnlMainMenu;
+        public MainMenuCloserTween pnlMainMenu;
         public GameObject pnlLevelPath;
         public GameObject pnlInsideGamePlay;
         public GameObject pnlGamePlay;
@@ -59,11 +59,11 @@ namespace GY {
             }
         }
         public void OpenMainMenu() {
-            pnlMainMenu.SetActive(true);
+            pnlMainMenu.Open();
             grpGold.SetActive(true);
         }
         public void CloseMainMenu() {
-            pnlMainMenu.SetActive(false);
+            pnlMainMenu.Close();
             grpGold.SetActive(false);
         }
         public void OpenGamePlayPanel() {
@@ -113,13 +113,13 @@ namespace GY {
 
         public void OpenMarketPanel() {
             grpGold.SetActive(true);
-            pnlMainMenu.SetActive(false);
+            pnlMainMenu.Close();
             pnlMarket.Open();
             gameSceneUIBlocker.SetActive(true);
         }
         public void CloseMarketPanel() {
             grpGold.SetActive(true);
-            pnlMainMenu.SetActive(true);
+            pnlMainMenu.Open();
             pnlMarket.Close();
             gameSceneUIBlocker.SetActive(false);
         }
