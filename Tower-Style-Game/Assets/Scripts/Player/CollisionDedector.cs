@@ -7,12 +7,10 @@ namespace GY{
 public class CollisionDedector : MonoBehaviour
  {
         public Action OnGameOver;
-
-
-        //Just for today
-        int _goldCount =0;
         [SerializeField]
-        private SceneBasicUIManager sceneUIManager=null;
+        private PlayerController _playerController;
+        [SerializeField]
+        private UIManager _uiManager;
 
         private void OnTriggerEnter2D(Collider2D collision) {
             if (collision.gameObject.tag == "Gold") {
@@ -23,22 +21,28 @@ public class CollisionDedector : MonoBehaviour
             }
             if (collision.gameObject.tag=="DoubleJump") {
                 collision.gameObject.SetActive(false);
-                PlayerController.instance.HasDoubleJump = true;
-                sceneUIManager.UpdateJump(true);
+                _playerController.HasDoubleJump = true;
+                _uiManager.ShowDoubleJump();
             }
             if (collision.gameObject.tag == "Armor") {
                 collision.gameObject.SetActive(false);
-                PlayerController.instance.HasArmor = true;
-                sceneUIManager.UpdateArmor();
+                _playerController.HasArmor = true;
+                _uiManager.ShowArmor();
+            }
+            if (collision.gameObject.tag == "EndGameArea") {
+                collision.gameObject.SetActive(false);
+                _playerController.HasArmor = true;
+                _uiManager.OpenSuccesPanel();
             }
             if (collision.gameObject.tag == "Obstacle") {
-                if (PlayerController.instance.HasArmor) {
-                    PlayerController.instance.HasArmor = false;
-                    sceneUIManager.UpdateArmor();
+                if (_playerController.HasArmor) {
+                    _playerController.HasArmor = false;
+                    _uiManager.CloseArmor();
                 } else {
                     Debug.Log("GameOVer");
                     Camera.main.GetComponent<CameraDeathPosition>().GameOver();
                     OnGameOver?.Invoke();
+                    _uiManager.OpenFailPanel();
                 }
                 
             }
@@ -46,8 +50,7 @@ public class CollisionDedector : MonoBehaviour
 
         public void CollectGold(GameObject gold) {
             gold.SetActive(false);
-            _goldCount += 1;
-            sceneUIManager.UpdateGold(_goldCount);
+            _uiManager.AddGold();            
         }
 
     }

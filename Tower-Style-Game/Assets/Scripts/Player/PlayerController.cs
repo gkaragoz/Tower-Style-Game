@@ -18,7 +18,8 @@ namespace GY {
         }
 
         #endregion
-
+        [SerializeField]
+        private UIManager _uIManager;
         private PlayerMotor _playerMotor;
         private PlayerAnimation _playerAnimation;
         private CollisionDedector _colDedector;
@@ -91,6 +92,7 @@ namespace GY {
             } else if (HasDoubleJump) {
                 _playerMotor.Jump(direction, selectedInputPower);
                 HasDoubleJump = false;
+                _uIManager.CloseDoubleJump();
             }
         }
     }

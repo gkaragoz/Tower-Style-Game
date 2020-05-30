@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using GY;
+using UnityEngine.EventSystems;
+
 namespace GK {
 
     public class InputManager : MonoBehaviour {
@@ -18,12 +20,7 @@ namespace GK {
                 Destroy(gameObject);
         }
 
-        #endregion
-
-        ///TO DO Delete UI MANAGER
-        ///
-        [SerializeField]
-        private SceneBasicUIManager sceneManager;
+        #endregion     
         
         [SerializeField]
         private Camera _camera = null;
@@ -50,16 +47,22 @@ namespace GK {
                 return _direction;
             }
         }
+
         private void Update() {
+           
             if (Input.GetMouseButtonDown(0)) {
-                Vector2 mousePos = Input.mousePosition;
-                _startPosition = _camera.ScreenToWorldPoint(mousePos);
+                bool noUI = EventSystem.current.IsPointerOverGameObject();
+                if (!noUI) {
+                    Vector2 mousePos = Input.mousePosition;
+                    _startPosition = _camera.ScreenToWorldPoint(mousePos);
 
-                _currentPosition = _startPosition;
+                    _currentPosition = _startPosition;
 
-                _isMouseButtonDown = true;
+                    _isMouseButtonDown = true;
 
-                OnInputBegin?.Invoke(_startPosition);
+                    OnInputBegin?.Invoke(_startPosition);
+                }
+            
             }
             if (Input.GetMouseButton(0) && _isMouseButtonDown) {
                 Vector2 mousePos = Input.mousePosition;
