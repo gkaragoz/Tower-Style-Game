@@ -40,6 +40,7 @@ namespace GY {
             }
             if (collision.gameObject.tag == "EndGameArea") {
                 _uiManager.OpenSuccesPanel();
+                collision.enabled = false;
             }
             if (collision.gameObject.tag == "Obstacle") {
                 if (_playerController.HasArmor) {
