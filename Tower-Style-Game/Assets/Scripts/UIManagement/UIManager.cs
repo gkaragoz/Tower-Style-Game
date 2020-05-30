@@ -100,10 +100,14 @@ namespace GY {
 
             var seq = LeanTween.sequence();
             seq.append(LeanTween.delayedCall(0f, () => {
-                VFXEndStar01.Play();
+                if (VFXEndStar01 != null) {
+                    VFXEndStar01.Play();
+                }
             }));
             seq.append(LeanTween.delayedCall(2f, () => {
-                VFXEndStar02.Play();
+                if (VFXEndStar02 != null) {
+                    VFXEndStar02.Play();
+                }
             }));
         }
 
