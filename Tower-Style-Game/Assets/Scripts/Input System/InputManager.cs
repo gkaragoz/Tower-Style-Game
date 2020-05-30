@@ -8,7 +8,7 @@ namespace GK {
     public class InputManager : MonoBehaviour {
         public Action<Vector2> OnInputBegin;
         public Action<Vector2, Vector2> OnInputDragging;
-        public Action<Vector2, Vector2, float> OnInputEnd;        
+        public Action<Vector2, Vector2, float> OnInputEnd;
 
         #region Singleton
 
@@ -20,16 +20,16 @@ namespace GK {
                 Destroy(gameObject);
         }
 
-        #endregion     
-        
+        #endregion
+
         [SerializeField]
         private Camera _camera = null;
         [SerializeField]
-        private bool _clampInputActive = false;        
+        private bool _clampInputActive = false;
         [SerializeField]
-        private float _clampedInputMagnitude = 2.5f;
+        private float _clampedInputMagnitude = 10f;
         [SerializeField]
-        private float _inputMultiplyer=4;
+        private float _inputMultiplier = 4;
 
         private Vector2 _startPosition = Vector2.zero;
         private Vector2 _endPosition = Vector2.zero;
@@ -38,20 +38,7 @@ namespace GK {
         private float _endMagnitude;
         private bool _isMouseButtonDown;
 
-        public float ClampedInputMagnitude {
-            get {
-                return _clampedInputMagnitude;
-            }
-        }
-
-        public Vector2 Direction {
-            get {
-                return _direction;
-            }
-        }
-
         private void Update() {
-           
             if (Input.GetMouseButtonDown(0)) {
                 bool noUI = EventSystem.current.IsPointerOverGameObject();
                 if (!noUI) {
@@ -62,14 +49,14 @@ namespace GK {
 
                     _isMouseButtonDown = true;
 
-                    OnInputBegin?.Invoke(_startPosition* _inputMultiplyer);
+                    OnInputBegin?.Invoke(_startPosition * _inputMultiplier);
                 }
-            
+
             }
             if (Input.GetMouseButton(0) && _isMouseButtonDown) {
                 Vector2 mousePos = Input.mousePosition;
                 _currentPosition = _camera.ScreenToViewportPoint(mousePos);
-                _direction = (_startPosition - _currentPosition)* _inputMultiplyer;
+                _direction = (_startPosition - _currentPosition) * _inputMultiplier;
 
                 if (_clampInputActive) {
                     _direction = _direction.normalized * Mathf.Clamp(_direction.magnitude, 0f, _clampedInputMagnitude);
@@ -81,21 +68,21 @@ namespace GK {
                 Vector2 mousePos = Input.mousePosition;
                 _endPosition = _camera.ScreenToViewportPoint(mousePos);
 
-                _direction = (_startPosition - _currentPosition)* _inputMultiplyer;
+                _direction = (_startPosition - _currentPosition) * _inputMultiplier;
                 _endMagnitude = _direction.magnitude;
 
                 if (_clampInputActive) {
                     _endMagnitude = Mathf.Clamp(_direction.magnitude, 0f, _clampedInputMagnitude);
                 }
-                
-                    OnInputEnd?.Invoke(
-                    _endPosition,
-                    InputDirectionModifier.UserDirectionVector(_direction).normalized,
-                    _endMagnitude);
 
-                    ResetInputs();
-                
-              _isMouseButtonDown = false;
+                OnInputEnd?.Invoke(
+                _endPosition,
+                InputDirectionModifier.UserDirectionVector(_direction).normalized,
+                _endMagnitude);
+
+                ResetInputs();
+
+                _isMouseButtonDown = false;
             }
         }
         private void ResetInputs() {

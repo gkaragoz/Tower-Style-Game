@@ -56,7 +56,7 @@ namespace GK {
             for (int ii = 0; ii < _balls.Length; ii++) {
                 _balls[ii].SetActive(true);
                 _balls[ii].transform.localPosition = (_targetTransform.position + new Vector3(_drawOffset.x, _drawOffset.y, 0)) + distanceProjectile * ii * _projectileLengthMultiplier;
-                _balls[ii].transform.localScale = _baseLocalScale / (_localScaleDivider * ii + 1);
+                _balls[ii].transform.localScale = _baseLocalScale * _localScaleDivider * (ii + 1);
             }
         }
     }
