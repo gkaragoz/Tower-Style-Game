@@ -4361,6 +4361,7 @@ MonoBehaviour:
   _camera: {fileID: 1687258584}
   _clampInputActive: 1
   _clampedInputMagnitude: 2.5
+  _inputMultiplyer: 4
 --- !u!114 &856935887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7205,20 +7206,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 612628711}
-  dampTime: 1
+  dampTime: 0.6
   followType: 2
   cameraCenterX: 0.5
-  cameraCenterY: 0.2
-  boundType: 2
-  leftBound: 0
-  rightBound: 0
-  upperBound: 0
-  lowerBound: 0
-  deadZoneType: -1
+  cameraCenterY: 0.5
+  boundType: 0
+  leftBound: 1
+  rightBound: 1
+  upperBound: 1
+  lowerBound: 1
+  deadZoneType: 0
   hardDeadZone: 0
   leftDeadBound: 1
   rightDeadBound: 1
-  upperDeadBound: 0
+  upperDeadBound: -1
   lowerDeadBound: 1
 --- !u!20 &1687258584
 Camera:
