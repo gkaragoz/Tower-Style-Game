@@ -36,7 +36,7 @@ namespace Library.Advertisement.Admob
         /// <summary>
         /// Stores unique app id for Android. When we select platform as android, we initialize our ads with this id.
         /// </summary>
-        private const string _AndroidAppID = "ca-app-pub-1508527570491486~9884488791";    /* <------------------ */
+        private const string _AndroidAppID = "ca-app-pub-1508527570491486~9173809213";    /* <------------------ */
 
         /// <summary>
         /// Stores unique app id for IOS. When we select platform as ios, we initialize our ads with this id.

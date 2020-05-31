@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/core-mechanics-gk.unity
     guid: bfe281fefe8b70e46bdae5abb3aeb72b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level_Showcase.unity
     guid: 405a3e08ee2ce2a49876d832b756ff2f
+  - enabled: 1
+    path: Assets/Scenes/ServiceTestScene.unity
+    guid: 5adfb01dc4c5c6a46a6846106f7d12d5
   m_configObjects: {}
