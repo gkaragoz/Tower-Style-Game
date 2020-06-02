@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Level_Showcase.unity
-    guid: 405a3e08ee2ce2a49876d832b756ff2f
+    path: Assets/Scenes/PolygonTest.unity
+    guid: 0697bfa169de25646a0840dd70dbf95c
   m_configObjects: {}

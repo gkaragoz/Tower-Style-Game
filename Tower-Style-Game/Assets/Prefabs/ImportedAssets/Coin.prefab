@@ -43,7 +43,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 2
+  m_Intensity: 3
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -243,8 +243,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   light: {fileID: 4839924677426868606}
-  speed: 1
-  type: 7
+  minVal: 5
+  maxVal: 12
+  speed: 0.75
+  type: 37
 --- !u!1001 &8187537743289995637
 PrefabInstance:
   m_ObjectHideFlags: 0
