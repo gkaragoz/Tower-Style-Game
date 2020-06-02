@@ -10,7 +10,6 @@ namespace GY {
         private int _totalGold = 0;
         private int _currentSceneGold = 0;
 
-        public float endYPosition;
         Vector3 firstTouchPos;
         bool isGameStarted;
 
@@ -37,10 +36,10 @@ namespace GY {
 
         public ParticleSystem VFXEndStar01;
         public ParticleSystem VFXEndStar02;
-
         [SerializeField]
         private InputManager _inputManager;
         private void Start() {
+            
             OpenMainMenu();
             _inputManager.OnInputDragging += OnDragging;
             _inputManager.OnInputBegin += OnInputBegin;

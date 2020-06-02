@@ -10,8 +10,6 @@ public class CameraDeathPosition : MonoBehaviour
         [SerializeField]
         private GameObject _collector = null;
         [SerializeField]
-        private Transform _player=null;
-        [SerializeField]
         private float _deathZoneDistance=0;
         [SerializeField]
         [Utils.ReadOnly]
@@ -26,8 +24,11 @@ public class CameraDeathPosition : MonoBehaviour
         [SerializeField]
         [Utils.ReadOnly]
         private float _endGameHeight;
-
+        [SerializeField]
+        [Utils.ReadOnly]
+        private Transform _player=null;
         private void Start() {
+            _player = GameObject.FindGameObjectWithTag("Player").transform;
             _lavaYPosition = -10f;
             _playerMaxPoint = 0;
             _endGameHeight = GameObject.FindGameObjectWithTag("EndGameArea").transform.position.y;
