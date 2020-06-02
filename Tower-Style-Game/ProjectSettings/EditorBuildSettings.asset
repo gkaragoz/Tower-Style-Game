@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PolygonTest.unity
     guid: 0697bfa169de25646a0840dd70dbf95c
+  - enabled: 1
+    path: Assets/Scenes/Polygontestststst.unity
+    guid: cd166b8907ce55848b607f8ca5e101ae
   m_configObjects: {}
