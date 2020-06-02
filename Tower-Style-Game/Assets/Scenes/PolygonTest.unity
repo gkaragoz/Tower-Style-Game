@@ -990,12 +990,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 285587320}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &304319271 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1104566915305850897, guid: bc18111b47876524392e6d4f9d6095f7,
-    type: 3}
-  m_PrefabInstance: {fileID: 5378108727374938153}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &312851720 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 448356, guid: 74be190b95c3d294b8ec26fa7513fbb4,
@@ -7702,11 +7696,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5989326403013503148, guid: bc18111b47876524392e6d4f9d6095f7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8191788269870548854, guid: bc18111b47876524392e6d4f9d6095f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7766,21 +7755,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameMechanics
-      objectReference: {fileID: 0}
-    - target: {fileID: 8191788270438212671, guid: bc18111b47876524392e6d4f9d6095f7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 15.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8191788271349999880, guid: bc18111b47876524392e6d4f9d6095f7,
-        type: 3}
-      propertyPath: _cameraParent
-      value: 
-      objectReference: {fileID: 304319271}
-    - target: {fileID: 8191788271566433776, guid: bc18111b47876524392e6d4f9d6095f7,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc18111b47876524392e6d4f9d6095f7, type: 3}
