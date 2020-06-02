@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 31299317}
   - component: {fileID: 31299316}
   m_Layer: 8
-  m_Name: Fragile_Platform_06
+  m_Name: Fragile_Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 5117958945101749878}
   m_Layer: 0
   m_Name: Frigle_platform_01
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 2818565832901060703}
   m_Layer: 0
   m_Name: Frigle_platform_03
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 4166137272836779603}
   m_Layer: 0
   m_Name: Frigle_platform_04
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 7157995487833603690}
   m_Layer: 0
   m_Name: Frigle_platform_05
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 6528043547848976446}
   m_Layer: 0
   m_Name: Frigle_platform_02
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 8148098207429338316}
   m_Layer: 8
   m_Name: Frigle_platform_06
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
