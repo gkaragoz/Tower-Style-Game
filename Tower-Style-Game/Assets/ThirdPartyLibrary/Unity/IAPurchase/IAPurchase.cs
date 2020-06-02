@@ -4,7 +4,7 @@ using UnityEngine.Purchasing;
 
 namespace Library.Purchasing
 {
-    public class IAPurchase : MonoBehaviour, IStoreListener
+    public class IAPurchase : IStoreListener
     {
         // The Unity Purchasing system.
         private static IStoreController m_StoreController;
@@ -12,19 +12,13 @@ namespace Library.Purchasing
         // The store-specific Purchasing subsystems.
         private static IExtensionProvider m_StoreExtensionProvider; 
 
-        public static string NO_ADS = "remove_ad";
+        /*******************************************************************************/
+        // Define your products
+        public static string NO_ADS = "no_ad";
 
-        void Start()
-        {
-            // If we haven't set up the Unity Purchasing reference
-            if (m_StoreController == null)
-            {
-                // Begin to configure our connection to Purchasing
-                InitializePurchasing();
-            }
-        }
+        /*******************************************************************************/
 
-        public void InitializePurchasing()
+        public void InitializeServices ()
         {
             // If we have already connected to Purchasing ...
             if (IsInitialized())
@@ -51,6 +45,8 @@ namespace Library.Purchasing
             return m_StoreController != null && m_StoreExtensionProvider != null;
         }
 
+        /************************************************************************************/
+        // Your methods
         public void BuyNoAddProduct()
         {
             // Buy the non-consumable product using its general identifier. Expect a response either 
@@ -58,6 +54,7 @@ namespace Library.Purchasing
             BuyProductID(NO_ADS);
         }
 
+        /************************************************************************************/
         private void BuyProductID(string productId)
         {
             // If Purchasing has been initialized ...
@@ -68,7 +65,7 @@ namespace Library.Purchasing
                 Product product = m_StoreController.products.WithID(productId);
 
                 // If the look up found a product for this device's store and that product is ready to be sold ... 
-                if (product != null && product.hasReceipt)
+                if (product != null && product.availableToPurchase)
                 {
                     Debug.Log(string.Format("Purchasing product asychronously: '{0}'", product.definition.id));
                     // ... buy the product. Expect a response either through ProcessPurchase or OnPurchaseFailed 
