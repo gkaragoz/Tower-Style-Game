@@ -33,6 +33,8 @@ namespace GY {
         public TextMeshProUGUI txtFailGold;
         public TextMeshProUGUI txtWinGold;
         public TextMeshProUGUI txtGlobalGold;
+        public TextMeshProUGUI txtCurrentLevelIndex;
+        public TextMeshProUGUI txtNextLevelIndex;
 
         public ParticleSystem VFXEndStar01;
         public ParticleSystem VFXEndStar02;
@@ -46,6 +48,10 @@ namespace GY {
 
             _totalGold = PlayerPrefs.GetInt("totalGold");
             UpdateGoldUI();
+
+
+            txtCurrentLevelIndex.text = "Level "+ SceneManager.GetActiveScene().buildIndex.ToString();
+            txtNextLevelIndex.text = "Level "+ (SceneManager.GetActiveScene().buildIndex+1).ToString();
         }
         private void OnInputBegin(Vector2 obj) {
             firstTouchPos = obj;
@@ -135,8 +141,9 @@ namespace GY {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Time.timeScale = 1;
         }
-        public void OpenNextScene() {
-            Debug.Log("Open Next Scene");
+        public void OpenNextScene(int sceneIndex) {
+            Debug.Log(sceneIndex);
+            SceneManager.LoadScene(sceneIndex);
         }
         public void ShowDoubleJump() {
             imgDoubleJump.SetActive(true);

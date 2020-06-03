@@ -6,6 +6,36 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/PolygonTest.unity
-    guid: 0697bfa169de25646a0840dd70dbf95c
+    path: Assets/Scenes/Level1(12-20).unity
+    guid: c23cc4f24ff4d5a45aa87220fe157f4c
+  - enabled: 1
+    path: Assets/Scenes/Level2(1010).unity
+    guid: 86a6616e76d106146a07469f5b15c4fa
+  - enabled: 1
+    path: "Assets/Scenes/Level3(S\u0131n\u0131r).unity"
+    guid: 8c7c4fc4e9b6ed749add337b156f060c
+  - enabled: 1
+    path: Assets/Scenes/Level4(Hayalet).unity
+    guid: c34374a60e0955e46824dc570ba0d4f1
+  - enabled: 1
+    path: Assets/Scenes/Level5(Azalan Azalan).unity
+    guid: 4b7714c76df35854e9b1ac7ee05f4e93
+  - enabled: 1
+    path: Assets/Scenes/Level6(3-4-5 Mix).unity
+    guid: 5331b1538ae67d64aad726b77a26acd1
+  - enabled: 1
+    path: Assets/Scenes/Level7(2).unity
+    guid: 1bc6cc0df8fe77e45ad6b4184d2a77c8
+  - enabled: 1
+    path: Assets/Scenes/Level8(1).unity
+    guid: 7588db75b5f1d964fbd28909593d0baa
+  - enabled: 1
+    path: Assets/Scenes/Level9(Fragile First).unity
+    guid: e6362ecfbc1c05548b783ef27b9a867c
+  - enabled: 1
+    path: Assets/Scenes/Level10.unity
+    guid: 9e64a088b9c32f64ca4525cd50cc6dc3
+  - enabled: 1
+    path: Assets/Scenes/PolygonTest_Graphics.unity
+    guid: 4ef246c2b9ca7ba4bbe3e75ec1676072
   m_configObjects: {}
