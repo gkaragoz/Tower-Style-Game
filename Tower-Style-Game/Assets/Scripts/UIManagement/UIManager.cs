@@ -58,7 +58,7 @@ namespace GY {
             firstTouchPos = obj;
         }
         private void OnDragging(Vector2 arg1, Vector2 arg2) {
-            if (Vector3.Distance(arg1,firstTouchPos)>.5&&!isGameStarted) {
+            if (Vector3.Distance(arg1,firstTouchPos) >.5 && !isGameStarted) {
                 OpenGamePlayPanel();
                 CloseMainMenu();
                 isGameStarted = true;
@@ -92,29 +92,33 @@ namespace GY {
             gameSceneUIBlocker.SetActive(false);
         }
         public void OpenFailPanel() {
-            pnlInsideGamePlay.SetActive(false);
-            grpGold.SetActive(true);
-            pnlFail.Open();
-            gameSceneUIBlocker.SetActive(true);
+            LeanTween.delayedCall(0.5f, () => {
+                pnlInsideGamePlay.SetActive(false);
+                grpGold.SetActive(true);
+                pnlFail.Open();
+                gameSceneUIBlocker.SetActive(true);
+            });
         }
         public void OpenSuccesPanel() {
-            pnlGamePlay.SetActive(false);
-            pnlInsideGamePlay.SetActive(false);
-            grpGold.SetActive(true);
-            pnlWin.Open();
-            gameSceneUIBlocker.SetActive(true);
+            LeanTween.delayedCall(0.5f, () => {
+                pnlGamePlay.SetActive(false);
+                pnlInsideGamePlay.SetActive(false);
+                grpGold.SetActive(true);
+                pnlWin.Open();
+                gameSceneUIBlocker.SetActive(true);
 
-            var seq = LeanTween.sequence();
-            seq.append(LeanTween.delayedCall(0f, () => {
-                if (VFXEndStar01 != null) {
-                    VFXEndStar01.Play();
-                }
-            }));
-            seq.append(LeanTween.delayedCall(2f, () => {
-                if (VFXEndStar02 != null) {
-                    VFXEndStar02.Play();
-                }
-            }));
+                var seq = LeanTween.sequence();
+                seq.append(LeanTween.delayedCall(0f, () => {
+                    if (VFXEndStar01 != null) {
+                        VFXEndStar01.Play();
+                    }
+                }));
+                seq.append(LeanTween.delayedCall(2f, () => {
+                    if (VFXEndStar02 != null) {
+                        VFXEndStar02.Play();
+                    }
+                }));
+            });
         }
 
         public void OpenMarketPanel() {
