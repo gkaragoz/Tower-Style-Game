@@ -40,7 +40,7 @@ namespace GK {
 
         private void Update() {
             if (Input.GetMouseButtonDown(0)) {
-                bool noUI = EventSystem.current.IsPointerOverGameObject();
+                bool noUI = Utils.IsPointerOverUIObject();
                 if (!noUI) {
                     Vector3 mousePos = Input.mousePosition;
                     _startPosition = _camera.ScreenToViewportPoint(mousePos);
