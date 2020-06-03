@@ -35,6 +35,7 @@ namespace GY {
         public TextMeshProUGUI txtGlobalGold;
         public TextMeshProUGUI txtCurrentLevelIndex;
         public TextMeshProUGUI txtNextLevelIndex;
+        public TextMeshProUGUI txtLevelHeader;
 
         public ParticleSystem VFXEndStar01;
         public ParticleSystem VFXEndStar02;
@@ -49,7 +50,7 @@ namespace GY {
             _totalGold = PlayerPrefs.GetInt("totalGold");
             UpdateGoldUI();
 
-
+            txtLevelHeader.text= "Level " + SceneManager.GetActiveScene().buildIndex.ToString();
             txtCurrentLevelIndex.text = "Level "+ SceneManager.GetActiveScene().buildIndex.ToString();
             txtNextLevelIndex.text = "Level "+ (SceneManager.GetActiveScene().buildIndex+1).ToString();
         }
