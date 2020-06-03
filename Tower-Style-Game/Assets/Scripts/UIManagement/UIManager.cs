@@ -100,7 +100,7 @@ namespace GY {
             });
         }
         public void OpenSuccesPanel() {
-            LeanTween.delayedCall(0.5f, () => {
+            LeanTween.delayedCall(1f, () => {
                 pnlGamePlay.SetActive(false);
                 pnlInsideGamePlay.SetActive(false);
                 grpGold.SetActive(true);
