@@ -959,7 +959,7 @@ GameObject:
   - component: {fileID: 1902935077326284500}
   - component: {fileID: 4273323802799964511}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: txtNextLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: FINISH
+  m_text: Level 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92573c736d0c22649b85177a2f042af5, type: 2}
   m_sharedMaterial: {fileID: -1549558690782438474, guid: 92573c736d0c22649b85177a2f042af5,
@@ -1080,10 +1080,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4273323802799964511}
-    characterCount: 6
+    characterCount: 7
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -3496,7 +3496,7 @@ GameObject:
   - component: {fileID: 7064225457744457604}
   - component: {fileID: 4974278235716161009}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: txtLevelStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3547,7 +3547,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: START
+  m_text: Level 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92573c736d0c22649b85177a2f042af5, type: 2}
   m_sharedMaterial: {fileID: -1549558690782438474, guid: 92573c736d0c22649b85177a2f042af5,
@@ -3617,10 +3617,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4974278235716161009}
-    characterCount: 5
+    characterCount: 7
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -6981,6 +6981,8 @@ MonoBehaviour:
   txtWinGold: {fileID: 8191788270533598772}
   txtGlobalGold: {fileID: 8191788271313577498}
   txtLevelHeader: {fileID: 8191788271184743501}
+  txtCurrentLevel: {fileID: 4974278235716161009}
+  txtNextLevel: {fileID: 4273323802799964511}
   VFXEndStar01: {fileID: 5215966549533960409}
   VFXEndStar02: {fileID: 5215969054711279392}
   _inputManager: {fileID: 8191788270200950008}
@@ -8008,7 +8010,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 46.76 FPS
+  m_text: Infinity FPS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8077,10 +8079,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8191788270419127701}
-    characterCount: 9
+    characterCount: 12
     spriteCount: 0
     spaceCount: 1
-    wordCount: 3
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -8219,7 +8221,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8191788270438212642}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5554942, y: 15.4, z: -66.67}
+  m_LocalPosition: {x: 0.5554942, y: 10, z: -66.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8191788271566433777}
@@ -11317,7 +11319,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

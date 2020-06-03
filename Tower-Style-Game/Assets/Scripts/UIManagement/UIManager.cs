@@ -34,6 +34,8 @@ namespace GY {
         public TextMeshProUGUI txtWinGold;
         public TextMeshProUGUI txtGlobalGold;
         public TextMeshProUGUI txtLevelHeader;
+        public TextMeshProUGUI txtCurrentLevel;
+        public TextMeshProUGUI txtNextLevel;
 
         public ParticleSystem VFXEndStar01;
         public ParticleSystem VFXEndStar02;
@@ -49,6 +51,8 @@ namespace GY {
             UpdateGoldUI();
 
             txtLevelHeader.text= "Level " + (SceneManager.GetActiveScene().buildIndex + 1 );
+            txtCurrentLevel.text= "Level " + (SceneManager.GetActiveScene().buildIndex + 1 );
+            txtNextLevel.text= "Level " + (SceneManager.GetActiveScene().buildIndex + 2 );
         }
         private void OnInputBegin(Vector2 obj) {
             firstTouchPos = obj;
