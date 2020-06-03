@@ -12,7 +12,8 @@ namespace GK {
 		}
 
 		public void DoRotate() {
-			LeanTween.rotateAroundLocal(this.gameObject, Vector3.up, 360, _rotationSpeedInSeconds).setLoopClamp();
+			this.transform.rotation = Quaternion.Euler(Vector3.up * -45f);
+			LeanTween.rotate(this.gameObject, Vector3.up * 45f, _rotationSpeedInSeconds).setLoopPingPong();
 		}
 
 		public void StopRotate() {
