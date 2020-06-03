@@ -1,34 +1,39 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using GK;
 
-namespace GY{
+namespace GY {
 
-public class LaserHolder : MonoBehaviour
- {
+    public class LaserHolder : MonoBehaviour {
         [SerializeField]
-        private float _laserCloseSpeed=1;
-        private Coroutine _closeLaser;
+        private float _laserCloseSpeed = 1;
+        [SerializeField]
+        private LineRenderer _lineRenderer = null;
+        [SerializeField]
+        private ParticleSystem[] _VFX = null;
+        [SerializeField]
+        private BoxCollider2D _collider = null;
 
         public void CloseLaser() {
+            float value = _lineRenderer.startWidth;
             if (transform.gameObject.activeSelf) {
-             _closeLaser = StartCoroutine(CloseLaserStart());
+                LeanTween.value(_lineRenderer.gameObject, value, 0, _laserCloseSpeed).setOnUpdate((float newValue) => {
+                    _lineRenderer.startWidth = newValue;
+                    _lineRenderer.endWidth = newValue;
+                })
+                .setOnComplete(() => {
+                    _collider.enabled  = false;
+                });
 
+                LeanTween.value(this.gameObject, 255f, 0f, _laserCloseSpeed).setOnUpdate((float newValue) => {
+                    foreach (var item in _VFX) {
+                        ParticleSystem.MainModule settings = item.main;
+                        Color color = settings.startColor.color;
+                        color.a = newValue;
+
+                        settings.startColor = new ParticleSystem.MinMaxGradient(color);
+                    }
+                });
             }
         }
-
-
-
-        IEnumerator CloseLaserStart() {
-            while (true) {
-                transform.localScale = new Vector3(Mathf.MoveTowards(transform.localScale.x,0,Time.deltaTime*_laserCloseSpeed),transform.localScale.y,transform.lossyScale.z);
-                if (transform.localScale.x<0.1f&&transform.localScale.x>-.1f) {
-                    StopCoroutine(_closeLaser);
-                    transform.gameObject.SetActive(false);
-                }
-                yield return null;
-            }
-        }
- }
+    }
 }
