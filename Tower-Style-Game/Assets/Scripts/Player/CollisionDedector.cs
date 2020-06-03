@@ -43,17 +43,7 @@ namespace GY {
                 collision.enabled = false;
             }
             if (collision.gameObject.tag == "Obstacle") {
-                if (_playerController.HasArmor) {
-                    _playerController.HasArmor = false;
-                    _uiManager.CloseArmor();
-                } else {
-                    Debug.Log("GameOVer");
-                    _VFXDeath.transform.position = new Vector3(_playerController.transform.position.x, _playerController.transform.position.y, _VFXDeath.transform.position.z);
-                    _VFXDeath.Play();
-                    _cameraDeathPos.GameOver();
-                    OnGameOver?.Invoke();
-                    _uiManager.OpenFailPanel();
-                }
+                Die();
             }
         }
 
@@ -68,5 +58,25 @@ namespace GY {
             _uiManager.AddGold();
         }
 
+        public void Die()
+        {
+            if (_playerController.HasArmor)
+            {
+                _playerController.HasArmor = false;
+                _uiManager.CloseArmor();
+            }
+            else
+            {
+                Debug.Log("GameOVer");
+                _VFXDeath.transform.position = new Vector3(_playerController.transform.position.x, _playerController.transform.position.y, _VFXDeath.transform.position.z);
+                _VFXDeath.Play();
+                _cameraDeathPos.GameOver();
+                OnGameOver?.Invoke();
+                _uiManager.OpenFailPanel();
+            }
+        }
+
+
+      
     }
 }

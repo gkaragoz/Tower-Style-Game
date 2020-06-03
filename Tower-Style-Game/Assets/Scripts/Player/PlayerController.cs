@@ -95,6 +95,12 @@ namespace GY {
                 _uIManager.CloseDoubleJump();
             }
         }
+
+
+        public void Die()
+        {
+            _colDedector.Die();
+        }
     }
 
 }
