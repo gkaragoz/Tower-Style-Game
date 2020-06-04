@@ -36,7 +36,7 @@ namespace GK {
         private Vector2 _currentPosition = Vector2.zero;
         private Vector2 _direction = Vector2.zero;
         private float _endMagnitude;
-        private bool _isMouseButtonDown;
+        public bool _isMouseButtonDown;
 
         private void Update() {
             if (Input.GetMouseButtonDown(0)) {

@@ -41,10 +41,10 @@ namespace GY {
         [SerializeField]
         private InputManager _inputManager;
         private void Start() {
-            if (SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("currentLevel"))
+           /* if (SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("currentLevel"))
             {
                 SceneManager.LoadScene(PlayerPrefs.GetInt("currentLevel"));
-            }
+            }*/
 
             OpenMainMenu();
             _inputManager.OnInputDragging += OnDragging;
@@ -117,10 +117,10 @@ namespace GY {
         }
 
         public void OpenMarketPanel() {
-            grpGold.SetActive(true);
-            pnlMainMenu.Close();
-            pnlMarket.Open();
             gameSceneUIBlocker.SetActive(true);
+            grpGold.SetActive(true);
+            //pnlMainMenu.Close();
+            pnlMarket.Open();
         }
         public void CloseMarketPanel() {
             grpGold.SetActive(true);

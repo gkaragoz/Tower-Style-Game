@@ -71,6 +71,8 @@ namespace GY {
 
         private void OnGameOver() {
             _playerAnimation.OnGameOver();
+            InputManager.instance._isMouseButtonDown =false;
+            _playerMotor.enabled = false;
         }
 
         private void OnInputBegin(Vector2 startPosition) {
