@@ -41,7 +41,11 @@ namespace GY {
         [SerializeField]
         private InputManager _inputManager;
         private void Start() {
-            
+            if (SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("currentLevel"))
+            {
+                SceneManager.LoadScene(PlayerPrefs.GetInt("currentLevel"));
+            }
+
             OpenMainMenu();
             _inputManager.OnInputDragging += OnDragging;
             _inputManager.OnInputBegin += OnInputBegin;
@@ -143,7 +147,9 @@ namespace GY {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 return;
             }
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+            int currentLevel = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentLevel + 1);
+            PlayerPrefs.SetInt("currentLevel",currentLevel+1);
         }
         public void ShowDoubleJump() {
             imgDoubleJump.SetActive(true);
