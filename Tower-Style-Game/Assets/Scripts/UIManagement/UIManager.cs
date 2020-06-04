@@ -117,14 +117,12 @@ namespace GY {
         }
 
         public void OpenMarketPanel() {
-            grpGold.SetActive(true);
-            pnlMainMenu.Close();
-            pnlMarket.Open();
             gameSceneUIBlocker.SetActive(true);
+            grpGold.SetActive(true);
+            pnlMarket.Open();
         }
         public void CloseMarketPanel() {
             grpGold.SetActive(true);
-            pnlMainMenu.Open();
             pnlMarket.Close();
             gameSceneUIBlocker.SetActive(false);
         }
@@ -138,10 +136,13 @@ namespace GY {
             pnlSure.Open();
         }
         public void RestartLevel() {
+            LeanTween.cancelAll();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Time.timeScale = 1;
+
         }
         public void OpenNextScene() {
+            LeanTween.cancelAll();
             if (SceneManager.GetActiveScene().buildIndex+1>20)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

@@ -35,7 +35,7 @@ namespace GK {
 			LeanTween.move(_market, new Vector2(-1000, -158), _movementSpeed).setEase(LeanTweenType.easeInBack).setIgnoreTimeScale(true);
 			LeanTween.move(_ranking, new Vector2(1000, -154), _movementSpeed).setEase(LeanTweenType.easeInBack).setIgnoreTimeScale(true);
 			LeanTween.move(_watchAds, new Vector2(1000, 292), _movementSpeed).setEase(LeanTweenType.easeInBack).setIgnoreTimeScale(true);
-			LeanTween.move(_grpLevel, new Vector2(0, 1200), _movementSpeed).setEase(LeanTweenType.easeInBack).setIgnoreTimeScale(true);
+			LeanTween.move(_grpLevel, new Vector2(0, 1500), _movementSpeed).setEase(LeanTweenType.easeInBack).setIgnoreTimeScale(true);
 		}
 
 	}
