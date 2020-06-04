@@ -25,8 +25,8 @@ namespace GY {
         public PanelInTween pnlWin;
         public PanelInTween pnlSure;
         public PanelInTween pnlMarket;
-        public GameObject imgArmor;
-        public GameObject imgDoubleJump;
+        public RectTransform imgArmor;
+        public RectTransform imgDoubleJump;
         public GameObject gameSceneUIBlocker;
 
         public TextMeshProUGUI txtFailGold;
@@ -41,10 +41,10 @@ namespace GY {
         [SerializeField]
         private InputManager _inputManager;
         private void Start() {
-           /* if (SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("currentLevel"))
-            {
-                SceneManager.LoadScene(PlayerPrefs.GetInt("currentLevel"));
-            }*/
+            //if (SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("currentLevel"))
+            //{
+            //    SceneManager.LoadScene(PlayerPrefs.GetInt("currentLevel"));
+            //}
 
             OpenMainMenu();
             _inputManager.OnInputDragging += OnDragging;
@@ -117,10 +117,10 @@ namespace GY {
         }
 
         public void OpenMarketPanel() {
-            gameSceneUIBlocker.SetActive(true);
             grpGold.SetActive(true);
-            //pnlMainMenu.Close();
+            pnlMainMenu.Close();
             pnlMarket.Open();
+            gameSceneUIBlocker.SetActive(true);
         }
         public void CloseMarketPanel() {
             grpGold.SetActive(true);
@@ -151,19 +151,52 @@ namespace GY {
             SceneManager.LoadScene(currentLevel + 1);
             PlayerPrefs.SetInt("currentLevel",currentLevel+1);
         }
+
         public void ShowDoubleJump() {
-            imgDoubleJump.SetActive(true);
-        }
-        public void ShowArmor() {
-            imgArmor.SetActive(true);
-        }
-        public void CloseDoubleJump() {
-            imgDoubleJump.SetActive(false);
-        }
-        public void CloseArmor() {
-            imgArmor.SetActive(false);
+            imgDoubleJump.anchoredPosition = new Vector3(Screen.width / 2, 0, 0);
+
+            var seq = LeanTween.sequence();
+
+            seq.append(LeanTween.scale(imgDoubleJump.gameObject, Vector3.one * 1.4f, 0.25f).setFrom(0).setEase(LeanTweenType.easeOutBack));
+            seq.insert(LeanTween.scale(imgDoubleJump.gameObject, Vector3.one, 0.25f).setEase(LeanTweenType.easeOutQuart));
+            seq.append(
+                LeanTween.value(imgDoubleJump.anchoredPosition.x, 109, 1f).setEase(LeanTweenType.easeOutCubic).setDelay(0.3f).setOnUpdate((float newValue) => {
+                    Vector3 newPos = new Vector3(newValue, imgDoubleJump.anchoredPosition.y, 0);
+                    imgDoubleJump.anchoredPosition = newPos;
+                })
+            );
+
+            imgDoubleJump.gameObject.SetActive(true);
         }
 
+        public void ShowArmor() {
+            imgArmor.anchoredPosition = new Vector3(Screen.width / 2, 0, 0);
+
+            var seq = LeanTween.sequence();
+
+            seq.append(LeanTween.scale(imgArmor.gameObject, Vector3.one * 1.4f, 0.25f).setFrom(0).setEase(LeanTweenType.easeOutBack));
+            seq.insert(LeanTween.scale(imgArmor.gameObject, Vector3.one, 0.25f).setEase(LeanTweenType.easeOutQuart));
+            seq.append(
+                LeanTween.value(imgArmor.anchoredPosition.x, 109, 1f).setEase(LeanTweenType.easeOutCubic).setDelay(0.3f).setOnUpdate((float newValue) => {
+                    Vector3 newPos = new Vector3(newValue, imgArmor.anchoredPosition.y, 0);
+                    imgArmor.anchoredPosition = newPos;
+                })
+            );
+
+            imgArmor.gameObject.SetActive(true);
+        }
+
+        public void CloseDoubleJump() {
+            LeanTween.scale(imgDoubleJump.gameObject, Vector3.zero, 0.25f).setEase(LeanTweenType.easeInBack).setOnComplete(() => {
+                imgDoubleJump.gameObject.SetActive(false);
+            });
+        }
+
+        public void CloseArmor() {
+            LeanTween.scale(imgArmor.gameObject, Vector3.zero, 0.25f).setEase(LeanTweenType.easeInBack).setOnComplete(() => {
+                imgArmor.gameObject.SetActive(false);
+            });
+        }
 
         ///Must Change Area
         ///
