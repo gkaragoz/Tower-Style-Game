@@ -5404,7 +5404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14.080017, y: -18.52002}
+  m_AnchoredPosition: {x: -14.080078, y: -18.52002}
   m_SizeDelta: {x: 157, y: 150}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &8191788269855861290
@@ -7033,6 +7033,7 @@ MonoBehaviour:
   _clampInputActive: 1
   _clampedInputMagnitude: 2.5
   _inputMultiplier: 8
+  _isMouseButtonDown: 0
 --- !u!114 &8191788270200950009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8009,7 +8010,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 49.59 FPS
+  m_text: Infinity FPS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8078,10 +8079,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8191788270419127701}
-    characterCount: 9
+    characterCount: 12
     spriteCount: 0
     spaceCount: 1
-    wordCount: 3
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -11099,7 +11100,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 8
+  m_GravityScale: 16
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -11134,7 +11135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraParent: {fileID: 1104566915305850897}
   _rotationSpeed: 0.2
-  _baseJumpForce: 30
+  _baseJumpForce: 40
   _forceMode2D: 1
 --- !u!114 &8191788271349999881
 MonoBehaviour:
