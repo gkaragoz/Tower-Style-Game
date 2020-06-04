@@ -26,6 +26,10 @@ namespace GY {
                 collision.gameObject.GetComponent<LaserButton>().CloseLaser();
             }
             if (collision.gameObject.tag == "DoubleJump") {
+                if (_playerController.HasDoubleJump)
+                {
+                    return;
+                }
                 PlayCollectableVFX(collision.gameObject);
 
                 collision.gameObject.SetActive(false);
@@ -33,6 +37,11 @@ namespace GY {
                 _uiManager.ShowDoubleJump();
             }
             if (collision.gameObject.tag == "Armor") {
+                if (_playerController.HasArmor)
+                {
+                    return;
+                }
+
                 PlayCollectableVFX(collision.gameObject);
 
                 collision.gameObject.SetActive(false);
