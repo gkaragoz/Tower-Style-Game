@@ -24,6 +24,8 @@ namespace GK {
         private LayerMask _wallCheckLayerMask = 0;
         [SerializeField]
         private ParticleSystem _dust;
+        [SerializeField]
+        private ParticleSystem _wallDust;
         private CollisionDedector _colDedector;
 
 
@@ -83,22 +85,25 @@ namespace GK {
             CheckWalls();
         }
         private void CheckWalls() {
+
             if (_rb2D.velocity.y >= 0 && _isGrounded == false && _isHitWall == false) {
                 // TODO
                 // REFACTOR
                 bool isLeft = false;
-                RaycastHit2D wallLefthit = Physics2D.Raycast(_groundCheckPivotLeftTransform.position, Vector2.left, _groundCheckRayDistance / 2, _wallCheckLayerMask);
-                RaycastHit2D wallRightHit = Physics2D.Raycast(_groundCheckPivotRightTransform.position, Vector2.right, _groundCheckRayDistance / 2, _wallCheckLayerMask);
+                RaycastHit2D wallLefthit = Physics2D.Raycast(_groundCheckPivotLeftTransform.position, Vector2.left, _groundCheckRayDistance*3   , _wallCheckLayerMask);
+                RaycastHit2D wallRightHit = Physics2D.Raycast(_groundCheckPivotRightTransform.position, Vector2.right, _groundCheckRayDistance*3, _wallCheckLayerMask);
                 if (wallRightHit) {
-
                     isLeft = false;
                     _isHitWall = true;
                     OnHitWall?.Invoke(isLeft);
-
+                    setWallDustAndPlay(wallRightHit.point);
                 } else if (wallLefthit) {
+
                     isLeft = true;
                     _isHitWall = true;
                     OnHitWall?.Invoke(isLeft);
+                    setWallDustAndPlay(wallLefthit.point);
+
                 }
             }
         }
@@ -162,6 +167,15 @@ namespace GK {
             Gizmos.DrawLine(_groundCheckPivotLeftTransform.position, _groundCheckPivotLeftTransform.position + (Vector3.down * _groundCheckRayDistance));
             Gizmos.DrawLine(_groundCheckPivotRightTransform.position, _groundCheckPivotRightTransform.position + (Vector3.down * _groundCheckRayDistance));
         }
+
+        private void setWallDustAndPlay(Vector3 xPos)
+        {
+            _wallDust.transform.position = xPos;
+            _wallDust.Stop();
+            _wallDust.Play();
+           
+        }
+
         public void ResetValues() {
             _isPeeked = false;
             _isGrounded = false;
