@@ -14,6 +14,7 @@ namespace GY {
         private CameraDeathPosition _cameraDeathPos;
         [SerializeField]
         private ParticleSystem _VFXDeath = null;
+        private bool isGameOver;
 
         private void OnTriggerEnter2D(Collider2D collision) {
             if (collision.gameObject.tag == "Gold") {
@@ -43,7 +44,11 @@ namespace GY {
                 collision.enabled = false;
             }
             if (collision.gameObject.tag == "Obstacle") {
+                if (!isGameOver)
+                {
                 Die();
+
+                }
             }
         }
 
@@ -73,6 +78,7 @@ namespace GY {
                 _cameraDeathPos.GameOver();
                 OnGameOver?.Invoke();
                 _uiManager.OpenFailPanel();
+                isGameOver = true;
             }
         }
 
