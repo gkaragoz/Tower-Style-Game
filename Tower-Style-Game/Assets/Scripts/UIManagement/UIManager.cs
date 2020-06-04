@@ -100,24 +100,34 @@ namespace GY {
             });
         }
         public void OpenSuccesPanel() {
+            var seq = LeanTween.sequence();
+            seq.append(LeanTween.delayedCall(0f, () => {
+                if (VFXEndStar01 != null) {
+                    VFXEndStar01.Play();
+                }
+            }));
+            seq.append(LeanTween.delayedCall(2f, () => {
+                if (VFXEndStar02 != null) {
+                    VFXEndStar02.Play();
+                }
+            }));
+            seq.append(LeanTween.delayedCall(0f, () => {
+                if (VFXEndStar01 != null) {
+                    VFXEndStar01.Play();
+                }
+            }));
+            seq.append(LeanTween.delayedCall(2f, () => {
+                if (VFXEndStar02 != null) {
+                    VFXEndStar02.Play();
+                }
+            }));
+
             LeanTween.delayedCall(1f, () => {
                 pnlGamePlay.SetActive(false);
                 pnlInsideGamePlay.SetActive(false);
                 grpGold.SetActive(true);
                 pnlWin.Open();
                 gameSceneUIBlocker.SetActive(true);
-
-                var seq = LeanTween.sequence();
-                seq.append(LeanTween.delayedCall(0f, () => {
-                    if (VFXEndStar01 != null) {
-                        VFXEndStar01.Play();
-                    }
-                }));
-                seq.append(LeanTween.delayedCall(2f, () => {
-                    if (VFXEndStar02 != null) {
-                        VFXEndStar02.Play();
-                    }
-                }));
             });
         }
 
