@@ -9,7 +9,6 @@ namespace GY {
         // Global Gold is gonna change
         private int _totalGold = 0;
         private int _currentSceneGold = 0;
-
         Vector3 firstTouchPos;
         bool isGameStarted;
 
@@ -37,8 +36,8 @@ namespace GY {
         public TextMeshProUGUI txtCurrentLevel;
         public TextMeshProUGUI txtNextLevel;
 
-        public ParticleSystem VFXEndStar01;
-        public ParticleSystem VFXEndStar02;
+        private EndGamePlatform _endGamePlatform;
+
         [SerializeField]
         private InputManager _inputManager;
         private void Start() {
@@ -53,6 +52,8 @@ namespace GY {
             txtLevelHeader.text= "Level " + (SceneManager.GetActiveScene().buildIndex + 1 );
             txtCurrentLevel.text= "Level " + (SceneManager.GetActiveScene().buildIndex + 1 );
             txtNextLevel.text= "Level " + (SceneManager.GetActiveScene().buildIndex + 2 );
+            _endGamePlatform = GameObject.FindObjectOfType<EndGamePlatform>();
+
         }
         private void OnInputBegin(Vector2 obj) {
             firstTouchPos = obj;
@@ -100,28 +101,8 @@ namespace GY {
             });
         }
         public void OpenSuccesPanel() {
-            var seq = LeanTween.sequence();
-            seq.append(LeanTween.delayedCall(0f, () => {
-                if (VFXEndStar01 != null) {
-                    VFXEndStar01.Play();
-                }
-            }));
-            seq.append(LeanTween.delayedCall(2f, () => {
-                if (VFXEndStar02 != null) {
-                    VFXEndStar02.Play();
-                }
-            }));
-            seq.append(LeanTween.delayedCall(0f, () => {
-                if (VFXEndStar01 != null) {
-                    VFXEndStar01.Play();
-                }
-            }));
-            seq.append(LeanTween.delayedCall(2f, () => {
-                if (VFXEndStar02 != null) {
-                    VFXEndStar02.Play();
-                }
-            }));
 
+            _endGamePlatform.EndGameVFX();
             LeanTween.delayedCall(1f, () => {
                 pnlGamePlay.SetActive(false);
                 pnlInsideGamePlay.SetActive(false);
@@ -156,9 +137,13 @@ namespace GY {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Time.timeScale = 1;
         }
-        public void OpenNextScene(int sceneIndex) {
-            Debug.Log(sceneIndex);
-            SceneManager.LoadScene(sceneIndex);
+        public void OpenNextScene() {
+            if (SceneManager.GetActiveScene().buildIndex+1>20)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                return;
+            }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
         public void ShowDoubleJump() {
             imgDoubleJump.SetActive(true);
