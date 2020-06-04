@@ -2,9 +2,11 @@
 using GK;
 using System;
 
-namespace GY {
+namespace GY
+{
 
-    public class CollisionDedector : MonoBehaviour {
+    public class CollisionDedector : MonoBehaviour
+    {
         public Action OnGameOver;
         [SerializeField]
         private PlayerController _playerController;
@@ -16,16 +18,20 @@ namespace GY {
         private ParticleSystem _VFXDeath = null;
         private bool isGameOver;
 
-        private void OnTriggerEnter2D(Collider2D collision) {
-            if (collision.gameObject.tag == "Gold") {
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Gold")
+            {
                 PlayCollectableVFX(collision.gameObject);
 
                 CollectGold(collision.gameObject);
             }
-            if (collision.gameObject.tag == "LaserButton") {
+            if (collision.gameObject.tag == "LaserButton")
+            {
                 collision.gameObject.GetComponent<LaserButton>().CloseLaser();
             }
-            if (collision.gameObject.tag == "DoubleJump") {
+            if (collision.gameObject.tag == "DoubleJump")
+            {
                 if (_playerController.HasDoubleJump)
                 {
                     return;
@@ -36,7 +42,8 @@ namespace GY {
                 _playerController.HasDoubleJump = true;
                 _uiManager.ShowDoubleJump();
             }
-            if (collision.gameObject.tag == "Armor") {
+            if (collision.gameObject.tag == "Armor")
+            {
                 if (_playerController.HasArmor)
                 {
                     return;
@@ -48,50 +55,56 @@ namespace GY {
                 _playerController.HasArmor = true;
                 _uiManager.ShowArmor();
             }
-            if (collision.gameObject.tag == "EndGameArea") {
+            if (collision.gameObject.tag == "EndGameArea")
+            {
                 _uiManager.OpenSuccesPanel();
                 collision.enabled = false;
             }
-            if (collision.gameObject.tag == "Obstacle") {
-                if (!isGameOver)
-                {
+            if (collision.gameObject.tag == "Obstacle")
+            {
+
                 Die();
 
-                }
             }
         }
 
-        private void PlayCollectableVFX(GameObject targetGameObject) {
+        private void PlayCollectableVFX(GameObject targetGameObject)
+        {
             ParticleSystem vfx = targetGameObject.GetComponentInChildren<ParticleSystem>();
             vfx.transform.parent = null;
             vfx.Play();
         }
 
-        public void CollectGold(GameObject gold) {
+        public void CollectGold(GameObject gold)
+        {
             gold.SetActive(false);
             _uiManager.AddGold();
         }
 
         public void Die()
         {
-            if (_playerController.HasArmor)
+            if (!isGameOver)
             {
-                _playerController.HasArmor = false;
-                _uiManager.CloseArmor();
-            }
-            else
-            {
-                Debug.Log("GameOVer");
-                _VFXDeath.transform.position = new Vector3(_playerController.transform.position.x, _playerController.transform.position.y, _VFXDeath.transform.position.z);
-                _VFXDeath.Play();
-                _cameraDeathPos.GameOver();
-                OnGameOver?.Invoke();
-                _uiManager.OpenFailPanel();
-                isGameOver = true;
+
+                if (_playerController.HasArmor)
+                {
+                    _playerController.HasArmor = false;
+                    _uiManager.CloseArmor();
+                }
+                else
+                {
+                    isGameOver = true;
+                    Debug.Log("GameOVer");
+                    _VFXDeath.transform.position = new Vector3(_playerController.transform.position.x, _playerController.transform.position.y, _VFXDeath.transform.position.z);
+                    _VFXDeath.Play();
+                    _cameraDeathPos.GameOver();
+                    OnGameOver?.Invoke();
+                    _uiManager.OpenFailPanel();
+                }
             }
         }
 
 
-      
+
     }
 }
