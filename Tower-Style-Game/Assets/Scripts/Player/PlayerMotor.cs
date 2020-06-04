@@ -21,6 +21,8 @@ namespace GK {
         private float _baseJumpForce = 1f;
         [SerializeField]
         private ForceMode2D _forceMode2D = ForceMode2D.Impulse;
+
+
         private Rigidbody2D _rb2D = null;
         private PlayerGroundChecker _playerGroundChecker;
         private void Start() {

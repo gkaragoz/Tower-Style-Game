@@ -22,6 +22,8 @@ namespace GK {
         private LayerMask _platformCheckLayerMask = 0;
         [SerializeField]
         private LayerMask _wallCheckLayerMask = 0;
+        [SerializeField]
+        private ParticleSystem _dust;
         private CollisionDedector _colDedector;
 
 
@@ -128,6 +130,8 @@ namespace GK {
                         lefthit.transform.gameObject.GetComponent<IPlatform>().DestroyPlatform(OnPlatformDestroyed);
                     }
                     OnGrounded?.Invoke();
+                    _dust.Stop();
+                    _dust.Play();
                 }
             }
         }
