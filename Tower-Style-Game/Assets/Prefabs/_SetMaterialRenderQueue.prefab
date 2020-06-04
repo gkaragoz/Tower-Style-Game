@@ -45,14 +45,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rqMaterials:
   - material: {fileID: 2100000, guid: 03c268c08a1994c4a8b2185765af2f1c, type: 2}
-    renderOrder: 5000
+    renderOrder: 4000
   - material: {fileID: 2100000, guid: 92e81886018065e4984e4dd1808b09b6, type: 2}
     renderOrder: 3000
   - material: {fileID: 2100000, guid: 4c66355b85028404582d79bcad60fdbc, type: 2}
     renderOrder: 3000
   - material: {fileID: 2100000, guid: d3253df43e0fee14f89de91cbe04f426, type: 2}
-    renderOrder: 3500
+    renderOrder: 4500
   - material: {fileID: 2100000, guid: 0ff6671b03e3a6245919051da477572d, type: 2}
-    renderOrder: 3500
+    renderOrder: 4500
   - material: {fileID: 2100000, guid: fd49b46da64814740afc9dad46566890, type: 2}
-    renderOrder: 3500
+    renderOrder: 4500
