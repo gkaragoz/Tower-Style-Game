@@ -3014,11 +3014,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6424421975391194699, guid: bc18111b47876524392e6d4f9d6095f7,
-        type: 3}
-      propertyPath: _lerpDelay
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8191788269870548854, guid: bc18111b47876524392e6d4f9d6095f7,
         type: 3}
       propertyPath: m_LocalPosition.x

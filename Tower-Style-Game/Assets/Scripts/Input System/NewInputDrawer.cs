@@ -11,18 +11,37 @@ namespace GK {
         [SerializeField]
         private float _projectileLengthMultiplier = 1;
         [SerializeField]
-        LineRenderer _lr;
-        [SerializeField]
         private int _indicatorPointCount = 2;
         [SerializeField]
-        private Gradient _indicatorLowPowerPalette;
-        [SerializeField]
-        private Gradient _indicatorMediumPowerPalette;
-        [SerializeField]
-        private Gradient _indicatorHighPowePalette;
+        private float _zOffset = -1f;
 
+        [SerializeField]
+        private Color _minColor;
+        [SerializeField]
+        private Color _maxColor;
+
+        [SerializeField]
+        [Utils.ReadOnly]
+        private float t = 1;
+        [SerializeField]
+        [Utils.ReadOnly]
+        private float minT = 0;
+        [SerializeField]
+        [Utils.ReadOnly]
+        private float maxT = 100;
+
+        [SerializeField]
+        [Utils.ReadOnly]
+        private float _minClampMag = 0.1f;
+        [SerializeField]
+        [Utils.ReadOnly]
+        private float _maxClampMag = 0.12f;
+
+        private LineRenderer _lr;
 
         private void Start() {
+            _lr = GetComponent<LineRenderer>();
+
             InputManager.instance.OnInputBegin += OnInputBegin;
             InputManager.instance.OnInputDragging += OnInputDragging;
             InputManager.instance.OnInputEnd += OnInputEnd;
@@ -31,7 +50,6 @@ namespace GK {
 
         private void OnInputBegin(Vector2 startPos) {
             _lr.enabled = true;
-
         }
 
         private void OnInputDragging(Vector2 currentPos, Vector2 dragPos) {
@@ -47,16 +65,14 @@ namespace GK {
 
             for (int ii = 0; ii < _indicatorPointCount; ii++) {
                 Vector3 lastPos = (_targetTransform.position + new Vector3(_drawOffset.x, _drawOffset.y, 0)) + distanceProjectile * ii * _projectileLengthMultiplier;
+                lastPos.z = _zOffset;
                 _lr.SetPosition(ii, lastPos);
-
-                if (distanceProjectile.magnitude < 0.2f) {
-                    _lr.colorGradient = _indicatorLowPowerPalette;
-                } else if (distanceProjectile.magnitude < .4f) {
-                    _lr.colorGradient = _indicatorMediumPowerPalette;
-                } else if (distanceProjectile.magnitude < .5f) {
-                    _lr.colorGradient = _indicatorHighPowePalette;
-                }
             }
+
+            maxT = _projectileLengthMultiplier;
+            t = distanceProjectile.magnitude.Map(_minClampMag, maxT, minT, maxT);
+
+            _lr.endColor = Color.Lerp(_minColor, _maxColor, t);
         }
     }
 }
