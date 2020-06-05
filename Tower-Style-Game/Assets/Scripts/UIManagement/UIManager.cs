@@ -41,10 +41,9 @@ namespace GY {
         [SerializeField]
         private InputManager _inputManager;
         private void Start() {
-            //if (SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("currentLevel"))
-            //{
-            //    SceneManager.LoadScene(PlayerPrefs.GetInt("currentLevel"));
-            //}
+            if (SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("currentLevel")) {
+                SceneManager.LoadScene(PlayerPrefs.GetInt("currentLevel"));
+            }
 
             OpenMainMenu();
             _inputManager.OnInputDragging += OnDragging;
