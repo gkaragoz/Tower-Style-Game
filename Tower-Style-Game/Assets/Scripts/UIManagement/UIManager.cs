@@ -177,6 +177,10 @@ namespace GY {
 
             seq.append(LeanTween.scale(imgArmor.gameObject, Vector3.one * 1.4f, 0.25f).setFrom(0).setEase(LeanTweenType.easeOutBack));
             seq.insert(LeanTween.scale(imgArmor.gameObject, Vector3.one, 0.25f).setEase(LeanTweenType.easeOutQuart));
+            seq.insert(LeanTween.value(imgArmor.anchoredPosition.y, 175, 1f).setEase(LeanTweenType.easeOutCubic).setDelay(0.3f).setOnUpdate((float newValue) => {
+                Vector3 newPos = new Vector3(imgArmor.anchoredPosition.x, newValue, 0);
+                imgArmor.anchoredPosition = newPos;
+            }));
             seq.append(
                 LeanTween.value(imgArmor.anchoredPosition.x, 109, 1f).setEase(LeanTweenType.easeOutCubic).setDelay(0.3f).setOnUpdate((float newValue) => {
                     Vector3 newPos = new Vector3(newValue, imgArmor.anchoredPosition.y, 0);
