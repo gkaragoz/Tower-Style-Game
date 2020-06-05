@@ -70,8 +70,8 @@ namespace GY {
             }
         }
         public void OpenMainMenu() {
-            pnlMainMenu.Open();
             grpGold.SetActive(true);
+            pnlMainMenu.Open();
         }
         public void CloseMainMenu() {
             pnlMainMenu.Close();
@@ -118,12 +118,14 @@ namespace GY {
 
         public void OpenMarketPanel() {
             gameSceneUIBlocker.SetActive(true);
+            CloseMainMenu();
             grpGold.SetActive(true);
             pnlMarket.Open();
         }
         public void CloseMarketPanel() {
             grpGold.SetActive(true);
             pnlMarket.Close();
+            OpenMainMenu();
             gameSceneUIBlocker.SetActive(false);
         }
         public void WatchAds() {
