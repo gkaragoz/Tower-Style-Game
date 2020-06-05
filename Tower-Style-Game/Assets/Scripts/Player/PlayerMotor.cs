@@ -34,11 +34,9 @@ namespace GK {
         private void OnInputEnd(Vector2 endPos, Vector2 direction, float magnitude) {
             float preMapValue = direction.x * magnitude;
             RotateTo(ExtensionMethods.Map(preMapValue, MIN_ROT_INPUT, MAX_ROT_INPUT, MAX_ROT_RIGHT, MAX_ROT_LEFT));
-            RotateToCamera(ExtensionMethods.Map(preMapValue, MIN_ROT_INPUT, MAX_ROT_INPUT, 15, -15));
         }
         private void OnPeeked() {
             RotateTo(0);
-            RotateToCamera(0);
         }
         private IEnumerator IRotateTo(float targetX) {
             LeanTween.rotateY(this.gameObject, targetX, _rotationSpeed);
@@ -55,9 +53,6 @@ namespace GK {
         }
         public void RotateTo(float targetX) {
             StartCoroutine(IRotateTo(targetX));
-        }
-        public void RotateToCamera(float targetX) {
-            StartCoroutine(IRotateToCamera(targetX));
         }
 
     }
