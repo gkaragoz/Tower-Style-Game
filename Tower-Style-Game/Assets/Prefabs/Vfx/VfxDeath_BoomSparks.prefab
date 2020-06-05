@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 198224076935918434}
   - component: {fileID: 199046521119242406}
   m_Layer: 0
-  m_Name: VfxBoomSparks
+  m_Name: VfxDeath_BoomSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856981849721026}
   serializedVersion: 6
-  lengthInSec: 3
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
@@ -115,7 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 3
+      scalar: 1
       minScalar: 0.10000001
       maxCurve:
         serializedVersion: 2
@@ -248,8 +248,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.6
-      minScalar: 0.3
+      scalar: 1.2
+      minScalar: 0.6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -462,7 +462,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -1.62
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -831,8 +831,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 99
-        minScalar: 66
+        scalar: 25
+        minScalar: 15
         maxCurve:
           serializedVersion: 2
           m_Curve:

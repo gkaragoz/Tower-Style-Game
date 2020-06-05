@@ -19,6 +19,8 @@ public class FPS : MonoBehaviour {
 
         if (limitFrameRate) {
             Application.targetFrameRate = maxApplicationFrameRate;
+        } else {
+            Application.targetFrameRate = -1;
         }
     }
 
