@@ -6,6 +6,8 @@ public class IAPurchaseExample : MonoBehaviour {
 
     private void Awake() {
         purchase = new IAPurchase();
+
+        InitializeIAPServices();
     }
 
     // Initialize IAP Services
@@ -16,6 +18,12 @@ public class IAPurchaseExample : MonoBehaviour {
     // Buy NO AD Product
     public void BuyNoADProduct() {
         purchase.BuyNoAddProduct();
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            BuyNoADProduct();
+        }
     }
 
 }

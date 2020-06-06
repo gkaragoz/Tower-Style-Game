@@ -31,6 +31,15 @@ public class AndroidLeaderboardExample : MonoBehaviour
     {
         GooglePlayLeaderboard.ShowLeaderboard();
     }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+            ReportScore();
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            ShowLeaderboard();
+        }
+    }
 }
 
 #endif
