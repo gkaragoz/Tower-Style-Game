@@ -7,10 +7,15 @@ using Library.GooglePlay;
 public class AndroidLeaderboardExample : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    public static bool isInitialized;
+
     void Start()
     {
         GooglePlayLeaderboard.InitializeLeaderboard((success) =>
         {
+            isInitialized = success;
+
             if (success)
             {
                 // Everything is good to go

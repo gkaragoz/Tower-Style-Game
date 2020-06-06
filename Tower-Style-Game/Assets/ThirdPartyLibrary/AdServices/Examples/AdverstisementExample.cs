@@ -1,4 +1,5 @@
-﻿using Library.Advertisement.UnityAd;
+﻿using GY;
+using Library.Advertisement.UnityAd;
 using UnityEngine;
 
 // Works for both on iOS and Android platforms.
@@ -35,6 +36,12 @@ public class AdverstisementExample : MonoBehaviour
     private void OnRewardedAdEarnedReward(string rewardType, int rewardAmount)
     {
         Debug.Log("OnRewardedAdEarnedReward! " + rewardType + " " + rewardAmount);
+
+        if (rewardType == SKIP_LEVEL) {
+
+        } else if (rewardType == DOUBLE_GOLD) {
+
+        }
     }
 
     private void OnRewardedAdFailedToShow()
@@ -56,6 +63,9 @@ public class AdverstisementExample : MonoBehaviour
     private void OnRewardedAdClosed()
     {
         Debug.Log("OnRewardedAdClosed!");
+
+        // TODO UIManager interactable false ads button.
+        // DONT FORGET TO OPEN WHEN RELATED POPUP OPENED.
     }
 
     private void OnRewardAdLoaded()
@@ -63,19 +73,16 @@ public class AdverstisementExample : MonoBehaviour
         Debug.Log("OnRewardAdLoaded!");
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey("s"))
-        {
-            _skiplevelRewardedAds.LoadAndShowRewardedVideoAd();
-        }
-        if (Input.GetKey("a"))
-        {
-            _interstialVideoAds.LoadAndShowVideoAD();
-        }
-
+    public void WatchSkipLevel() {
+        _skiplevelRewardedAds.LoadAndShowRewardedVideoAd();
     }
+    public void WatchDoubleGold() {
+        _doublegoldRewardedAds.LoadAndShowRewardedVideoAd();
+    }
+    public void InvokeVideoAd() {
+        _interstialVideoAds.LoadAndShowVideoAD();
+    }
+
+
 
 }

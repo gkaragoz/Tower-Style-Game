@@ -36,7 +36,14 @@ namespace GY {
         public TextMeshProUGUI txtCurrentLevel;
         public TextMeshProUGUI txtNextLevel;
 
+        public GameObject btnRanking;
+
         private EndGamePlatform _endGamePlatform;
+
+        [SerializeField]
+        AndroidLeaderboardExample _androidLeaderboard;
+        [SerializeField]
+        IOSLeaderboardExample _iosLeaderBoard;
 
         [SerializeField]
         private InputManager _inputManager;
@@ -56,6 +63,20 @@ namespace GY {
             txtCurrentLevel.text= "Level " + (SceneManager.GetActiveScene().buildIndex + 1 );
             txtNextLevel.text= "Level " + (SceneManager.GetActiveScene().buildIndex + 2 );
             _endGamePlatform = GameObject.FindObjectOfType<EndGamePlatform>();
+
+
+#if ANDROID
+            if (AndroidLeaderboardExample.isInitialized == false) {
+                btnRanking.SetActive(false);
+                return;
+            }
+#elif IOS
+
+            if (IOSLeaderboardExample.isInitialized == false) {
+                btnRanking.SetActive(false);
+                return;
+            }
+#endif
 
         }
         private void OnInputBegin(Vector2 obj) {
@@ -128,8 +149,13 @@ namespace GY {
         public void WatchAds() {
             Debug.Log("Reklam İzle");
         }
+
         public void ShowRanking() {
-            Debug.Log("Sıralamayı Göster");
+#if ANDROID
+            _androidLeaderboard.ShowLeaderboard();
+#elif IOS
+            _iosLeaderBoard.ShowLeaderboard();
+#endif
         }
         public void ShowSurePanel() {
             pnlSure.Open();
