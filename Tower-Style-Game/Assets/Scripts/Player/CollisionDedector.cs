@@ -23,8 +23,8 @@ namespace GY
             if (collision.gameObject.tag == "Gold")
             {
                 PlayCollectableVFX(collision.gameObject);
-
                 CollectGold(collision.gameObject);
+                PlayerSoundManager.instance.PlayCoinCollect();
             }
             if (collision.gameObject.tag == "LaserButton")
             {
@@ -37,10 +37,10 @@ namespace GY
                     return;
                 }
                 PlayCollectableVFX(collision.gameObject);
-
                 collision.gameObject.SetActive(false);
                 _playerController.HasDoubleJump = true;
                 _uiManager.ShowDoubleJump();
+                PlayerSoundManager.instance.PlayPowerUpCollect();
             }
             if (collision.gameObject.tag == "Armor")
             {
@@ -50,10 +50,10 @@ namespace GY
                 }
 
                 PlayCollectableVFX(collision.gameObject);
-
                 collision.gameObject.SetActive(false);
                 _playerController.HasArmor = true;
                 _uiManager.ShowArmor();
+                PlayerSoundManager.instance.PlayPowerUpCollect();
             }
             if (collision.gameObject.tag == "EndGameArea")
             {

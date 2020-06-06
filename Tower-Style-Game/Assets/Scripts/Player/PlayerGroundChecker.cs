@@ -97,12 +97,16 @@ namespace GK {
                     _isHitWall = true;
                     OnHitWall?.Invoke(isLeft);
                     setWallDustAndPlay(wallRightHit.point);
+                    PlayerSoundManager.instance.PlayWallHit();
+
                 } else if (wallLefthit) {
 
                     isLeft = true;
                     _isHitWall = true;
                     OnHitWall?.Invoke(isLeft);
                     setWallDustAndPlay(wallLefthit.point);
+                    PlayerSoundManager.instance.PlayWallHit();
+
 
                 }
             }
@@ -137,6 +141,7 @@ namespace GK {
                     OnGrounded?.Invoke();
                     _dust.Stop();
                     _dust.Play();
+                  //  PlayerSoundManager.instance.PlayOnGrounded();
                 }
             }
         }
