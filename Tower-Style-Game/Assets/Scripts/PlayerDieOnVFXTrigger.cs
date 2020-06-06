@@ -15,6 +15,7 @@ public class PlayerDieOnVFXTrigger : MonoBehaviour {
     private void Start() {
         _particleSystem = transform.GetComponent<ParticleSystem>();
         PlayerSoundManager.instance.SoundSettingsChanged += SoundsChanged;
+        SoundsChanged();
     }
 
     private void SoundsChanged() {
@@ -26,7 +27,7 @@ public class PlayerDieOnVFXTrigger : MonoBehaviour {
     }
     private void Update() {
     
-        Debug.Log(_particleSystem.particleCount);
+
         if (_particleSystem.particleCount >= 1f && isShouted) {
             _myAudio.PlayOneShot(_effectSound);
             isShouted = false;

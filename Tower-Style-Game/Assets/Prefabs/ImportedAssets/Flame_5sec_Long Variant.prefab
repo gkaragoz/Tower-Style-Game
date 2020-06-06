@@ -95,12 +95,24 @@ PrefabInstance:
     - target: {fileID: 4553648534220830275, guid: 7f0a0f89884516e4e975c586b2dbe910,
         type: 3}
       propertyPath: m_Name
-      value: Flame_5sec_Long
+      value: Flame_5sec_Long Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8026392344792487454, guid: 7f0a0f89884516e4e975c586b2dbe910,
+        type: 3}
+      propertyPath: _myAudio
+      value: 
+      objectReference: {fileID: 8847037475866218291}
     - target: {fileID: 8674165448705305768, guid: 7f0a0f89884516e4e975c586b2dbe910,
         type: 3}
       propertyPath: _colliderFrequency
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1640449920, guid: 7f0a0f89884516e4e975c586b2dbe910, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7f0a0f89884516e4e975c586b2dbe910, type: 3}
+--- !u!82 &8847037475866218291 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7424060121408404383, guid: 7f0a0f89884516e4e975c586b2dbe910,
+    type: 3}
+  m_PrefabInstance: {fileID: 2144121261853504684}
+  m_PrefabAsset: {fileID: 0}

@@ -8729,7 +8729,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10.00 FPS
+  m_text: 45.21 FPS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8738,8 +8738,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278512639
-  m_fontColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    rgba: 4278255360
+  m_fontColor: {r: 0, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8921,7 +8921,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8191788270438212671}
   - component: {fileID: 8191788270438212640}
-  - component: {fileID: 8191788270438212641}
   - component: {fileID: 8191788270438212670}
   - component: {fileID: 8191788270438212668}
   - component: {fileID: 8191788270438212669}
@@ -8990,14 +8989,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &8191788270438212641
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8191788270438212642}
-  m_Enabled: 1
 --- !u!114 &8191788270438212670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11720,6 +11711,7 @@ GameObject:
   - component: {fileID: 8191788271349999881}
   - component: {fileID: 8191788271349999882}
   - component: {fileID: 8191788271349999883}
+  - component: {fileID: 927509950}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -11858,6 +11850,14 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.35, y: 0.06}
   m_Direction: 1
+--- !u!81 &927509950
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191788271349999884}
+  m_Enabled: 1
 --- !u!1 &8191788271400023967
 GameObject:
   m_ObjectHideFlags: 0
@@ -14914,15 +14914,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4679b7d4913ed45dcadbf24be51fcd6d, type: 3}
---- !u!4 &5382572423347133783 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4605291772542428, guid: 4679b7d4913ed45dcadbf24be51fcd6d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5378108728326955147}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &5215971955549328361 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198224076935918434, guid: 4679b7d4913ed45dcadbf24be51fcd6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5378108728326955147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5382572423347133783 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4605291772542428, guid: 4679b7d4913ed45dcadbf24be51fcd6d,
     type: 3}
   m_PrefabInstance: {fileID: 5378108728326955147}
   m_PrefabAsset: {fileID: 0}
