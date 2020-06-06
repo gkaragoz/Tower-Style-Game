@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!82 &1640449920
+--- !u!82 &7424060121408404383
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,13 +297,14 @@ PrefabInstance:
         type: 3}
       propertyPath: _myAudio
       value: 
-      objectReference: {fileID: 1640449920}
+      objectReference: {fileID: 7424060121408404383}
     - target: {fileID: 6817918440928027862, guid: 71512a783b93e8341a4e20f33b75a336,
         type: 3}
       propertyPath: _effectSound
       value: 
       objectReference: {fileID: 8300000, guid: a4b28a2dfa211714293c5bfd221604ad, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6267579828915669335, guid: 71512a783b93e8341a4e20f33b75a336, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 71512a783b93e8341a4e20f33b75a336, type: 3}
 --- !u!1 &2738914835793221614 stripped
 GameObject:
