@@ -1,54 +1,37 @@
-﻿using UnityEngine;
-using Library.Advertisement.Admob;
-using System;
-using GoogleMobileAds.Api;
-using Library.Advertisement.UnityAd;
+﻿using Library.Advertisement.UnityAd;
+using UnityEngine;
 
+// Works for both on iOS and Android platforms.
 public class AdverstisementExample : MonoBehaviour
 {
-    private AdmobBannerAd _bannerADs;
 
-    private AdmobRewardedVideoAd _rewardedADs, _rewardedADs2;
+    private UnityRewardedVidedAd _skiplevelRewardedAds, _doublegoldRewardedAds;
 
-    private AdmobInterstitialAd _interstitialADs;
+    private UnityVideoAd _interstialVideoAds;
 
-    private UnityBannerAd _bannerAd;
-
-    private UnityRewardedVidedAd _rewardedVideoAd;
-
-    private UnityVideoAd _videoAds;
+    private static string SKIP_LEVEL = "SKIP_LEVEL";
+    private static string DOUBLE_GOLD = "DOUBLE_GOLD";
 
     void Awake()
     {
-        _bannerADs = new AdmobBannerAd();
+        _skiplevelRewardedAds = new UnityRewardedVidedAd(SKIP_LEVEL, 1);
 
-        _rewardedADs = new AdmobRewardedVideoAd("Gem", 50);
+        _doublegoldRewardedAds = new UnityRewardedVidedAd(DOUBLE_GOLD, 2);
 
-        _rewardedADs2 = new AdmobRewardedVideoAd("PowerUp_MAGNET", 2);
-
-        _interstitialADs = new AdmobInterstitialAd();
-
-        _videoAds = new UnityVideoAd();
-
-        _bannerAd = new UnityBannerAd();
+        _interstialVideoAds = new UnityVideoAd();
     }
 
     private void Start()
     {
-        _bannerADs.OnAdLoaded += OnBannerAdLoaded;
-        _bannerADs.OnAdOpened += OnBannerAdOpened;
-        _bannerADs.OnAdClosed += OnBannerAdClosed;
-        _bannerADs.OnAdFailedToLoad += OnBannerAdFailedToLoad;
-        _bannerADs.OnAdLeavingApplication += OnBannerAdLeavingApplication;
-
-        _rewardedADs.OnAdLoaded += OnRewardAdLoaded;
-        _rewardedADs.OnAdClosed += OnRewardedAdClosed;
-        _rewardedADs.OnAdOpened += OnRewardAdOpened;
-        _rewardedADs.OnAdFailedToLoad += OnRewardedAdFailedToLoad;
-        _rewardedADs.OnAdFailedToShow += OnRewardedAdFailedToShow;
-        _rewardedADs.OnUserEarnedReward += OnRewardedAdEarnedReward;
+        _skiplevelRewardedAds.OnAdLoaded += OnRewardAdLoaded;
+        _skiplevelRewardedAds.OnAdClosed += OnRewardedAdClosed;
+        _skiplevelRewardedAds.OnAdOpened += OnRewardAdOpened;
+        _skiplevelRewardedAds.OnAdFailedToLoad += OnRewardedAdFailedToLoad;
+        _skiplevelRewardedAds.OnAdFailedToShow += OnRewardedAdFailedToShow;
+        _skiplevelRewardedAds.OnUserEarnedReward += OnRewardedAdEarnedReward;
     }
 
+    // Give reward to player.
     private void OnRewardedAdEarnedReward(string rewardType, int rewardAmount)
     {
         Debug.Log("OnRewardedAdEarnedReward! " + rewardType + " " + rewardAmount);
@@ -69,6 +52,7 @@ public class AdverstisementExample : MonoBehaviour
         Debug.Log("OnRewardAdOpened!");
     }
 
+    // Do not give reward to player.
     private void OnRewardedAdClosed()
     {
         Debug.Log("OnRewardedAdClosed!");
@@ -77,57 +61,19 @@ public class AdverstisementExample : MonoBehaviour
     private void OnRewardAdLoaded()
     {
         Debug.Log("OnRewardAdLoaded!");
-
-        _rewardedADs.ShowRewardedVideoAd();
-    }
-
-    private void OnBannerAdLeavingApplication()
-    {
-        Debug.Log("OnBannerAdLeavingApplication!");
-    }
-
-    private void OnBannerAdFailedToLoad()
-    {
-        Debug.Log("OnBannerAdFailedToLoad!");
-    }
-
-    private void OnBannerAdClosed()
-    {
-        Debug.Log("OnBannerAdClosed!");
-    }
-
-    private void OnBannerAdOpened()
-    {
-        Debug.Log("OnBannerAdOpened!");
-    }
-
-    private void OnBannerAdLoaded()
-    {
-        Debug.Log("OnBannerAdLoaded!");
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("w")) // Interstitial
+        if (Input.GetKey("s"))
         {
-            _bannerADs.LoadBannerAd();
+            _skiplevelRewardedAds.LoadAndShowRewardedVideoAd();
         }
-
-        else if (Input.GetKey("s"))
+        if (Input.GetKey("a"))
         {
-            _rewardedADs.LoadRewardedVideoAd();
-        }
-
-        else if (Input.GetKey("d"))
-        {
-            _bannerAd.LoadAndShowBannerAd();
-        }
-
-        else if (Input.GetKey("a"))
-        {
-            _videoAds.LoadAndShowVideoAD();
+            _interstialVideoAds.LoadAndShowVideoAD();
         }
 
     }
