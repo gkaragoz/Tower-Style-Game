@@ -22,6 +22,8 @@ public class PlayerSoundManager : MonoBehaviour {
     private AudioClip _obctacleGameOver;
     [SerializeField]
     private AudioClip _onGrounded;
+    [SerializeField]
+    private AudioClip _onGameWin;
 
 
     #region Singleton
@@ -40,31 +42,61 @@ public class PlayerSoundManager : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
     }
 
-
     public void PlaySingleJump() {
         audioSource.PlayOneShot(_jump);
     }
+
     public void PlayWallHit() {
         audioSource.PlayOneShot(_wallHit);
     }
+
     public void PlayCoinCollect() {
         audioSource.PlayOneShot(_coinCollect);
     }
+
     public void PlayArmorUse() {
         audioSource.PlayOneShot(_armorUse);
     }
+
     public void PlayDoubleJumpUse() {
         audioSource.PlayOneShot(_doubleJumpUse);
     }
+
     public void PlayPowerUpCollect() {
         audioSource.PlayOneShot(_powerUpCollect);
     }
+
     public void PlayFallGameOver() {
         audioSource.PlayOneShot(_fallGameOver);
     }
+
+    // Değiştir
     public void PlayOnGrounded() {
         audioSource.PlayOneShot(_onGrounded);
     }
 
+    public void PlayGameWin() {
+        audioSource.PlayOneShot(_onGameWin);
+    }
+
+    // Havai Fişek Bul 2x
+    public void PlayFireworks() {
+
+    }
+
+    // Bul
+    public void PlayUIClick() {
+
+    }
+
+    // Bul
+    public void PlayUIOpen() {
+
+    }
+
+    // Bul
+    public void PlayUIClose() {
+
+    }
 
 }

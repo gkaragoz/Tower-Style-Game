@@ -57,6 +57,7 @@ namespace GY
             }
             if (collision.gameObject.tag == "EndGameArea")
             {
+                PlayerSoundManager.instance.PlayGameWin();
                 _uiManager.OpenSuccesPanel();
                 collision.enabled = false;
             }

@@ -141,7 +141,7 @@ namespace GK {
                     OnGrounded?.Invoke();
                     _dust.Stop();
                     _dust.Play();
-                  //  PlayerSoundManager.instance.PlayOnGrounded();
+                    PlayerSoundManager.instance.PlayOnGrounded();
                 }
             }
         }
