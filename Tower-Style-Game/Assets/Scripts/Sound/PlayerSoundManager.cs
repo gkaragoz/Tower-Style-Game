@@ -29,8 +29,10 @@ public class PlayerSoundManager : MonoBehaviour {
     private AudioClip _onGameWin;
     [SerializeField]
     private AudioClip _closeLaser;
+    [SerializeField]
+    private AudioClip _clickUISound;
 
- 
+
     #region Singleton
 
     public static PlayerSoundManager instance;
@@ -68,6 +70,9 @@ public class PlayerSoundManager : MonoBehaviour {
 
     public void PlayCoinCollect() {
         audioSource.PlayOneShot(_coinCollect);
+    }
+    public void PlayClickUI() {
+        audioSource.PlayOneShot(_clickUISound);
     }
 
     public void PlayArmorUse() {

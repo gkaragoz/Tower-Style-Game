@@ -237,5 +237,10 @@ namespace GY {
             MusicManager.instance.MuteUnMuteMusic();
         }
 
+
+        public void PlayUIClick() {
+            PlayerSoundManager.instance.PlayClickUI();
+        }
+
     }
 }

@@ -17,6 +17,7 @@ namespace GY {
         private AudioSource _myAudioSource;
 
         private void Start() {
+            SoundSettingsChanged();
             PlayerSoundManager.instance.SoundSettingsChanged += SoundSettingsChanged;
         }
 
