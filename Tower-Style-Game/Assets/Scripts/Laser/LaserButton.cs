@@ -20,6 +20,7 @@ namespace GY {
             if (_hasInteracted) {
                 return;
             }
+            PlayerSoundManager.instance.CloseLaser();
 
             _hasInteracted = true;
             _VFX.Play();

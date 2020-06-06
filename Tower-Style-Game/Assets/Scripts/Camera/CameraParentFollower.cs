@@ -12,7 +12,7 @@ namespace GY {
         Vector3 _targetPos;
 
         private CameraDeathPosition _cameraDeathPosition;
-
+        
         private void Start() {
             _cameraDeathPosition = GetComponentInChildren<CameraDeathPosition>();
         }

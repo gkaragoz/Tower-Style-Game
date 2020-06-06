@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 2517720936943583983, guid: f97eb912eef100c4eabd4c5e58d6fa75,
         type: 3}
       propertyPath: m_Name
-      value: Flame_3sec_Long
+      value: Flame_3sec_Long Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3393782290626558423, guid: f97eb912eef100c4eabd4c5e58d6fa75,
         type: 3}
@@ -87,5 +87,17 @@ PrefabInstance:
       propertyPath: _colliderFrequency
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8260177459704930994, guid: f97eb912eef100c4eabd4c5e58d6fa75,
+        type: 3}
+      propertyPath: _myAudio
+      value: 
+      objectReference: {fileID: 3749266378728030692}
+    m_RemovedComponents:
+    - {fileID: 2144121260272300844, guid: f97eb912eef100c4eabd4c5e58d6fa75, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f97eb912eef100c4eabd4c5e58d6fa75, type: 3}
+--- !u!82 &3749266378728030692 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8847037475866218291, guid: f97eb912eef100c4eabd4c5e58d6fa75,
+    type: 3}
+  m_PrefabInstance: {fileID: 5678736068094283479}
+  m_PrefabAsset: {fileID: 0}
