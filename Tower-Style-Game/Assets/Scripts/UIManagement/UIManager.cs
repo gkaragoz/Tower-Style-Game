@@ -230,7 +230,12 @@ namespace GY {
             }
         }
 
-
+        public void MuteUnMuteSounds() {
+            PlayerSoundManager.instance.MuteUnmuteSound();
+        }
+        public void MuteUnMuteMusic() {            
+            MusicManager.instance.MuteUnMuteMusic();
+        }
 
     }
 }

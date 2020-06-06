@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace GY {
@@ -12,8 +13,19 @@ namespace GY {
         private ParticleSystem[] _VFX = null;
         [SerializeField]
         private BoxCollider2D _collider = null;
+        [SerializeField]
+        private AudioSource _myAudioSource;
+
+        private void Start() {
+            PlayerSoundManager.instance.SoundSettingsChanged += SoundSettingsChanged;
+        }
+
+        private void SoundSettingsChanged() {
+            _myAudioSource.mute= PlayerSoundManager.instance.IsMute;
+        }
 
         public void CloseLaser() {
+            
             float value = _lineRenderer.startWidth;
             if (transform.gameObject.activeSelf) {
                 LeanTween.value(_lineRenderer.gameObject, value, 0, _laserCloseSpeed).setOnUpdate((float newValue) => {
@@ -34,6 +46,8 @@ namespace GY {
                     }
                 });
             }
+            _myAudioSource.Stop();
+
         }
     }
 }

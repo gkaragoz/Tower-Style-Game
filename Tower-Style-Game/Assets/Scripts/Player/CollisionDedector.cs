@@ -29,6 +29,7 @@ namespace GY
             if (collision.gameObject.tag == "LaserButton")
             {
                 collision.gameObject.GetComponent<LaserButton>().CloseLaser();
+                //Sound in object
             }
             if (collision.gameObject.tag == "DoubleJump")
             {
