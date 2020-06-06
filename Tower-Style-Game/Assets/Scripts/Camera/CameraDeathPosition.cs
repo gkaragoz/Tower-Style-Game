@@ -56,6 +56,7 @@ public class CameraDeathPosition : MonoBehaviour
             Debug.Log("Oyun Bitti");
             _uIManager.OpenFailPanel();
             _isGameOver = true;
+            PlayerSoundManager.instance.PlayFallGameOver();
         }
     }
 }

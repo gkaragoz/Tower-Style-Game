@@ -91,8 +91,10 @@ namespace GY {
             }
             if (_playerGroundChecker.IsGrounded) {
                 _playerMotor.Jump(direction, selectedInputPower);
+                PlayerSoundManager.instance.PlaySingleJump();
             } else if (HasDoubleJump) {
                 _playerMotor.Jump(direction, selectedInputPower);
+                PlayerSoundManager.instance.PlayDoubleJumpUse();
                 HasDoubleJump = false;
                 _uIManager.CloseDoubleJump();
             }
