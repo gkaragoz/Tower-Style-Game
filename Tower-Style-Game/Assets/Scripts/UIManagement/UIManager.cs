@@ -1,17 +1,26 @@
 ﻿using UnityEngine;
+
+using System.Collections.Generic;
+
 using TMPro;
 using UnityEngine.SceneManagement;
 using GK;
+using System;
+using System.Collections;
 
-namespace GY {
+namespace GY
+{
 
-    public class UIManager : MonoBehaviour {
+    public class UIManager : MonoBehaviour
+    {
+
+        private Coroutine _inputCoroutine;
         // Global Gold is gonna change
         private int _totalGold = 0;
         private int _currentSceneGold = 0;
         Vector3 firstTouchPos;
         bool isGameStarted;
-
+        public GameObject stuckRestart;
         public RectTransform fill;
         public RectTransform indicator;
 
@@ -25,6 +34,7 @@ namespace GY {
         public PanelInTween pnlWin;
         public PanelInTween pnlSure;
         public PanelInTween pnlMarket;
+        public GameObject tutorialPanel;
         public RectTransform imgArmor;
         public RectTransform imgDoubleJump;
         public GameObject gameSceneUIBlocker;
@@ -40,28 +50,28 @@ namespace GY {
 
         private EndGamePlatform _endGamePlatform;
 
-        [SerializeField]
-        AndroidLeaderboardExample _androidLeaderboard;
-        [SerializeField]
-        IOSLeaderboardExample _iosLeaderBoard;
+
 
         [SerializeField]
         private InputManager _inputManager;
-        private void Start() {
-            if (SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("currentLevel")) {
+        private void Start()
+        {
+            if (SceneManager.GetActiveScene().buildIndex != PlayerPrefs.GetInt("currentLevel"))
+            {
                 SceneManager.LoadScene(PlayerPrefs.GetInt("currentLevel"));
             }
 
             OpenMainMenu();
             _inputManager.OnInputDragging += OnDragging;
             _inputManager.OnInputBegin += OnInputBegin;
+            _inputManager.OnInputEnd += OnInputEnd;
 
             _totalGold = PlayerPrefs.GetInt("totalGold");
             UpdateGoldUI();
 
-            txtLevelHeader.text= "Level " + (SceneManager.GetActiveScene().buildIndex + 1 );
-            txtCurrentLevel.text= "Level " + (SceneManager.GetActiveScene().buildIndex + 1 );
-            txtNextLevel.text= "Level " + (SceneManager.GetActiveScene().buildIndex + 2 );
+            txtLevelHeader.text = "Level " + (SceneManager.GetActiveScene().buildIndex + 1);
+            txtCurrentLevel.text = "Level " + (SceneManager.GetActiveScene().buildIndex + 1);
+            txtNextLevel.text = "Level " + (SceneManager.GetActiveScene().buildIndex + 2);
             _endGamePlatform = GameObject.FindObjectOfType<EndGamePlatform>();
 
 
@@ -79,55 +89,108 @@ namespace GY {
 #endif
 
         }
-        private void OnInputBegin(Vector2 obj) {
-            firstTouchPos = obj;
+
+        private void OnInputEnd(Vector2 arg1, Vector2 arg2, float arg3)
+        {
+
+            _inputCoroutine = StartCoroutine(StartTimerForInput());
+
+
         }
-        private void OnDragging(Vector2 arg1, Vector2 arg2) {
-            if (Vector3.Distance(arg1,firstTouchPos) >.5 && !isGameStarted) {
+
+        IEnumerator StartTimerForInput()
+        {
+            yield return new WaitForSeconds(3f);
+            if (PlayerPrefs.GetInt("currentLevel") < 11)
+            {
+                OpenTutorialPanel();
+            }
+            yield return new WaitForSeconds(2f);
+            stuckRestart.gameObject.SetActive(true);
+
+        }
+
+
+
+        private void OnInputBegin(Vector2 obj)
+        {
+            firstTouchPos = obj;
+
+            if (_inputCoroutine != null)
+            {
+                StopCoroutine(_inputCoroutine);
+                CloseTutorialPanel();
+            }
+        }
+        private void OnDragging(Vector2 arg1, Vector2 arg2)
+        {
+            if (Vector3.Distance(arg1, firstTouchPos) > .5 && !isGameStarted)
+            {
                 OpenGamePlayPanel();
                 CloseMainMenu();
+                CloseTutorialPanel();
                 isGameStarted = true;
             }
         }
-        public void OpenMainMenu() {
+        public void OpenTutorialPanel()
+        {
+            tutorialPanel.SetActive(true);
+        }
+        public void CloseTutorialPanel()
+        {
+            tutorialPanel.SetActive(false);
+
+        }
+
+
+        public void OpenMainMenu()
+        {
             grpGold.SetActive(true);
             pnlMainMenu.Open();
         }
-        public void CloseMainMenu() {
+        public void CloseMainMenu()
+        {
             pnlMainMenu.Close();
             grpGold.SetActive(false);
         }
-        public void OpenGamePlayPanel() {
+        public void OpenGamePlayPanel()
+        {
             pnlGamePlay.SetActive(true);
             pnlInsideGamePlay.SetActive(true);
             pnlLevelPath.SetActive(true);
         }
-        public void OpenPausePanel() {
+        public void OpenPausePanel()
+        {
             pnlInsideGamePlay.SetActive(false);
             pnlPause.Open();
             grpGold.SetActive(true);
             Time.timeScale = 0;
             gameSceneUIBlocker.SetActive(true);
         }
-        public void ClosePausePanel() {
+        public void ClosePausePanel()
+        {
             pnlInsideGamePlay.SetActive(true);
             pnlPause.Close();
             grpGold.SetActive(false);
             Time.timeScale = 1;
             gameSceneUIBlocker.SetActive(false);
         }
-        public void OpenFailPanel() {
-            LeanTween.delayedCall(0.5f, () => {
+        public void OpenFailPanel()
+        {
+            LeanTween.delayedCall(0.5f, () =>
+            {
                 pnlInsideGamePlay.SetActive(false);
                 grpGold.SetActive(true);
                 pnlFail.Open();
                 gameSceneUIBlocker.SetActive(true);
             });
         }
-        public void OpenSuccesPanel() {
+        public void OpenSuccesPanel()
+        {
 
             _endGamePlatform.EndGameVFX();
-            LeanTween.delayedCall(1f, () => {
+            LeanTween.delayedCall(1f, () =>
+            {
                 pnlGamePlay.SetActive(false);
                 pnlInsideGamePlay.SetActive(false);
                 grpGold.SetActive(true);
@@ -136,49 +199,57 @@ namespace GY {
             });
         }
 
-        public void OpenMarketPanel() {
+        public void OpenMarketPanel()
+        {
             gameSceneUIBlocker.SetActive(true);
             grpGold.SetActive(true);
             pnlMarket.Open();
         }
-        public void CloseMarketPanel() {
+        public void CloseMarketPanel()
+        {
             grpGold.SetActive(true);
             pnlMarket.Close();
             gameSceneUIBlocker.SetActive(false);
         }
-        public void WatchAds() {
+        public void WatchAds()
+        {
             Debug.Log("Reklam İzle");
         }
 
-        public void ShowRanking() {
+        public void ShowRanking()
+        {
 #if ANDROID
             _androidLeaderboard.ShowLeaderboard();
 #elif IOS
             _iosLeaderBoard.ShowLeaderboard();
 #endif
         }
-        public void ShowSurePanel() {
+        public void ShowSurePanel()
+        {
             pnlSure.Open();
         }
-        public void RestartLevel() {
+        public void RestartLevel()
+        {
             LeanTween.cancelAll();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Time.timeScale = 1;
 
         }
-        public void OpenNextScene() {
+        public void OpenNextScene()
+        {
             LeanTween.cancelAll();
-            if (SceneManager.GetActiveScene().buildIndex+1>20)
+            if (SceneManager.GetActiveScene().buildIndex + 1 > 20)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 return;
             }
             int currentLevel = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(currentLevel + 1);
-            PlayerPrefs.SetInt("currentLevel",currentLevel+1);
+            PlayerPrefs.SetInt("currentLevel", currentLevel + 1);
         }
 
-        public void ShowDoubleJump() {
+        public void ShowDoubleJump()
+        {
             imgDoubleJump.anchoredPosition = new Vector3(Screen.width / 2, 0, 0);
 
             var seq = LeanTween.sequence();
@@ -186,7 +257,8 @@ namespace GY {
             seq.append(LeanTween.scale(imgDoubleJump.gameObject, Vector3.one * 1.4f, 0.25f).setFrom(0).setEase(LeanTweenType.easeOutBack));
             seq.insert(LeanTween.scale(imgDoubleJump.gameObject, Vector3.one, 0.25f).setEase(LeanTweenType.easeOutQuart));
             seq.append(
-                LeanTween.value(imgDoubleJump.anchoredPosition.x, 109, 1f).setEase(LeanTweenType.easeOutCubic).setDelay(0.3f).setOnUpdate((float newValue) => {
+                LeanTween.value(imgDoubleJump.anchoredPosition.x, 109, 1f).setEase(LeanTweenType.easeOutCubic).setDelay(0.3f).setOnUpdate((float newValue) =>
+                {
                     Vector3 newPos = new Vector3(newValue, imgDoubleJump.anchoredPosition.y, 0);
                     imgDoubleJump.anchoredPosition = newPos;
                 })
@@ -195,19 +267,22 @@ namespace GY {
             imgDoubleJump.gameObject.SetActive(true);
         }
 
-        public void ShowArmor() {
+        public void ShowArmor()
+        {
             imgArmor.anchoredPosition = new Vector3(Screen.width / 2, 0, 0);
 
             var seq = LeanTween.sequence();
 
             seq.append(LeanTween.scale(imgArmor.gameObject, Vector3.one * 1.4f, 0.25f).setFrom(0).setEase(LeanTweenType.easeOutBack));
             seq.insert(LeanTween.scale(imgArmor.gameObject, Vector3.one, 0.25f).setEase(LeanTweenType.easeOutQuart));
-            seq.insert(LeanTween.value(imgArmor.anchoredPosition.y, 175, 1f).setEase(LeanTweenType.easeOutCubic).setDelay(0.3f).setOnUpdate((float newValue) => {
+            seq.insert(LeanTween.value(imgArmor.anchoredPosition.y, 175, 1f).setEase(LeanTweenType.easeOutCubic).setDelay(0.3f).setOnUpdate((float newValue) =>
+            {
                 Vector3 newPos = new Vector3(imgArmor.anchoredPosition.x, newValue, 0);
                 imgArmor.anchoredPosition = newPos;
             }));
             seq.append(
-                LeanTween.value(imgArmor.anchoredPosition.x, 109, 1f).setEase(LeanTweenType.easeOutCubic).setDelay(0.3f).setOnUpdate((float newValue) => {
+                LeanTween.value(imgArmor.anchoredPosition.x, 109, 1f).setEase(LeanTweenType.easeOutCubic).setDelay(0.3f).setOnUpdate((float newValue) =>
+                {
                     Vector3 newPos = new Vector3(newValue, imgArmor.anchoredPosition.y, 0);
                     imgArmor.anchoredPosition = newPos;
                 })
@@ -216,55 +291,68 @@ namespace GY {
             imgArmor.gameObject.SetActive(true);
         }
 
-        public void CloseDoubleJump() {
-            LeanTween.scale(imgDoubleJump.gameObject, Vector3.zero, 0.25f).setEase(LeanTweenType.easeInBack).setOnComplete(() => {
+        public void CloseDoubleJump()
+        {
+            LeanTween.scale(imgDoubleJump.gameObject, Vector3.zero, 0.25f).setEase(LeanTweenType.easeInBack).setOnComplete(() =>
+            {
                 imgDoubleJump.gameObject.SetActive(false);
             });
         }
 
-        public void CloseArmor() {
-            LeanTween.scale(imgArmor.gameObject, Vector3.zero, 0.25f).setEase(LeanTweenType.easeInBack).setOnComplete(() => {
+        public void CloseArmor()
+        {
+            LeanTween.scale(imgArmor.gameObject, Vector3.zero, 0.25f).setEase(LeanTweenType.easeInBack).setOnComplete(() =>
+            {
                 imgArmor.gameObject.SetActive(false);
             });
         }
 
         ///Must Change Area
         ///
-        public void AddGold() {
+        public void AddGold()
+        {
             _totalGold += 1;
             _currentSceneGold += 1;
-            PlayerPrefs.SetInt("totalGold",_totalGold);
+            PlayerPrefs.SetInt("totalGold", _totalGold);
             UpdateGoldUI();
         }
-       
-        public void UpdateGoldUI() {
+
+        public void UpdateGoldUI()
+        {
             txtGlobalGold.text = _totalGold.ToString();
             txtWinGold.text = _currentSceneGold.ToString();
             txtFailGold.text = _currentSceneGold.ToString();
         }
 
-        public void UpdateIndicator(float percentage) {
+        public void UpdateIndicator(float percentage)
+        {
 
-            if (percentage<=1) {
-            fill.sizeDelta = new Vector2(percentage * 600, fill.sizeDelta.y);
+            if (percentage <= 1)
+            {
+                fill.sizeDelta = new Vector2(percentage * 600, fill.sizeDelta.y);
 
-            indicator.anchoredPosition = new Vector3((percentage * 589)-(24), indicator.anchoredPosition.y);
-            } else {
-                fill.sizeDelta = new Vector2( 600, fill.sizeDelta.y);
+                indicator.anchoredPosition = new Vector3((percentage * 589) - (24), indicator.anchoredPosition.y);
+            }
+            else
+            {
+                fill.sizeDelta = new Vector2(600, fill.sizeDelta.y);
 
-                indicator.anchoredPosition = new Vector3( 589 - (24), indicator.anchoredPosition.y);
+                indicator.anchoredPosition = new Vector3(589 - (24), indicator.anchoredPosition.y);
             }
         }
 
-        public void MuteUnMuteSounds() {
+        public void MuteUnMuteSounds()
+        {
             PlayerSoundManager.instance.MuteUnmuteSound();
         }
-        public void MuteUnMuteMusic() {            
+        public void MuteUnMuteMusic()
+        {
             MusicManager.instance.MuteUnMuteMusic();
         }
 
 
-        public void PlayUIClick() {
+        public void PlayUIClick()
+        {
             PlayerSoundManager.instance.PlayClickUI();
         }
 
